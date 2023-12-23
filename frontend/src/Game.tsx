@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import TextField from '@mui/material/TextField';
 function Game(){
 
 
@@ -6,13 +7,17 @@ function Game(){
 
     return (
         <>
+
         <h1>Game</h1>
+        
         <input type="text" placeholder="Enter your name"  onChange={(event)=>{
             setInputText(event.target.value);
         }} />
+
         <button onClick={()=>{
             console.log(inputText);
-        }}>Submit</button>
+        }}> Submit </button>
+
         </>
     )
 }
