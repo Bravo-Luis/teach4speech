@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 function Game(){
 
     const [inputText, setInputText] = useState("");
-    const [timer, setTimer] = useState(0);
+    const [timer, setTimer] = useState(20);
 
     useEffect(()=>{
         const interval = setInterval(()=>{
