@@ -38,6 +38,12 @@ function Game(){
         setInputText("");
     };
 
+    const handleKeyPress = (event: React.KeyboardEvent) => {
+        if (event.key === "Enter" || event.key === "Return") {
+            handleButtonClick();
+        }
+    };
+
     return (
         <>
             <h1>Game</h1>
@@ -49,10 +55,18 @@ function Game(){
                 console.log(inputText);
             }}> Submit </button> */}
             <TextField
+                id="filled-basic"
+                variant="filled"
                 type="text"
                 placeholder="Enter your name"
                 value={inputText}
                 onChange={(event) => setInputText(event.target.value)}
+                onKeyDown={handleKeyPress}
+                style={{backgroundColor: 'transparent'}}
+                InputProps={{
+                    style: {color: 'whitesmoke'}
+                }}
+                
             />
             <button onClick={handleButtonClick}>Submit</button>
         </>
