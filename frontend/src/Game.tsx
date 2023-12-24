@@ -31,8 +31,17 @@ function Game(){
     // Generates a random category word from our array of words
     useEffect(() => {
         const randomIndex = Math.floor(Math.random() * categories.length);
-        setGameWord(categories[randomIndex]);
+        if (timer !== 0){
+            setGameWord("Your category is: " + categories[randomIndex]);
+        }
     } , []);
+
+    // Set's the game word h1 element to "Time's Up!" once timer reaches 0
+    useEffect(() => {
+        if (timer === 0){
+            setGameWord("Time's Up!");
+        }
+    } , [timer]);
 
     // Validating the relation between answer and prompt?
     function handleSubmit(potenialAnswer: string) { 
@@ -76,7 +85,7 @@ function Game(){
 
     return (
         <>
-            <h1>Your category is: {gameWord}</h1>
+            <h1>{gameWord}</h1>
             <TextField
                 id="filled-basic"
                 variant="filled"
