@@ -5,6 +5,9 @@ function Game(){
     const [inputText, setInputText] = useState("");
     const [timer, setTimer] = useState(20);
     const [inputError, setInputError] = useState(false);
+    const [gameWord, setGameWord] = useState("");
+
+    const categories = ["fun", "boring", "tasty", "disgusting", "hot", "cold"];
 
     // Handles timer countdown from 20 seconds (Game timer)
     useEffect(() => {
@@ -24,6 +27,12 @@ function Game(){
       }, []);
 
     console.log(timer)
+
+    // Generates a random category word from our array of words
+    useEffect(() => {
+        const randomIndex = Math.floor(Math.random() * categories.length);
+        setGameWord(categories[randomIndex]);
+    } , []);
 
     // Validating the relation between answer and prompt?
     function handleSubmit(potenialAnswer: string) { 
@@ -67,7 +76,7 @@ function Game(){
 
     return (
         <>
-            <h1>Game</h1>
+            <h1>Your category is: {gameWord}</h1>
             <TextField
                 id="filled-basic"
                 variant="filled"
