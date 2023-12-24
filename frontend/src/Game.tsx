@@ -6,6 +6,7 @@ function Game(){
     const [timer, setTimer] = useState(20);
     const [inputError, setInputError] = useState(false);
     const [gameWord, setGameWord] = useState("");
+    const [gameActive, setGameActive] = useState(true);
 
     const categories = ["fun", "boring", "tasty", "disgusting", "hot", "cold"];
 
@@ -40,8 +41,10 @@ function Game(){
     useEffect(() => {
         if (timer === 0){
             setGameWord("Time's Up!");
+            setGameActive(false);
+            setInputError(false);
         }
-    } , [timer]);
+    } , [timer, gameActive]);
 
     // Validating the relation between answer and prompt?
     function handleSubmit(potenialAnswer: string) { 
@@ -55,25 +58,26 @@ function Game(){
 
     // Validating answer entry: making sure it's not empty and contains no numbers
     const handleButtonClick = () => {
-        const isValidInput = validateInput(inputText);
-      
-        if (isValidInput) {
-          handleSubmit(inputText);
-          console.log(inputText);
-          setInputError(false);
-        } 
-        else {
-            // TODO: Invalid input, display on TextField
-            setInputError(true);
-            console.log("Invalid input. Try again.")
-        }
+        
+        if (gameActive){
+            const isValidInput = validateInput(inputText);
+            if (isValidInput) {
+            handleSubmit(inputText);
+            console.log(inputText);
+            setInputError(false);
+            } 
+            else {
+                setInputError(true);
+                console.log("Invalid input. Try again.")
+            }
 
-        setInputText("");
+            setInputText("");
+        }
       };
 
       // Allows use of enter/return key for answer submission
     const handleKeyPress = (event: React.KeyboardEvent) => {
-        if (event.key === "Enter" || event.key === "Return") {
+        if (gameActive && (event.key === "Enter" || event.key === "Return")) {
             handleButtonClick();
         }
     };
@@ -85,7 +89,8 @@ function Game(){
 
     return (
         <>
-            <h1>{gameWord}</h1>
+            <h1>Game</h1>
+            <h2>{gameWord}</h2>
             <TextField
                 id="filled-basic"
                 variant="filled"
@@ -95,7 +100,8 @@ function Game(){
                 onChange={(event) => setInputText(event.target.value)}
                 onKeyDown={handleKeyPress}
                 error={inputError}
-                helperText={inputError ? "Invalid input. Try again." : ""}
+                helperText={inputError ? "No numbers or empty answers." : ""}
+                disabled={!gameActive}
                 style={{backgroundColor: 'transparent'}}
                 InputProps={{
                     style: {color: 'whitesmoke'}
