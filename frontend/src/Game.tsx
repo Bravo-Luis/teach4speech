@@ -5,12 +5,21 @@ function Game(){
     const [inputText, setInputText] = useState("");
     const [timer, setTimer] = useState(20);
 
-    useEffect(()=>{
-        const interval = setInterval(()=>{
-            setTimer((timer)=>timer+1);
+    useEffect(() => {
+        const interval = setInterval(() => {
+          setTimer((prevTimer) => {
+
+            const newTimer = prevTimer - 1;
+            if (newTimer <= 0) {
+              clearInterval(interval); // Stop the timer when it reaches 0
+              return 0; // Set timer to 0
+            } else {
+              return newTimer;
+            }
+          });
         }, 1000);
-        return ()=>clearInterval(interval);
-    }, []);
+        return () => clearInterval(interval);
+      }, []);
 
     console.log(timer)
 
@@ -26,6 +35,7 @@ function Game(){
             setInputText(event.target.value);
         }} />
         <button onClick={()=>{
+            handleSubmit(inputText);
             console.log(inputText);
         }}> Submit </button>
         </>
