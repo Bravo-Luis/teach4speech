@@ -1,0 +1,13 @@
+.landing-nav-bar {
+    display: flex;
+    flex-direction: row;
+    width: 95vw;
+    justify-content: space-between;
+ }
+ 
+ .landing-nav-buttons {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     width: 30vw;
+ }
