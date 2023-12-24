@@ -4,15 +4,17 @@ function Game(){
 
     const [inputText, setInputText] = useState("");
     const [timer, setTimer] = useState(20);
+    const [inputError, setInputError] = useState(false);
 
+    // Handles timer countdown from 20 seconds (Game timer)
     useEffect(() => {
         const interval = setInterval(() => {
           setTimer((prevTimer) => {
 
             const newTimer = prevTimer - 1;
             if (newTimer <= 0) {
-              clearInterval(interval); // Stop the timer when it reaches 0
-              return 0; // Set timer to 0
+              clearInterval(interval);
+              return 0;
             } else {
               return newTimer;
             }
@@ -23,6 +25,7 @@ function Game(){
 
     console.log(timer)
 
+    // Validating the relation between answer and prompt?
     function handleSubmit(potenialAnswer: string) { 
         // placeholder for api call
         if (potenialAnswer /*Replace with API checking its a valid answer*/) {
@@ -32,28 +35,39 @@ function Game(){
         return false;
     }
 
+    // Validating answer entry: making sure it's not empty and contains no numbers
     const handleButtonClick = () => {
-        handleSubmit(inputText);
-        console.log(inputText);
-        setInputText("");
-    };
+        const isValidInput = validateInput(inputText);
+      
+        if (isValidInput) {
+          handleSubmit(inputText);
+          console.log(inputText);
+          setInputError(false);
+        } 
+        else {
+            // TODO: Invalid input, display on TextField
+            setInputError(true);
+            console.log("Invalid input. Try again.")
+        }
 
+        setInputText("");
+      };
+
+      // Allows use of enter/return key for answer submission
     const handleKeyPress = (event: React.KeyboardEvent) => {
         if (event.key === "Enter" || event.key === "Return") {
             handleButtonClick();
         }
     };
 
+    // Validating answer entry
+    const validateInput = (text: string) => {
+        return text.trim() !== "" && !/\d/.test(text);
+      };
+
     return (
         <>
             <h1>Game</h1>
-            {/* <input type="text" placeholder="Enter your name"  onChange={(event)=>{
-                setInputText(event.target.value);
-            }} />
-            <button onClick={()=>{
-                handleSubmit(inputText);
-                console.log(inputText);
-            }}> Submit </button> */}
             <TextField
                 id="filled-basic"
                 variant="filled"
@@ -62,6 +76,8 @@ function Game(){
                 value={inputText}
                 onChange={(event) => setInputText(event.target.value)}
                 onKeyDown={handleKeyPress}
+                error={inputError}
+                helperText={inputError ? "Invalid input. Try again." : ""}
                 style={{backgroundColor: 'transparent'}}
                 InputProps={{
                     style: {color: 'whitesmoke'}
