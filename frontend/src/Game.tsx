@@ -25,19 +25,36 @@ function Game(){
 
     function handleSubmit(potenialAnswer: string) { 
         // placeholder for api call
-        return true // or false
+        if (potenialAnswer /*Replace with API checking its a valid answer*/) {
+            return true;
+        }
+        // Else
+        return false;
     }
+
+    const handleButtonClick = () => {
+        handleSubmit(inputText);
+        console.log(inputText);
+        setInputText("");
+    };
 
     return (
         <>
-        <h1>Game</h1>
-        <input type="text" placeholder="Enter your name"  onChange={(event)=>{
-            setInputText(event.target.value);
-        }} />
-        <button onClick={()=>{
-            handleSubmit(inputText);
-            console.log(inputText);
-        }}> Submit </button>
+            <h1>Game</h1>
+            {/* <input type="text" placeholder="Enter your name"  onChange={(event)=>{
+                setInputText(event.target.value);
+            }} />
+            <button onClick={()=>{
+                handleSubmit(inputText);
+                console.log(inputText);
+            }}> Submit </button> */}
+            <TextField
+                type="text"
+                placeholder="Enter your name"
+                value={inputText}
+                onChange={(event) => setInputText(event.target.value)}
+            />
+            <button onClick={handleButtonClick}>Submit</button>
         </>
     )
 }
