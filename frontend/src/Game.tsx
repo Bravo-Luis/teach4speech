@@ -3,12 +3,30 @@ import TextField from '@mui/material/TextField';
 function Game(){
 
     const [inputText, setInputText] = useState("");
-    const [timer, setTimer] = useState(20);
+    const [timer, setTimer] = useState(25);
+    const [preGameTimer, setPreGameTimer] = useState(5);
     const [inputError, setInputError] = useState(false);
     const [gameWord, setGameWord] = useState("");
-    const [gameActive, setGameActive] = useState(true);
+    const [gameActive, setGameActive] = useState(false);
 
     const categories = ["fun", "boring", "tasty", "disgusting", "hot", "cold"];
+
+    // Handles 5 second timer before the game
+    useEffect(() => {
+        const preGameInterval = setInterval(() => {
+            setPreGameTimer((prevTimer) => {
+                const newTimer = prevTimer - 1;
+                if (newTimer <= 0) {
+                    clearInterval(preGameInterval);
+                    setGameActive(true);
+                }
+                return newTimer;
+            });
+        }, 1000);
+        return () => clearInterval(preGameInterval);
+    }, []);
+
+
 
     // Handles timer countdown from 20 seconds (Game timer)
     useEffect(() => {
@@ -27,7 +45,7 @@ function Game(){
         return () => clearInterval(interval);
       }, []);
 
-    console.log(timer)
+
 
     // Generates a random category word from our array of words
     useEffect(() => {
@@ -37,14 +55,18 @@ function Game(){
         }
     } , []);
 
-    // Set's the game word h1 element to "Time's Up!" once timer reaches 0
+    
+
+    // Set's the game word h2 element to "" once timer reaches 0
     useEffect(() => {
         if (timer === 0){
-            setGameWord("Time's Up!");
+            setGameWord("");
             setGameActive(false);
             setInputError(false);
         }
     } , [timer, gameActive]);
+
+
 
     // Validating the relation between answer and prompt?
     function handleSubmit(potenialAnswer: string) { 
@@ -55,6 +77,8 @@ function Game(){
         // Else
         return false;
     }
+
+
 
     // Validating answer entry: making sure it's not empty and contains no numbers
     const handleButtonClick = () => {
@@ -75,21 +99,27 @@ function Game(){
         }
       };
 
-      // Allows use of enter/return key for answer submission
+
+
+    // Allows use of enter/return key for answer submission
     const handleKeyPress = (event: React.KeyboardEvent) => {
         if (gameActive && (event.key === "Enter" || event.key === "Return")) {
             handleButtonClick();
         }
     };
 
+
+
     // Validating answer entry
     const validateInput = (text: string) => {
         return text.trim() !== "" && !/\d/.test(text);
       };
 
+
+
     return (
         <>
-            <h1>Game</h1>
+            <h1>{preGameTimer > 0 ? `Countdown: ${preGameTimer}` : timer > 0 ? `Time Remaining: ${timer}` : "Time's up!"}</h1>
             <h2>{gameWord}</h2>
             <TextField
                 id="filled-basic"
