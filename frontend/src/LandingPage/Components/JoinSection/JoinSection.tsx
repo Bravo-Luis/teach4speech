@@ -37,7 +37,7 @@ function JoinSection(){
                 variant="contained" 
                 color="secondary"
                 disabled={gameCode.length !== 5}
-                sx={{
+                sx={{ 
                     width: 'clamp(300px, 50vw, 600px)'
                 }}
             >
