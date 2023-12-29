@@ -60,6 +60,7 @@ const LoginPage: React.FC = () => {
                 fullWidth
                 variant="contained"
                 color="primary"
+                href='/instructor-dashboard'
                 style={{ margin: '20px 0' }}
                 disabled={isSubmitting}
               >
