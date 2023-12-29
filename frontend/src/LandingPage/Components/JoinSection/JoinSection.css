@@ -1,5 +1,5 @@
 .landing-join-section {
-    position: relative; /* Essential for positioning the pseudo-element */
+    position: relative; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     width: 100vw;
     margin-top: 25px;
     height: 100vh;
-    overflow: hidden; /* To contain the blur within the element */
+    overflow: hidden; 
 }
 
 .landing-join-section::before {

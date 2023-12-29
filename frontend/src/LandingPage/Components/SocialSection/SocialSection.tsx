@@ -8,7 +8,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import './SocialSection.css';
 
 type SocialSectionProps = {
-  // You can add specific props if needed
+  
 };
 
 const SocialSection: React.FC<SocialSectionProps> = () => {
@@ -16,9 +16,9 @@ const SocialSection: React.FC<SocialSectionProps> = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle the form submission logic here
-    console.log(email); // For demonstration
-    setEmail(''); // Reset the input field after submission
+    
+    console.log(email);
+    setEmail(''); 
   };
 
   return (

@@ -38,7 +38,7 @@ function Navbar() {
             <Button href="#Services"> Services </Button>
             <Button href='#Contact'> Contact </Button>
             </nav>
-            <Button variant="contained">
+            <Button href="\login" variant="contained">
             Instructor Sign-In
             </Button>
         </div>
@@ -73,7 +73,7 @@ function Navbar() {
             <Button href='#About'> About </Button>
             <Button href="#Services"> Services </Button>
             <Button href='#Contact'> Contact </Button>
-              <Button variant="contained">
+              <Button href="\login" variant="contained">
                 Instructor Sign-In
               </Button>
             </div>
