@@ -6,6 +6,7 @@ import { BrowserRouter,Routes ,Route } from 'react-router-dom'
 import LoginPage from './LoginPage/LoginPage'
 import InstructorDashboard from './InstructorDashboard/InstructorDashboard'
 import GameHost from './GameHost/GameHost'
+import UsernameSelect from './UsernameSelect/UsernameSelect'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/game/:gameCode" element={<Game/>} />
       <Route path="/instructor-dashboard" element={<InstructorDashboard/>} />
       <Route path="/game-host/:gameCode" element={<GameHost/>} />
+      <Route path="/username-select" element={<UsernameSelect/>} />
       </Routes>
     </BrowserRouter>  
     )

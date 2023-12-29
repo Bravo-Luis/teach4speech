@@ -36,6 +36,7 @@ function JoinSection(){
             <Button 
                 variant="contained" 
                 color="secondary"
+                href="/username-select"
                 disabled={gameCode.length !== 5}
                 sx={{ 
                     width: 'clamp(300px, 50vw, 600px)'

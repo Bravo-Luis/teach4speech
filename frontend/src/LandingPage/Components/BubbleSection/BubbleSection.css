@@ -13,7 +13,7 @@
 .bubble-section-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: center; 
     align-items: center; 
     row-gap: 25px;
     column-gap: max(25px, 2.5vw);

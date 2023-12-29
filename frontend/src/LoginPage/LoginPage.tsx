@@ -24,14 +24,14 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xl">
+    <Container component="main" >
       <Paper style={{ padding: 20, marginTop: 40 }}>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
         <Formik
           initialValues={initialValues}
-          validationSchema={validationSchema}
+          validationsSchema={validationSchema}
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
