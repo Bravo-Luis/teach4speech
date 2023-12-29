@@ -34,9 +34,9 @@ function Navbar() {
             Teach4Speech
             </Typography>
             <nav className="landing-nav-buttons">
-            <Button> About </Button>
-            <Button> Info </Button>
-            <Button> Contact </Button>
+            <Button href='#About'> About </Button>
+            <Button href="#Services"> Services </Button>
+            <Button href='#Contact'> Contact </Button>
             </nav>
             <Button variant="contained">
             Instructor Sign-In
@@ -70,9 +70,9 @@ function Navbar() {
             onKeyDown={toggleDrawer(false)}
           >
             <div className='landing-nav-bar-menu'>
-              <Button> About </Button>
-              <Button> Info </Button>
-              <Button> Contact </Button>
+            <Button href='#About'> About </Button>
+            <Button href="#Services"> Services </Button>
+            <Button href='#Contact'> Contact </Button>
               <Button variant="contained">
                 Instructor Sign-In
               </Button>

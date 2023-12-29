@@ -8,7 +8,7 @@ function JoinSection(){
 
     return (
         <section className="landing-join-section">
-            <Typography variant="h5" style={{fontWeight: "bold"}}>
+            <Typography variant="h5" style={{fontWeight: "bold"}}  >
                 Enter your game code
             </Typography>
             <br />
