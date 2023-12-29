@@ -3,6 +3,7 @@
     flex-direction: row;
     width: 95vw;
     justify-content: space-between;
+    position: fixed;
  }
  
  .landing-nav-buttons {
@@ -10,4 +11,10 @@
      flex-direction: row;
      justify-content: space-between;
      width: 30vw;
+ }
+
+ .landing-nav-bar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
  }
