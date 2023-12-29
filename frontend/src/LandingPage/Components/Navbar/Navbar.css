@@ -1,9 +1,19 @@
 .landing-nav-bar {
     display: flex;
     flex-direction: row;
-    width: 95vw;
-    justify-content: space-between;
+    z-index: 999;
+    width: 100vw;
+    padding: 25px;
+    justify-content: center;
     position: fixed;
+    background: rgb(45, 45, 45);
+ }
+
+ .landing-nav-bar-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95vw;
  }
  
  .landing-nav-buttons {

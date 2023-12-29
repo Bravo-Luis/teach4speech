@@ -29,22 +29,25 @@ function Navbar() {
   if (windowWidth > 850) {
     return (
       <nav className="landing-nav-bar">
-        <Typography variant="h4">
-          Teach4Speech
-        </Typography>
-        <nav className="landing-nav-buttons">
-          <Button> About </Button>
-          <Button> Info </Button>
-          <Button> Contact </Button>
-        </nav>
-        <Button variant="contained">
-          Instructor Sign-In
-        </Button>
+        <div className="landing-nav-bar-content">
+            <Typography variant="h4">
+            Teach4Speech
+            </Typography>
+            <nav className="landing-nav-buttons">
+            <Button> About </Button>
+            <Button> Info </Button>
+            <Button> Contact </Button>
+            </nav>
+            <Button variant="contained">
+            Instructor Sign-In
+            </Button>
+        </div>
       </nav>    
     );
   } else {
     return (
       <nav className="landing-nav-bar">
+        <div className="landing-nav-bar-content">
         <Typography variant="h4">
           Teach4Speech
         </Typography>
@@ -76,6 +79,7 @@ function Navbar() {
             </div>
           </div>
         </Drawer>
+        </div>
       </nav>
     );
   }

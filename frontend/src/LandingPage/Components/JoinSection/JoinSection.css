@@ -1,7 +1,36 @@
-.landing-join-section{
+.landing-join-section {
+    position: relative; /* Essential for positioning the pseudo-element */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
+    width: 100vw;
+    margin-top: 25px;
+    height: 100vh;
+    overflow: hidden; /* To contain the blur within the element */
+}
+
+.landing-join-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://wpvip.edutopia.org/wp-content/uploads/2022/10/burns-958-harnessingpoweryoutubeclassroom-500.jpg?w=2880&quality=85");
+    background-size: cover;
+    background-position: center;
+    filter: blur(16px); 
+    z-index: -1; 
+}
+
+.landing-join-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: -1; 
 }
