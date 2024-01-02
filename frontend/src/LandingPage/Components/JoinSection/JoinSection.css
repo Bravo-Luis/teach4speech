@@ -4,33 +4,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    margin-top: 25px;
-    height: 100vh;
+    width: clamp(350px, 50vw, 1000px);
+    margin-top: 25vh;
+    height: clamp(300px, 50vh, 1000px);
     overflow: hidden; 
+
 }
 
-.landing-join-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("https://wpvip.edutopia.org/wp-content/uploads/2022/10/burns-958-harnessingpoweryoutubeclassroom-500.jpg?w=2880&quality=85");
-    background-size: cover;
-    background-position: center;
-    filter: blur(16px); 
-    z-index: -1; 
-}
-
-.landing-join-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7); 
-    z-index: -1; 
-}

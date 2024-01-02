@@ -30,16 +30,16 @@ function Navbar() {
     return (
       <nav className="landing-nav-bar">
         <div className="landing-nav-bar-content">
-            <Typography variant="h4">
+            <Typography sx={{fontWeight:"bold"}} variant="h6">
             Teach4Speech
             </Typography>
             <nav className="landing-nav-buttons">
-            <Button href='#About'> About </Button>
-            <Button href="#Services"> Services </Button>
-            <Button href='#Contact'> Contact </Button>
+            <Button sx={{color:"black"}} href='#Home'> Home </Button>
+            <Button sx={{color:"black"}} href="#About"> About </Button>
+            <Button sx={{color:"black"}} href='#Contact'> Contact </Button>
             </nav>
-            <Button href="\login" variant="contained">
-            Instructor Sign-In
+            <Button href="\login" variant="contained" sx={{backgroundColor:"#FFEF5B", color:"black", borderRadius:"1rem"}}>
+            Instructor
             </Button>
         </div>
       </nav>    

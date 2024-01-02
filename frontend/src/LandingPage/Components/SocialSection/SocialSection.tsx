@@ -7,14 +7,10 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 
 import './SocialSection.css';
 
-type SocialSectionProps = {
-  
-};
-
-const SocialSection: React.FC<SocialSectionProps> = () => {
+const SocialSection = () => {
   const [email, setEmail] = useState('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     
     console.log(email);
@@ -23,33 +19,91 @@ const SocialSection: React.FC<SocialSectionProps> = () => {
 
   return (
     <div className='contact-section'>
-      <Typography variant="h4" gutterBottom>
-        Connect with Us
+      <Typography 
+        sx={{
+          color: 'purple',
+          fontWeight: 'bold',
+          WebkitTextStroke: '0.5px black',
+          fontSize: 'clamp(1.5rem, 3vw, 3rem)',
+          textAlign: 'center',
+        }}
+        variant="h4" gutterBottom>
+        Follow Our Socials
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyContent="center" className='social-media-links'>
         <Grid item>
-          <Link href="#" color="inherit">
-            <EmailIcon /> Email
+          <Link href="https://www.facebook.com/" target="_blank" >
+            <FacebookIcon sx={{fontSize:"clamp(75px, 10vw, 300px)", color:"#316FF6"}} />
           </Link>
         </Grid>
         <Grid item>
-          <Link href="#" color="inherit">
-            <InstagramIcon /> Instagram
+          <Link href="https://www.instagram.com/" target="_blank" >
+            <InstagramIcon sx={{fontSize:"clamp(75px, 10vw, 300px)", color:" #d62976 "}} />
           </Link>
         </Grid>
         <Grid item>
-          <Link href="#" color="inherit">
-            <FacebookIcon /> Facebook
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="#" color="inherit">
-            <TwitterIcon /> Twitter
+          <Link href="https://twitter.com/" target="_blank">
+            <TwitterIcon sx={{fontSize:"clamp(75px, 10vw, 300px )", color:"#00acee"}} />
           </Link>
         </Grid>
       </Grid>
-    <br />
-    Stuff About the team...
+      <hr style={{ width: '50%', margin: '20px auto' }} />
+      <Typography 
+        sx={{
+          color: 'purple',
+          fontWeight: 'bold',
+          WebkitTextStroke: '0.5px black',
+          fontSize: 'clamp(1.5rem, 3vw, 3rem)',
+          textAlign: 'center',
+        }}
+        variant="h4" gutterBottom>
+        Contact Us
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField 
+          label="Name" 
+          variant="filled" 
+          fullWidth 
+          margin="normal"
+          sx={{
+            backgroundColor:"white", 
+            borderRadius:"0.25rem"
+          }}
+          required 
+        />
+        <TextField 
+          label="Email" 
+          variant='filled'
+          fullWidth 
+          margin="normal"
+          type="email"
+          sx={{
+            backgroundColor:"white", 
+            borderRadius:"0.25rem"
+          }}
+          required 
+        />
+        <TextField 
+          label="Message" 
+          variant="filled" 
+          fullWidth 
+          margin="normal"
+          multiline
+          rows={4}
+          sx={{
+            backgroundColor:"white", 
+            borderRadius:"0.25rem"
+          }}
+          required 
+        />
+        <Button 
+          type="submit" 
+          variant="contained" 
+          color="primary" 
+          style={{ marginTop: '1rem' }}>
+          Send
+        </Button>
+      </form>
     </div>
   );
 };

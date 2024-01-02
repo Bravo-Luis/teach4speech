@@ -8,12 +8,9 @@ function JoinSection(){
 
     return (
         <section className="landing-join-section">
-            <Typography variant="h5" style={{fontWeight: "bold"}}  >
-                Enter your game code
-            </Typography>
             <br />
             <TextField 
-                label="Game Code" 
+                label="Enter a Game Code" 
                 variant="filled" 
                 color="secondary"
                 value={gameCode}
@@ -23,12 +20,17 @@ function JoinSection(){
                     }
                 }}
                 sx={{ 
-                    input: { color: 'white' },
-                    width: 'clamp(300px, 50vw, 600px)'
+                    input: { 
+                        color: 'black',
+                        fontSize: 'clamp(2rem, 4vw, 4rem)',
+                        textAlign: 'center',
+                    },
+                    width: 'clamp(250px, 40vw, 500px)'
+
                 }}
                 InputLabelProps={{
                     style: { 
-                        color: 'white'
+                        color: 'black'
                     }, 
                  }}
             />
@@ -37,7 +39,7 @@ function JoinSection(){
                 variant="contained" 
                 color="secondary"
                 href="/username-select"
-                disabled={gameCode.length !== 5}
+               
                 sx={{ 
                     width: 'clamp(300px, 50vw, 600px)'
                 }}
