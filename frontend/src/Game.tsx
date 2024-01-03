@@ -3,13 +3,14 @@ import TextField from '@mui/material/TextField';
 function Game(){
 
     const [inputText, setInputText] = useState("");
-    const [timer, setTimer] = useState(25);
+    const [timer, setTimer] = useState(65);
     const [preGameTimer, setPreGameTimer] = useState(5);
     const [inputError, setInputError] = useState(false);
     const [gameWord, setGameWord] = useState("");
     const [gameActive, setGameActive] = useState(false);
 
-    const categories = ["fun", "boring", "tasty", "disgusting", "hot", "cold"];
+    const categories = ["fun", "boring", "tasty", "disgusting", "hot", "cold", "fruits", "vegetables"];
+    const censored = ["poop", "***"];
 
     // Handles 5 second timer before the game
     useEffect(() => {
@@ -80,12 +81,13 @@ function Game(){
 
 
 
-    // Validating answer entry: making sure it's not empty and contains no numbers
+    // Validating answer entry: making sure it's not empty, contains no numbers, and is not in
+    // our censored words list
     const handleButtonClick = () => {
         
         if (gameActive){
             const isValidInput = validateInput(inputText);
-            if (isValidInput) {
+            if (isValidInput && !censored.includes(inputText)) {
             handleSubmit(inputText);
             console.log(inputText);
             setInputError(false);
@@ -125,12 +127,12 @@ function Game(){
                 id="filled-basic"
                 variant="filled"
                 type="text"
-                placeholder="Enter your name"
+                placeholder="Enter answers here"
                 value={inputText}
                 onChange={(event) => setInputText(event.target.value)}
                 onKeyDown={handleKeyPress}
                 error={inputError}
-                helperText={inputError ? "No numbers or empty answers." : ""}
+                helperText={inputError ? "Invalid answer." : ""}
                 disabled={!gameActive}
                 style={{backgroundColor: 'transparent'}}
                 InputProps={{
