@@ -1,5 +1,6 @@
 import { useState, useEffect} from 'react';
 import TextField from '@mui/material/TextField';
+import './Game.css';
 function Game(){
 
     const [inputText, setInputText] = useState("");
@@ -133,7 +134,7 @@ function Game(){
 
 
     return (
-        <>
+        <div className='game-1'>
             <h1>{preGameTimer > 0 ? `Countdown: ${preGameTimer}` : timer > 0 ? `Time Remaining: ${timer}` : "Time's up!"}</h1>
             <h2>{gameWord}</h2>
             <TextField
@@ -154,7 +155,7 @@ function Game(){
                 
             />
             <button onClick={handleButtonClick}>Submit</button>
-        </>
+        </div>
     )
 }
 

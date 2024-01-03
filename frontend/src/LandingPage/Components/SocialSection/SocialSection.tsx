@@ -28,37 +28,26 @@ const SocialSection = () => {
           textAlign: 'center',
         }}
         variant="h4" gutterBottom>
-        Follow Our Socials
+        Connect With Us!
       </Typography>
       <Grid container spacing={2} justifyContent="center" className='social-media-links'>
         <Grid item>
           <Link href="https://www.facebook.com/" target="_blank" >
-            <FacebookIcon sx={{fontSize:"clamp(75px, 10vw, 300px)", color:"#316FF6"}} />
+            <FacebookIcon sx={{fontSize:"clamp(60px, 10vw, 80px)", color:"#316FF6"}} />
           </Link>
         </Grid>
         <Grid item>
           <Link href="https://www.instagram.com/" target="_blank" >
-            <InstagramIcon sx={{fontSize:"clamp(75px, 10vw, 300px)", color:" #d62976 "}} />
+            <InstagramIcon sx={{fontSize:"clamp(60px, 10vw, 80px)", color:" #d62976 "}} />
           </Link>
         </Grid>
         <Grid item>
           <Link href="https://twitter.com/" target="_blank">
-            <TwitterIcon sx={{fontSize:"clamp(75px, 10vw, 300px )", color:"#00acee"}} />
+            <TwitterIcon sx={{fontSize:"clamp(60px, 10vw, 80px )", color:"#00acee"}} />
           </Link>
         </Grid>
       </Grid>
       <hr style={{ width: '50%', margin: '20px auto' }} />
-      <Typography 
-        sx={{
-          color: 'purple',
-          fontWeight: 'bold',
-          WebkitTextStroke: '0.5px black',
-          fontSize: 'clamp(1.5rem, 3vw, 3rem)',
-          textAlign: 'center',
-        }}
-        variant="h4" gutterBottom>
-        Contact Us
-      </Typography>
       <form onSubmit={handleSubmit}>
         <TextField 
           label="Name" 

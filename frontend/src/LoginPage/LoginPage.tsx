@@ -42,7 +42,7 @@ const LoginPage: React.FC = () => {
                 label="Email Address"
                 fullWidth
                 margin="normal"
-                variant="outlined"
+                variant="filled"
                 helperText={<ErrorMessage name="email" />}
               />
               <Field
@@ -52,7 +52,7 @@ const LoginPage: React.FC = () => {
                 label="Password"
                 fullWidth
                 margin="normal"
-                variant="outlined"
+                variant="filled"
                 helperText={<ErrorMessage name="password" />}
               />
               <Button
