@@ -7,6 +7,7 @@ import LoginPage from './LoginPage/LoginPage'
 import InstructorDashboard from './InstructorDashboard/InstructorDashboard'
 import GameHost from './GameHost/GameHost'
 import UsernameSelect from './UsernameSelect/UsernameSelect'
+import Game2 from './Game2'
 
 function App() {
 
