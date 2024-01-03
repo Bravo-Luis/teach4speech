@@ -9,8 +9,21 @@ function Game(){
     const [gameWord, setGameWord] = useState("");
     const [gameActive, setGameActive] = useState(false);
 
-    const categories = ["fun", "boring", "tasty", "disgusting", "hot", "cold", "fruits", "vegetables"];
-    const censored = ["poop", "***"];
+    const categories = [
+        "fun/divertido", 
+        "boring/aburrido", 
+        "tasty/delicioso", 
+        "disgusting/asqueroso", 
+        "hot/caliente", 
+        "cold/frio", 
+        "fruits/frutas", 
+        "vegetables/verdudas"
+    ];
+
+    const censored = [
+        "poop", 
+        "***"
+    ];
 
     // Handles 5 second timer before the game
     useEffect(() => {
