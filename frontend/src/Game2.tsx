@@ -8,10 +8,12 @@ function Game2(){
 
     return (
         <div className='game-2'>
-            <button id="Record">Record word</button>
-            <button id="Listen">Listen to recording</button>
-            <button id="Redo">Redo recording</button>
-            <button id="Done">Send recording</button>
+            <div className="buttons">
+                <button id="Record">Record word</button>
+                <button id="Listen">Listen to recording</button>
+                <button id="Redo">Redo recording</button>
+                <button id="Done">Send recording</button>
+            </div>
         </div>
     )
 }
