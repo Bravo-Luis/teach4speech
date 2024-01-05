@@ -1,10 +1,14 @@
 .game-2 {
     background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -12,12 +16,16 @@
 
 #Record {
     width: 200px;
-    height: 40px;
-    margin-bottom: 10px;
+    height: 60px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    margin: 0;
 }
 
 button {
     width: 120px;
-    height: 30px;
+    height: 40px;
     margin: 0 5px;
 }
