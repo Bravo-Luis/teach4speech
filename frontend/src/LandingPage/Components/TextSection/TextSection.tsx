@@ -49,6 +49,7 @@ sx={{padding:"5vw",
 fontWeight: "bold",
 WebkitTextStroke: '0.5px black',
 color:"black",
+width:"clamp(300px, 80vw, 900px)",
 }}
       >
 

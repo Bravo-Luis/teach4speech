@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import './GameHost.css';
 
 function GameHost() {
     const { gameCode } = useParams(); 
 
     return (
-        <div>
+        <div className='game-host'>
             <h1>Game Host</h1>
             <p>
                 This is the code to join a session
