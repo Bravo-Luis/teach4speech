@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 function InstructorDashboard() {
   const gameDictList = [
     {"title": "Game 1", "description": "This is a game", "img": "https://researchparent.com/wp-content/uploads/Generic-Game-Board-Facebook.jpg"},
-    {"title": "Game 2", "description": "This is a game 2", "img": "https://opengameart.org/sites/default/files/generic_platformer_mockup.png"},
   ];
 
   const navigate = useNavigate();
-  const randomCode5 = Math.floor(Math.random() * 90000) + 10000;
+  
+  const gameCode = Math.floor(Math.random() * 90000) + 10000;
 
   return (
     <div className='instructor-dashboard'>
@@ -19,7 +19,7 @@ function InstructorDashboard() {
       <div className='dashboard-games'>
         {gameDictList.map((gameDict, index) => (
           <div key={index} className='dashboard-game' onClick={()=>{
-            navigate(`/game-host/${randomCode5}`);
+            navigate(`/game-host/${gameCode}`);
           }}>
             <img src={gameDict.img} alt="Game" />
             <Typography variant="h5">{gameDict.title}</Typography>
