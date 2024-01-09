@@ -18,11 +18,13 @@ function App() {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log("Auth state changed:", user);
       setCurrentUser(user);
     });
-
+  
     return unsubscribe; // Unsubscribe on unmount
   }, []);
+  
 
   const ProtectedRoute = ({ children }) => {
     return currentUser ? children : <Navigate to="/signin" />;
