@@ -21,3 +21,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TEACH4SPEECH }}'
           channelId: live
           projectId: teach4speech
+          publicDir: 'dist'
