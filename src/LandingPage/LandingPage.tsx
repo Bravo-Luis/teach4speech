@@ -4,7 +4,7 @@ import { useState } from "react";
 import './LandingPage.css';
 
 import Navbar from "./Components/Navbar/Navbar";
-import JoinSection from "./Components/JoinSection/JoinSection";
+import JoinSection from "../JoinSection/JoinSection";
 import TextSection from "./Components/TextSection/TextSection";
 import BubbleSection from "./Components/BubbleSection/BubbleSection";
 import SocialSection from "./Components/SocialSection/SocialSection";
