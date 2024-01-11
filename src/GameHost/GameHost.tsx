@@ -77,21 +77,24 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
         }]
     };
 
-    const wordCloudData = gameStats.allAnswers && Array.isArray(gameStats.allAnswers) 
-    ? gameStats.allAnswers.reduce((acc, answer) => {
-        const word = acc.find(item => item.text === answer);
-        if (word) {
-            word.value += 1;
-        } else {
-            acc.push({ text: answer, value: 1 });
-        }
-        return acc;
-    }, [])
-    : [];
+    interface Word {
+        text: string;
+        value: number;
+    }
     
-    const fontSizeMapper = word => Math.log2(word.value) * 5;
-
-
+    const wordCloudData: Word[] = gameStats.allAnswers && Array.isArray(gameStats.allAnswers) 
+        ? gameStats.allAnswers.reduce<Word[]>((acc, answer) => {
+            const word = acc.find(item => item.text === answer);
+            if (word) {
+                word.value += 1;
+            } else {
+                acc.push({ text: answer, value: 1 });
+            }
+            return acc;
+        }, [])
+        : [];
+        
+   
 
     
     return (
@@ -130,8 +133,7 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
 
                     {wordCloudData.length > 0 && (
     <WordCloud 
-        words={wordCloudData}
-        fontSizeMapper={fontSizeMapper}
+        data={wordCloudData}
     />
 )}
 
