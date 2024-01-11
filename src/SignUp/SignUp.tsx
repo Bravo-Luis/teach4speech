@@ -125,6 +125,7 @@ const Signup: React.FC = () => {
             </Form>
           )}
         </Formik>
+        Already an account? <a href="/signin">Sign in</a>
       </Paper>
     </Container>
   );

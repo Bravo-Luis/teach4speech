@@ -130,6 +130,7 @@ const LoginPage: React.FC = () => {
             </Form>
           )}
         </Formik>
+        Don't have an account? <a href="/signup">Sign in</a>
       </Paper>
     </Container>
   );

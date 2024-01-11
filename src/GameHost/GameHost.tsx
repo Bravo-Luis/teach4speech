@@ -1,15 +1,27 @@
 import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { Doughnut } from 'react-chartjs-2';
+import  WordCloud  from 'react-d3-cloud';
+import {
+    Chart as ChartJS,
+    ArcElement,
+    Tooltip,
+    Legend,
+} from 'chart.js';
 import './GameHost.css';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
+  
 function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
     const { gameCode } = useParams();
     const [students, setStudents] = useState<string[]>([]);
     const [gameActive, setGameActive] = useState(false);
     const [gameStats, setGameStats] = useState({
         totalAnswers: 0,
-        correctAnswers: 0
+        correctAnswers: 0,
+        mostCommonAnswers: [],
+        allAnswers: [],
     });
 
     useEffect(() => {
@@ -53,14 +65,42 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
             setGameActive(true);
         }
     };
+    const accuracyPercentage = gameStats.totalAnswers > 0 ? (gameStats.correctAnswers / gameStats.totalAnswers) * 100 : 0;
 
+    // Doughnut chart data for accuracy
+    const accuracyData = {
+        labels: ['Correct Answers', 'Incorrect Answers'],
+        datasets: [{
+            data: [gameStats.correctAnswers, gameStats.totalAnswers - gameStats.correctAnswers],
+            backgroundColor: ['#36A2EB', '#FF6384'],
+            hoverBackgroundColor: ['#36A2EB', '#FF6384']
+        }]
+    };
+
+    const wordCloudData = gameStats.allAnswers && Array.isArray(gameStats.allAnswers) 
+    ? gameStats.allAnswers.reduce((acc, answer) => {
+        const word = acc.find(item => item.text === answer);
+        if (word) {
+            word.value += 1;
+        } else {
+            acc.push({ text: answer, value: 1 });
+        }
+        return acc;
+    }, [])
+    : [];
+    
+    const fontSizeMapper = word => Math.log2(word.value) * 5;
+
+
+
+    
     return (
         <div className='game-host'>
-            <h1>Game Code: {gameCode}</h1>
+            <Typography variant="h4" className="game-code">Game Code: {gameCode}</Typography>
             <div className='student-grid'>
                 {students.map((student, index) => (
                     <div key={index} className='student-bubble'>
-                        <h2>{student}</h2>
+                        <Typography variant="h6">{student}</Typography>
                     </div>
                 ))}
             </div>
@@ -69,19 +109,32 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
             {!gameActive ? (
                 <Button 
                     variant='contained' 
-                    color='success'
+                    color='secondary'
                     onClick={startGame}
                     disabled={students.length === 0}
                 >
                     Start Game
                 </Button>
             ) : (
-                <div>
-                    <h2>Game Stats</h2>
-                    <p>Answer Accuracy: {gameStats.correctAnswers / gameStats.totalAnswers}</p>
-                    <p>Total Answers: {gameStats.totalAnswers }</p>
-                    <p>Correct Answers: {gameStats.correctAnswers }</p>
-                    {/* Render additional stats as needed */}
+                <div className="game-stats">
+                    <Typography variant="h5">Game Stats</Typography>
+                    <Typography variant="h6">Accuracy: {accuracyPercentage.toFixed(2)}%</Typography>
+                    <Doughnut data={accuracyData} />
+
+                    <Typography variant="h6" style={{ marginTop: '20px' }}>Most Common Words:</Typography>
+                    <ul>
+                        {gameStats.mostCommonAnswers.map((answer, index) => (
+                            <li key={index}>{answer}</li>
+                        ))}
+                    </ul>
+
+                    {wordCloudData.length > 0 && (
+    <WordCloud 
+        words={wordCloudData}
+        fontSizeMapper={fontSizeMapper}
+    />
+)}
+
                 </div>
             )}
         </div>
