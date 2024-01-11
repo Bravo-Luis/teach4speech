@@ -23,7 +23,7 @@ function App() {
     });
 
     // Initialize WebSocket connection
-    const ws : any = new WebSocket('ws://localhost:3000'); // Replace with your server URL
+    const ws : any = new WebSocket('wss://teach4speech-backend.onrender.com'); // Replace with your server URL
     setWebSocket(ws);
 
     // Function to close WebSocket
