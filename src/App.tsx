@@ -23,7 +23,7 @@ function App() {
     });
 
     // Initialize WebSocket connection
-    const ws : any = new WebSocket('wss://teach4speech-backend.onrender.com'); 
+    const ws : any = new WebSocket('ws://localhost:3000'); // Replace with your server URL
     setWebSocket(ws);
 
     // Function to close WebSocket
@@ -58,9 +58,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/join" element={<JoinSection webSocket={webSocket} />} />
         <Route path="/game/:gameCode" element={
-          <ProtectedRoute>
             <Game  webSocket={webSocket}/>
-          </ProtectedRoute>
         } />
         <Route path="/instructor-dashboard" element={
           <ProtectedRoute>
