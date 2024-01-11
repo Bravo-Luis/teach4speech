@@ -1,8 +1,4 @@
-// import { useState, useEffect} from 'react';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { AudioRecorder } from 'react-audio-voice-recorder';
-
+import { useState, useEffect} from 'react';
 import './Game2.css'
 
 function Game2(){
