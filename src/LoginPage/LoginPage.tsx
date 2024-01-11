@@ -45,7 +45,7 @@ const LoginPage: React.FC = () => {
     });
   };
 
-  const handleSubmit = (values: FormValues, { setSubmitting }) => {
+  const handleSubmit = (values: FormValues, { setSubmitting } : any) => {
     const { email, password } = values;
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {

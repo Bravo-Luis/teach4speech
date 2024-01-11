@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 import './GameHost.css';
 
-function GameHost({ webSocket }) {
+function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
     const { gameCode } = useParams();
-    const [students, setStudents] = useState([]);
+    const [students, setStudents] = useState<string[]>([]);
     const [gameActive, setGameActive] = useState(false);
     const [gameStats, setGameStats] = useState({
         totalAnswers: 0,
@@ -15,7 +15,7 @@ function GameHost({ webSocket }) {
     useEffect(() => {
         if (!webSocket) return;
     
-        const handleMessage = (message) => {
+        const handleMessage = (message: any) => {
             const data = JSON.parse(message.data);
             console.log(data);
     
@@ -26,7 +26,7 @@ function GameHost({ webSocket }) {
     
             if (data.message?.startsWith('Student joined:')) {
                 const studentName = data.message.split(':')[1].trim();
-                setStudents(prev => [...prev, studentName]);
+                setStudents(prev  => [...prev , studentName] );
             } else if (data.message?.startsWith('Student disconnected:')) {
                 const studentName = data.message.split(':')[1].trim();
                 setStudents(prev => prev.filter(name => name !== studentName));

@@ -3,7 +3,7 @@ import './InstructorDashboard.css';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-function InstructorDashboard({ webSocket }) {
+function InstructorDashboard({ webSocket } : {webSocket: WebSocket | null}) {
   const navigate = useNavigate();
 
   const gameDictList = [
@@ -21,7 +21,7 @@ function InstructorDashboard({ webSocket }) {
   useEffect(() => {
     if (!webSocket) return;
 
-    const handleMessage = (message) => {
+    const handleMessage = (message: any) => {
       // Handle messages received from the server
       const data = JSON.parse(message.data);
       console.log(JSON.stringify(data));

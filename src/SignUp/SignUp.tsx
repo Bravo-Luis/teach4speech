@@ -42,7 +42,7 @@ const Signup: React.FC = () => {
       });
   };
 
-  const handleSubmit = (values: FormValues, { setSubmitting }) => {
+  const handleSubmit = (values: FormValues, { setSubmitting } : any) => {
     const { email, password } = values;
     createUserWithEmailAndPassword(auth, email, password)
       .then((response) => {

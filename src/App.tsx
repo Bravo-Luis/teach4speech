@@ -17,13 +17,13 @@ function App() {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user : any) => {
       console.log("Auth state changed:", user);
       setCurrentUser(user);
     });
 
     // Initialize WebSocket connection
-    const ws = new WebSocket('ws://localhost:3000'); // Replace with your server URL
+    const ws : any = new WebSocket('ws://localhost:3000'); // Replace with your server URL
     setWebSocket(ws);
 
     // Function to close WebSocket
@@ -46,7 +46,7 @@ function App() {
 }, []);
 
 
-  const ProtectedRoute = ({ children }) => {
+  const ProtectedRoute = ({ children } : any) => {
     return currentUser ? children : <Navigate to="/signin" />;
   };
 
@@ -72,7 +72,7 @@ function App() {
             <GameHost webSocket={webSocket} />
           </ProtectedRoute>
         } />
-        {/* Add other routes as needed */}
+       
       </Routes>
     </BrowserRouter>
   );

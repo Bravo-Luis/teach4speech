@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import './JoinSection.css';
 
-function JoinSection({ webSocket }) {
+function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
     const [gameCode, setGameCode] = useState('');
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ function JoinSection({ webSocket }) {
     useEffect(() => {
         if (!webSocket) return;
     
-        const handleMessage = (message) => {
+        const handleMessage = (message : any) => {
             try {
                 const data = JSON.parse(message.data);
                 if (data.message === 'Successfully joined session') {

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './Game.css';
 
-function Game({ webSocket }) {
+function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [inputText, setInputText] = useState("");
     const [timer, setTimer] = useState(0);
     const [preGameTimer, setPreGameTimer] = useState(5);
@@ -17,7 +17,7 @@ function Game({ webSocket }) {
     useEffect(() => {
         if (!webSocket) return;
     
-        const handleMessage = (event) => {
+        const handleMessage = (event : any) => {
             const message = JSON.parse(event.data);
            
     
