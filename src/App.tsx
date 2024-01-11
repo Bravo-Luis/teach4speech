@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-import './App.css';
+// Other imports...
 import LandingPage from './LandingPage/LandingPage';
 import Game from './Game';
 import LoginPage from './LoginPage/LoginPage';
 import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
 import GameHost from './GameHost/GameHost';
-import UsernameSelect from './UsernameSelect/UsernameSelect';
-import Game2 from './Game2';
+import JoinSection from './JoinSection/JoinSection';
 import Signup from './SignUp/SignUp';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [webSocket, setWebSocket] = useState(null);
 
   useEffect(() => {
     const auth = getAuth();
@@ -21,10 +21,30 @@ function App() {
       console.log("Auth state changed:", user);
       setCurrentUser(user);
     });
-  
-    return unsubscribe; // Unsubscribe on unmount
-  }, []);
-  
+
+    // Initialize WebSocket connection
+    const ws = new WebSocket('ws://localhost:3000'); // Replace with your server URL
+    setWebSocket(ws);
+
+    // Function to close WebSocket
+    const closeWebSocket = () => {
+      if (ws) {
+        ws.close();
+        console.log('WebSocket closed');
+      }
+    };
+
+    // Event listener for closing the WebSocket when the window is about to be unloaded
+    window.addEventListener('beforeunload', closeWebSocket);
+
+    return () => {
+      unsubscribe();
+      closeWebSocket();
+      // Remove the event listener on cleanup
+      window.removeEventListener('beforeunload', closeWebSocket);
+    };
+}, []);
+
 
   const ProtectedRoute = ({ children }) => {
     return currentUser ? children : <Navigate to="/signin" />;
@@ -36,18 +56,22 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/game/:gameCode" element={<Game />} />
+        <Route path="/join" element={<JoinSection webSocket={webSocket} />} />
+        <Route path="/game/:gameCode" element={
+          <ProtectedRoute>
+            <Game  webSocket={webSocket}/>
+          </ProtectedRoute>
+        } />
         <Route path="/instructor-dashboard" element={
           <ProtectedRoute>
-            <InstructorDashboard />
+            <InstructorDashboard webSocket={webSocket} />
           </ProtectedRoute>
         } />
         <Route path="/game-host/:gameCode" element={
           <ProtectedRoute>
-            <GameHost />
+            <GameHost webSocket={webSocket} />
           </ProtectedRoute>
         } />
-        <Route path="/username-select" element={<UsernameSelect />} />
         {/* Add other routes as needed */}
       </Routes>
     </BrowserRouter>

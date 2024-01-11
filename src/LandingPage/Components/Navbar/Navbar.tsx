@@ -38,7 +38,7 @@ function Navbar() {
             <Button sx={{color:"black"}} href="#About"> About </Button>
             <Button sx={{color:"black"}} href='#Contact'> Contact </Button>
             </nav>
-            <Button href="\login" variant="contained" sx={{backgroundColor:"#FFEF5B", color:"black", borderRadius:"1rem"}}>
+            <Button href="\signin" variant="contained" sx={{backgroundColor:"#FFEF5B", color:"black", borderRadius:"1rem"}}>
             Instructor
             </Button>
         </div>
@@ -73,7 +73,7 @@ function Navbar() {
             <Button href='#About'> About </Button>
             <Button href="#Services"> Services </Button>
             <Button href='#Contact'> Contact </Button>
-              <Button href="\login" variant="contained">
+              <Button href="\signin" variant="contained">
                 Instructor Sign-In
               </Button>
             </div>

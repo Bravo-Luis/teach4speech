@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 // Firebase imports
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import app from '../Firebase'; // Adjust the path as necessary
+import { useNavigate } from 'react-router-dom';
 
 // Define the form values interface
 interface FormValues {
@@ -26,6 +27,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Signup: React.FC = () => {
+  const navigate = useNavigate()
   const auth = getAuth(app);
 
   const handleGoogleSignup = () => {
@@ -33,7 +35,7 @@ const Signup: React.FC = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log('Google sign in success:', result.user);
-        window.location.href = '/login'; // Redirect after successful signup
+        navigate('/signin'); 
       }).catch((error) => {
         console.error('Google sign in error:', error);
         alert(error.message);
@@ -45,7 +47,7 @@ const Signup: React.FC = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((response) => {
         console.log('User created:', response.user);
-        window.location.href = '/login';
+        navigate('/signin');
       })
       .catch((error) => {
         console.error('Signup error:', error);

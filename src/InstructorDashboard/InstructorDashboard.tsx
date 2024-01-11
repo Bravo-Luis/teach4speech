@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './InstructorDashboard.css';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-function InstructorDashboard() {
+function InstructorDashboard({ webSocket }) {
+  const navigate = useNavigate();
+
   const gameDictList = [
     {"title": "Game 1", "description": "This is a game", "img": "https://researchparent.com/wp-content/uploads/Generic-Game-Board-Facebook.jpg"},
+    // ... other games if any
   ];
 
-  const navigate = useNavigate();
-  
-  const gameCode = Math.floor(Math.random() * 90000) + 10000;
+  const handleGameClick = () => {
+    if (webSocket && webSocket.readyState === WebSocket.OPEN) {
+      // Send a message to the server to create a new session
+      webSocket.send(JSON.stringify({ role: 'instructor', action: 'create' }));
+    }
+  };
+
+  useEffect(() => {
+    if (!webSocket) return;
+
+    const handleMessage = (message) => {
+      // Handle messages received from the server
+      const data = JSON.parse(message.data);
+      console.log(JSON.stringify(data));
+      if (data.sessionId) {
+        // If a session ID is received, navigate to the game host page
+        navigate(`/game-host/${data.sessionId}`);
+      }
+    };
+
+    webSocket.addEventListener('message', handleMessage);
+
+    return () => {
+      // Clean up WebSocket connection when the component unmounts
+      webSocket.removeEventListener('message', handleMessage);
+    };
+  }, [webSocket, navigate]);
 
   return (
     <div className='instructor-dashboard'>
@@ -18,9 +45,7 @@ function InstructorDashboard() {
       <br />
       <div className='dashboard-games'>
         {gameDictList.map((gameDict, index) => (
-          <div key={index} className='dashboard-game' onClick={()=>{
-            navigate(`/game-host/${gameCode}`);
-          }}>
+          <div key={index} className='dashboard-game' onClick={handleGameClick}>
             <img src={gameDict.img} alt="Game" />
             <Typography variant="h5">{gameDict.title}</Typography>
             <Typography variant="h6">{gameDict.description}</Typography>
