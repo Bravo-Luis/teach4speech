@@ -1,4 +1,4 @@
-import { TextField, Button, Typography } from "@mui/material"
+import { TextField, Button } from "@mui/material"
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import './JoinSection.css';

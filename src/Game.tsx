@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -6,9 +6,8 @@ import './Game.css';
 
 function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [inputText, setInputText] = useState("");
-    const [timer, setTimer] = useState(0);
-    const [preGameTimer, setPreGameTimer] = useState(5);
-    const [inputError, setInputError] = useState(false);
+
+   
     const [gameActive, setGameActive] = useState(false);
     const { gameCode } = useParams(); // Use useParams to get gameCode from URL
     const [theme, setTheme] = useState("");
@@ -67,8 +66,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                 placeholder="Enter answers here"
                 value={inputText}
                 onChange={(event) => setInputText(event.target.value)}
-                error={inputError}
-                helperText={inputError ? "Invalid answer." : ""}
+               
                 disabled={!gameActive}
                 style={{backgroundColor: 'transparent'}}
                 InputProps={{
