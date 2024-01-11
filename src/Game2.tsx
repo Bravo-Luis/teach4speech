@@ -1,4 +1,3 @@
-import { useState, useEffect} from 'react';
 import './Game2.css'
 
 function Game2(){
