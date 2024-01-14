@@ -7,15 +7,25 @@ import TextSection from "./Components/TextSection/TextSection";
 import SocialSection from "./Components/SocialSection/SocialSection";
 import Header from "./Components/Header/Header";
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 function LandingPage(){
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.pageYOffset;
-            document.querySelector('.bg1').style.transform = `translateY(${scrollPosition * 0.04}px)`;
-            document.querySelector('.bg2').style.transform = `translateY(${scrollPosition * 0.02}px)`;
+        
+            const bg1 = document.querySelector('.bg1') as HTMLElement;
+            const bg2 = document.querySelector('.bg2') as HTMLElement;
+        
+            if (bg1) {
+                bg1.style.transform = `translateY(${scrollPosition * 0.04}px)`;
+            }
+        
+            if (bg2) {
+                bg2.style.transform = `translateY(${scrollPosition * 0.02}px)`;
+            }
         };
+        
 
         window.addEventListener('scroll', handleScroll);
 
