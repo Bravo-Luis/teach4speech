@@ -4,6 +4,7 @@ import { Button, TextField, Typography, Container, Paper, Divider } from '@mui/m
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import GoogleIcon from '../assets/google.svg'
+import './LoginPage.css';
 
 
 // Firebase imports
@@ -62,7 +63,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Container component="main">
+    <Container component="main"  sx={{width: 'clamp(350px, 80vw, 600px)'}}>
       <Paper style={{ padding: 20, marginTop: 40 }}>
         <Typography component="h1" variant="h5">
           Sign in
@@ -125,12 +126,12 @@ const LoginPage: React.FC = () => {
                 style={{ margin: '20px 0' }}
                 disabled={isSubmitting}
               >
-                Sign In
+                Sign Up
               </Button>
             </Form>
           )}
         </Formik>
-        Don't have an account? <a href="/signup">Sign in</a>
+        Don't have an account? <a href="/signup">Sign Up</a>
       </Paper>
     </Container>
   );

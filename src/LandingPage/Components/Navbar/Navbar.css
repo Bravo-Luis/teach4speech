@@ -3,12 +3,26 @@
     flex-direction: row;
     z-index: 999;
     width: 100vw;
-    padding: 25px;
+    padding: 15px;
     justify-content: center;
     position: fixed;
-    background: rgb(255, 255, 255);
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s ease-in-out, background 0.2s ease-in-out, padding 0.2s 0.05s ease-in;
+ 
  }
+
+ .landing-nav-bar-low {
+   display: flex;
+   flex-direction: row;
+   z-index: 999;
+   width: 100vw;
+   padding: 15px;
+   justify-content: center;
+   position: fixed;
+   background: purple;
+   transition: box-shadow 0.25s ease-in-out;
+   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.2);
+   transition: box-shadow 0.3s ease-in-out, background 0.2s ease-in-out, padding 0.1s ease-in-out;
+}
 
  .landing-nav-bar-content {
    color: black;
@@ -28,5 +42,5 @@
  .landing-nav-bar-menu {
     display: flex;
     flex-direction: column;
-    padding: 5%;
+    padding: 10px;
  }

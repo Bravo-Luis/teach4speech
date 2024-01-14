@@ -6,6 +6,8 @@ import './Navbar.css';
 function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isScrolled, setIsScrolled] = useState(false);
+
 
   const toggleDrawer = (open : any) => (event : any) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -19,26 +21,44 @@ function Navbar() {
       setWindowWidth(window.innerWidth);
     };
 
+    const handleScroll = () => {
+      // Check if the scroll position is more than 50 pixels
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 25);
+    };
+
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  const getNavbarClass = () => {
+    return isScrolled ? "landing-nav-bar-low" : "landing-nav-bar";
+  };
+
   if (windowWidth > 850) {
     return (
-      <nav className="landing-nav-bar">
+      <nav className={getNavbarClass()}>
         <div className="landing-nav-bar-content">
-            <Typography sx={{fontWeight:"bold"}} variant="h6">
+            <Typography sx={{fontWeight:"bold", color: isScrolled ? "white" : "black"}} variant="h6">
             Teach4Speech
             </Typography>
             <nav className="landing-nav-buttons">
-            <Button sx={{color:"black"}} href='#Home'> Home </Button>
-            <Button sx={{color:"black"}} href="#About"> About </Button>
-            <Button sx={{color:"black"}} href='#Contact'> Contact </Button>
+            <Button sx={{color: isScrolled ? "white" : "black", fontWeight:"bold"}} href='#Home'> Home </Button>
+            <Button sx={{color: isScrolled ? "white" : "black", fontWeight:"bold"}} href="#About"> About </Button>
+            <Button sx={{color: isScrolled ? "white" : "black", fontWeight:"bold"}} href='#Contact'> Contact </Button>
             </nav>
-            <Button href="\signin" variant="contained" sx={{backgroundColor:"#FFEF5B", color:"black", borderRadius:"1rem"}}>
+            <Button href="\signin" variant="contained" sx={{
+              backgroundColor: "#FFEF58", color: "black", borderRadius:"1rem",
+              ":hover": {
+                backgroundColor: isScrolled ? "black" : "purple",
+                color:  isScrolled ? "white" : "white"
+              }
+              }}>
             Instructor
             </Button>
         </div>
@@ -46,9 +66,9 @@ function Navbar() {
     );
   } else {
     return (
-      <nav className="landing-nav-bar">
+      <nav className={getNavbarClass()}>
         <div className="landing-nav-bar-content">
-        <Typography variant="h4">
+        <Typography variant="h6" sx={{fontWeight: "bold", color: isScrolled ? "white" : "black"}}>
           Teach4Speech
         </Typography>
         <IconButton
@@ -57,7 +77,7 @@ function Navbar() {
           aria-label="menu"
           onClick={toggleDrawer(true)}
         >
-          <MenuIcon />
+          <MenuIcon sx={{paddingRight:"20px", color: isScrolled ? "white" : "black"}}/>
         </IconButton>
         <Drawer
           anchor="right"
@@ -68,13 +88,21 @@ function Navbar() {
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
+            style={{height:"100vh", width:"200px", backgroundColor: "white", paddingTop: "2.5vh"}}
           >
-            <div className='landing-nav-bar-menu'>
-            <Button href='#About'> About </Button>
-            <Button href="#Services"> Services </Button>
-            <Button href='#Contact'> Contact </Button>
-              <Button href="\signin" variant="contained">
-                Instructor Sign-In
+            <div className='landing-nav-bar-menu'
+            
+            >
+            <Button href='#Home' sx={{color:"black"}}> Home </Button>
+            <Button href="#About" sx={{color:"black"}}> About </Button>
+            <Button href='#Contact' sx={{color:"black"}}
+            
+            > Contact </Button>
+              <Button href="\signin" variant="contained"
+              style={{
+                backgroundColor: "#FFEF58", color: "black",
+              }}>
+                Instructor
               </Button>
             </div>
           </div>

@@ -48,7 +48,7 @@ const SocialSection = () => {
         </Grid>
       </Grid>
       <hr style={{ width: '50%', margin: '20px auto' }} />
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit} style={{width:"clamp(300px, 80vw, 600px)"}}>
         <TextField 
           label="Name" 
           variant="filled" 
@@ -92,7 +92,7 @@ const SocialSection = () => {
           style={{ marginTop: '1rem' }}>
           Send
         </Button>
-      </form>
+      </form> */}
     </div>
   );
 };
