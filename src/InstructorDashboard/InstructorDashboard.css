@@ -1,5 +1,5 @@
 .instructor-dashboard {
-    background-color: #f4f4f4;
+
     min-height: 100vh;
     width: 95vw;
     color: #333; 
@@ -19,14 +19,17 @@
   .dashboard-game {
     background-color: #fff; 
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
     padding: 15px;
     text-align: center; 
     cursor: pointer;
+    max-width: 325px;
+    transition: background-color 0.2s ease-in-out;
   }
 
   .dashboard-game:hover {
-    background-color: aquamarine    ;
+    background-color: rgb(238, 238, 238);
+    transition: background-color 0.2s ease-in-out;
   }
   
   .dashboard-game img {

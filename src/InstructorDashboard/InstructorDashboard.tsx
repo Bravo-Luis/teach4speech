@@ -2,12 +2,13 @@ import  {  useEffect } from 'react';
 import './InstructorDashboard.css';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import wcloud from "../assets/wcloud.png"
 
 function InstructorDashboard({ webSocket } : {webSocket: WebSocket | null}) {
   const navigate = useNavigate();
 
   const gameDictList = [
-    {"title": "Game 1", "description": "This is a game", "img": "https://researchparent.com/wp-content/uploads/Generic-Game-Board-Facebook.jpg"},
+    {"title": "Related Words", "description": "In this game players are given a key word and they must provide as many related words as possible.", "img": "../assets/wcloud.png"},
     // ... other games if any
   ];
 
@@ -41,13 +42,16 @@ function InstructorDashboard({ webSocket } : {webSocket: WebSocket | null}) {
 
   return (
     <div className='instructor-dashboard'>
-      <Typography variant="h3">Instructor Dashboard</Typography>
+      <div className="background-layer bg2"></div>
+             <div className="background-layer bg1"></div>
+      <Typography variant="h3">Choose A Game</Typography>
       <br />
       <div className='dashboard-games'>
         {gameDictList.map((gameDict, index) => (
           <div key={index} className='dashboard-game' onClick={handleGameClick}>
-            <img src={gameDict.img} alt="Game" />
             <Typography variant="h5">{gameDict.title}</Typography>
+            <img src={wcloud} alt="Game" style={{width:"300px"}} />
+            
             <Typography variant="h6">{gameDict.description}</Typography>
           </div>
         ))}

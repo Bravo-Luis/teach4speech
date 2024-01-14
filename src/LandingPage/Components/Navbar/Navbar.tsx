@@ -53,10 +53,12 @@ function Navbar() {
             <Button sx={{color: isScrolled ? "white" : "black", fontWeight:"bold"}} href='#Contact'> Contact </Button>
             </nav>
             <Button href="\signin" variant="contained" sx={{
-              backgroundColor: "#FFEF58", color: "black", borderRadius:"1rem",
+              backgroundColor: isScrolled ? "#FFEF58" : "purple", 
+              color: isScrolled ? "black" : "white", 
+              borderRadius:"1rem",
               ":hover": {
-                backgroundColor: isScrolled ? "black" : "purple",
-                color:  isScrolled ? "white" : "white"
+                backgroundColor: isScrolled ? "black" : "#FFEF58",
+                color:  isScrolled ? "white" : "black"
               }
               }}>
             Instructor

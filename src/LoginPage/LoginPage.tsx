@@ -64,8 +64,10 @@ const LoginPage: React.FC = () => {
 
   return (
     <Container component="main"  sx={{width: 'clamp(350px, 80vw, 600px)'}}>
+      <div className="background-layer bg2"></div>
+             <div className="background-layer bg1"></div>
       <Paper style={{ padding: 20, marginTop: 40 }}>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" sx={{fontWeight:'bold'}}>
           Sign in
         </Typography>
         <Button
@@ -126,7 +128,7 @@ const LoginPage: React.FC = () => {
                 style={{ margin: '20px 0' }}
                 disabled={isSubmitting}
               >
-                Sign Up
+                Sign In
               </Button>
             </Form>
           )}

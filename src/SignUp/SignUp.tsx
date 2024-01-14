@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import app from '../Firebase'; // Adjust the path as necessary
 import { useNavigate } from 'react-router-dom';
+import GoogleIcon from '../assets/google.svg'
 
 // Define the form values interface
 interface FormValues {
@@ -57,10 +58,12 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <Container component="main">
+    <Container component="main" sx={{width: 'clamp(350px, 80vw, 600px)'}}>
+      <div className="background-layer bg2"></div>
+             <div className="background-layer bg1"></div>
       <Paper style={{ padding: 20, marginTop: 40 }}>
-        <Typography component="h1" variant="h5">
-          Sign up
+      <Typography component="h1" variant="h5" sx={{fontWeight:'bold'}}>
+          Sign Up
         </Typography>
         <Button
           onClick={handleGoogleSignup}
@@ -79,9 +82,9 @@ const Signup: React.FC = () => {
           }}
         >
           <img 
-            src="https://img.icons8.com/color/16/000000/google-logo.png" 
+            src={GoogleIcon} 
             alt="Google sign-in" 
-            style={{ marginRight: '10px' }}
+            style={{ marginRight: '10px', width: '15px', height: '15px' }}
           />
           Sign Up with Google
         </Button>
@@ -120,7 +123,7 @@ const Signup: React.FC = () => {
                 style={{ margin: '20px 0' }}
                 disabled={isSubmitting}
               >
-                Sign Up with Email
+                Sign Up
               </Button>
             </Form>
           )}
