@@ -10,7 +10,7 @@ function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
 
     const handleJoinGame = () => {
         if (webSocket && webSocket.readyState === WebSocket.OPEN) {
-            // Send a message to the server to join a session
+        
             webSocket.send(JSON.stringify({
                 role: 'student',
                 action: 'join',
@@ -47,7 +47,8 @@ function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
 
     return (
         <section className="landing-join-section">
-            <br />
+             <div className="background-layer bg2"></div>
+             <div className="background-layer bg1"></div>
             <TextField 
                 label="Enter a Game Code" 
                 variant="filled" 
@@ -96,14 +97,15 @@ function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
                         color: 'black'
                     }, 
                  }}/>
-            <br />
+
 
             <Button 
                 variant="contained" 
                 color="secondary"
                 onClick={handleJoinGame} // Use onClick instead of href
                 sx={{ 
-                    width: 'clamp(300px, 50vw, 600px)'
+                    fontSize: 'clamp(2rem, 3vw, 3rem)',
+                    width: 'clamp(250px, 40vw, 500px)',
                 }}
             >
                 Join Game
