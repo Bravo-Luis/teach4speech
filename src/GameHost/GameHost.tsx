@@ -101,7 +101,15 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
         <div className='game-host'>
             <div className="background-layer bg2"></div>
              <div className="background-layer bg1"></div>
-            <Typography variant="h3"> {gameCode}</Typography>
+             <br />
+            <Typography variant="h3"
+            sx={{
+                color:"black",
+                fontWeight:"bold"
+            }}
+            > 
+            {gameCode}
+            </Typography>
             <div className='student-grid'>
                 {students.map((student, index) => (
                     <div key={index} className='student-bubble'>
