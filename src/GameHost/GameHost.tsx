@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, Typography } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { Doughnut } from 'react-chartjs-2';
 import  WordCloud  from 'react-d3-cloud';
 import {
@@ -99,7 +99,30 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
     
     return (
         <div className='game-host'>
-            <Typography variant="h4" className="game-code">Game Code: {gameCode}</Typography>
+            <div className="background-layer bg2"></div>
+             <div className="background-layer bg1"></div>
+            <TextField
+                id="filled-basic"
+                variant="filled"
+                type="text"
+                value={gameCode}
+                disabled={true}
+                style={{
+                   
+                    width: 'clamp(250px, 40vw, 320px)',
+                    padding: '10px',
+                }}
+                InputProps={{
+                    style: {
+                        color: 'black',
+                        fontWeight: 'bold',
+                        fontSize: 'clamp(2rem, 8vw, 5rem)',
+                        textAlign: 'center',
+                        justifyContent: 'center',
+                    }
+                }}
+
+            />
             <div className='student-grid'>
                 {students.map((student, index) => (
                     <div key={index} className='student-bubble'>
