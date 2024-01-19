@@ -6,19 +6,12 @@
     justify-content: center;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-#Record {
+#sendRecordingToBackend {
+    background-color: black;
     width: 200px;
     height: 60px;
     position: absolute;
-    top: 40%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -40%);
     margin: 0;
