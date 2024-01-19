@@ -1,9 +1,27 @@
-.game-2 {
+.recordButton {
     background: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#currentGameWord {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    overflow: hidden;
 }
 
 #sendRecordingToBackend {
@@ -13,7 +31,7 @@
     position: absolute;
     top: 60%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -50%);
     margin: 0;
 }
 
