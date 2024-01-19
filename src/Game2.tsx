@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Game2.css';
 import { AudioRecorder } from 'react-audio-voice-recorder';
+import axios from 'axios';
 
 function Game2() {
   const [recordings, setRecordings] = useState<Blob[]>([]);
