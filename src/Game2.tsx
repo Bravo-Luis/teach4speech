@@ -17,19 +17,51 @@ function Game2() {
   };
 
   const saveRecordingLocally = () => {
-    // Storing the blob in the recordings array
-    if (recordings.length > 0) {
-      console.log("Newly recorded audio blob:", recordings[recordings.length - 1]);
+    return new Promise<void>((resolve, reject) => {
+      // Storing the blob in the recordings array
+      if (recordings.length > 0) {
+        console.log("Newly recorded audio blob:", recordings[recordings.length - 1]);
+        console.log(recordings.length);
+        resolve();
+      }
+      else {
+        reject(new Error('No recordings available.'));
+      }
+    });
+  };
+
+  const submitRecordings = () => {
+    if(recordings.length > 0){
+      const combinedBlob = new Blob(recordings, {type: 'audio/webm'});
+
+      const formData = new FormData();
+      formData.append('audioBlob', combinedBlob);
+
+      // Replace with backend API endpoint URL
+      axios.post('placeholder-backend-api-endpoint', formData)
+        .then(response => {
+          // After player sends recording, redirect them to another screen
+          // to listen to other recording and play game?
+          // import { useHistory } from 'react-router-dom'
+          // history.push('/send-to-directory-here')
+          console.log('Audio submitted successfully', response);
+        })
+        .catch(error => {
+          console.error('Error submitting audio', error);
+          alert('An error occurred while submitting audio. Please try again.')
+        });
     }
   };
 
-  const playRecording = () => {
-    if (recordings.length > 0) {
-      const combinedBlob = new Blob(recordings, { type: 'audio/webm' });
-      const url = URL.createObjectURL(combinedBlob);
-      const audio = new Audio(url);
-      audio.play();
-    }
+  const handleSaveAndSubmit = () => {
+    saveRecordingLocally()
+      .then(() => {
+        submitRecordings();
+      })
+      .catch(error => {
+        console.error('Error during save:', error);
+        alert('An error occurred during save. Please try again.');
+      });
   };
 
   return (
@@ -41,8 +73,8 @@ function Game2() {
       <div>
         {recordings.length > 0 && (
           <div>
-            <button onClick={saveRecordingLocally}>Save Recording Locally</button>
-            <button onClick={playRecording}>Play Combined Recording</button>
+            {/* YOU WILL GET AN ERROR MESSAGE BECAUSE THERE IS NOWHERE TO SEND AUDIO YET */}
+            <button id="sendRecordingToBackend" onClick={handleSaveAndSubmit}>Save and Submit</button>
           </div>
         )}
       </div>
