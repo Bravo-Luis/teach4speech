@@ -7,12 +7,23 @@ function Game2() {
 
   const [gameWord, setGameWord] = useState("")
   const [recordings, setRecordings] = useState<Blob[]>([]);
-  const objectsToDescribe = ['Temp'];
+  const objectsToDescribe = [
+    'Fire', 
+    'Cold', 
+    'Anything Purple', 
+    'Fruits', 
+    'Vegetables', 
+    'Shapes', 
+    'Breakfast Foods',
+    'Instruments',
+    'Sports',
+    'Types of Snacks'
+  ];
 
   // Generates a random object to describe in game
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * objectsToDescribe.length);
-    setGameWord("You must describe a: " + objectsToDescribe[randomIndex]);
+    setGameWord("You must describe: " + objectsToDescribe[randomIndex]);
   }, []);
 
   const addAudioElement = (blob: Blob) => {
