@@ -81,6 +81,18 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
         text: string;
         value: number;
     }
+
+    function endSession() {
+        if (webSocket){
+            const message = JSON.stringify({
+                role: 'instructor',
+                action: 'end',
+                sessionId: gameCode,
+              });
+            
+              webSocket.send(message); 
+        }
+      }
     
     const wordCloudData: Word[] = gameStats.allAnswers && Array.isArray(gameStats.allAnswers) 
         ? gameStats.allAnswers.reduce<Word[]>((acc, answer) => {
@@ -93,9 +105,6 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
             return acc;
         }, [])
         : [];
-        
-   
-
     
     return (
         <div className='game-host'>
@@ -145,7 +154,15 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
     <WordCloud 
         data={wordCloudData}
     />
+
 )}
+                    <Button 
+                        variant='contained' 
+                        color='secondary'
+                        onClick={endSession}
+                    >
+                        End Session
+                    </Button>
 
                 </div>
             )}
