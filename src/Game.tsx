@@ -422,7 +422,8 @@ function SpeechTips({ws} : {ws: WebSocket | null}){
         "Public Speaking Tip: Use stories and anecdotes in your speeches to make them more engaging.",
         "Did you know? The longest word in the English language is 'pneumonoultramicroscopicsilicovolcanoconiosis'.",
         "Language Learning Tip: Watching movies in a foreign language can improve your listening skills and vocabulary.",
-        "Reminder: Communication isn't just about words; it's about understanding and being understood."
+        "Reminder: Communication isn't just about words; it's about understanding and being understood.",
+        "Advice: When you want to be heard, make sure you project from your stomach!"
     ];
 
     return (
