@@ -68,7 +68,6 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     
         return () => {
             webSocket.removeEventListener('message', handleMessage);
-            clearInterval(tipInterval);
         };
     }, [webSocket]);
 
