@@ -14,7 +14,8 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [isEnglish, setIsEnglish] = useState(true); 
     const [gameActive, setGameActive] = useState(false);
     const { gameCode } = useParams(); 
-    const [theme, setTheme] = useState("");
+    const [themeEnglish, setThemeEnglish] = useState("");
+    const [themeSpanish, setThemeSpanish] = useState("");
     const [points, setPoints] = useState(0);
     const [timer, setTimer] = useState(60); 
     const [timerActive, setTimerActive] = useState(false);
@@ -41,6 +42,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
         return () => clearInterval(interval);
     }, [timer, timerActive]);
 
+
     useEffect(() => {
         if (!webSocket) return;
     
@@ -49,7 +51,8 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
             console.log(message);
            
             if (message.message === 'Game started' && message.status === 'active') {
-                setTheme(isEnglish ? message.theme.english : message.theme.spanish);
+                setThemeSpanish(message.theme.spanish);
+                setThemeEnglish(message.theme.english);
                 setGameActive(true);
             }
 
@@ -167,7 +170,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
              sx={{
                  fontSize: 'clamp(1.5rem, 5vw, 4rem)',
              }}>
-                 {theme}
+                 {isEnglish ? themeEnglish : themeSpanish}
              </Typography>
             <div className='submit-row' >
             <form onSubmit={(e)=>{
