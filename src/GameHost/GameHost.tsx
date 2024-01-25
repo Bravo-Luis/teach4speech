@@ -2,15 +2,8 @@ import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Typography, Box } from '@mui/material';
 
-import {
-    Chart as ChartJS,
-    ArcElement,
-    Tooltip,
-    Legend,
-} from 'chart.js';
 import './GameHost.css';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
   
 function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
     const { gameCode } = useParams();
