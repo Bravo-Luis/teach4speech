@@ -16,7 +16,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [points, setPoints] = useState(0);
     const [currentTipIndex, setCurrentTipIndex] = useState(0);
     const [showTip, setShowTip] = useState(true);
-    const [timer, setTimer] = useState(10); 
+    const [timer, setTimer] = useState(30); 
     const [timerActive, setTimerActive] = useState(false);
     const [gameEnded, setGameEnded] = useState(false);
     const [leaderboards, setLeaderboards] = useState([]);
@@ -24,7 +24,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     useEffect(() => {
         if (gameActive) {
             setTimerActive(true);
-            setTimer(10);
+            setTimer(30);
         }
     }, [gameActive]);
 
