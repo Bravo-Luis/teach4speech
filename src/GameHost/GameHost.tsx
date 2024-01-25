@@ -1,8 +1,8 @@
 import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, Typography } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import { Doughnut } from 'react-chartjs-2';
-import  WordCloud  from 'react-d3-cloud';
+
 import {
     Chart as ChartJS,
     ArcElement,
@@ -108,24 +108,23 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
     
     return (
         <div className='game-host'>
-            <div className="background-layer bg2"></div>
-             <div className="background-layer bg1"></div>
+            
              <br />
             <Typography variant="h3"
             sx={{
-                color:"black",
+                color:"white",
                 fontWeight:"bold"
             }}
             > 
             {gameCode}
             </Typography>
-            <div className='student-grid'>
+            {!gameActive && (<div className='student-grid'>
                 {students.map((student, index) => (
                     <div key={index} className='student-bubble'>
                         <Typography variant="h6">{student}</Typography>
                     </div>
                 ))}
-            </div>
+            </div>)}
             <br />
 
             {!gameActive ? (
@@ -134,35 +133,88 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
                     color='secondary'
                     onClick={startGame}
                     disabled={students.length === 0}
+            
+                    sx={{
+                        width:"clamp(300px, 30%, 400px)",
+                        borderRadius:"16px",
+                        fontWeight:"bold",
+                        position:"absolute",
+                        bottom:"10vh",
+                        border:"1px solid " + (students.length === 0 ? "none" : "black"),
+                        boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)",
+                        textShadow:"0px 0px 2px rgba(0, 0, 0, 1)",
+                        display:(students.length === 0 ? "none" : "flex"),
+                    }}
                 >
                     Start Game
                 </Button>
             ) : (
                 <div className="game-stats">
-                    <Typography variant="h5">Game Stats</Typography>
-                    <Typography variant="h6">Accuracy: {accuracyPercentage.toFixed(2)}%</Typography>
-                    <Doughnut data={accuracyData} />
+                    <div className='vertical-container'>
+                    <Box 
+                    border={'1px solid black'}
+                    width={300}
+                    height={100}
+                    borderRadius={16}
+                    display={'flex'}
+                    flexDirection={'column'}
+                    justifyContent={'center'}
+                    alignItems={'center'}
+                    boxShadow={5}
+                    sx={{
+                        backgroundColor:"rgb(168, 16, 168)",
+                    }}
+                    >
+                        <Typography variant="h6"
+                        sx={{
+                            color:"white",
+                            fontWeight:"bold",
+                            fontSize:"clamp(2rem, 2.5vw, 4rem)",
+                        }}  
+                        >
+                            {gameStats.allAnswers.length} words
+                        </Typography>
+                        
+                      
+                    </Box>
 
+                    <Box 
+                    border={'1px solid black'}
+                    width={300}
+                    height={100}
+                    borderRadius={16}
+                    display={'flex'}
+                    flexDirection={'column'}
+                    justifyContent={'center'}
+                    alignItems={'center'}
+                    boxShadow={10}
+                    sx={{
+                        backgroundColor:"rgb(168, 16, 168)",
+                    }}
+                    >
+                        <Typography variant="h6"
+                        sx={{
+                            color:"white",
+                            fontWeight:"bold",
+                            fontSize:"clamp(2rem, 2.5vw, 4rem)",
+                        }}  
+                        >
+                           {accuracyPercentage.toFixed(1)} %
+                        </Typography> 
+                    </Box>
+                    </div>
+
+                    {/* <Typography variant="h6"> Accuracy: {accuracyPercentage.toFixed(2)}%</Typography>
+                
                     <Typography variant="h6" style={{ marginTop: '20px' }}>Most Common Words:</Typography>
-                    <ul>
+
+                  
                         {gameStats.mostCommonAnswers.map((answer, index) => (
                             <li key={index}>{answer}</li>
                         ))}
-                    </ul>
+                    */}
 
-                    {wordCloudData.length > 0 && (
-    <WordCloud 
-        data={wordCloudData}
-    />
 
-)}
-                    <Button 
-                        variant='contained' 
-                        color='secondary'
-                        onClick={endSession}
-                    >
-                        End Session
-                    </Button>
 
                 </div>
             )}
