@@ -11,12 +11,12 @@ import Lottie from 'react-lottie';
 function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [inputText, setInputText] = useState("");
 
-   
+    const [isEnglish, setIsEnglish] = useState(true); 
     const [gameActive, setGameActive] = useState(false);
     const { gameCode } = useParams(); 
     const [theme, setTheme] = useState("");
     const [points, setPoints] = useState(0);
-    const [timer, setTimer] = useState(30); 
+    const [timer, setTimer] = useState(60); 
     const [timerActive, setTimerActive] = useState(false);
     const [gameEnded, setGameEnded] = useState(false);
     const [leaderboards, setLeaderboards] = useState([]);
@@ -24,7 +24,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     useEffect(() => {
         if (gameActive) {
             setTimerActive(true);
-            setTimer(30);
+            setTimer(60);
         }
     }, [gameActive]);
 
@@ -49,7 +49,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
             console.log(message);
            
             if (message.message === 'Game started' && message.status === 'active') {
-                setTheme(message.theme);
+                setTheme(isEnglish ? message.theme.english : message.theme.spanish);
                 setGameActive(true);
             }
 
@@ -97,8 +97,8 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
         return (
         <div className='game-1'>
 
-            <GameCodeDisplay gameCode={String(gameCode)}/>
-           
+            <GameCodeDisplay gameCode={String(gameCode)} isEnglish={isEnglish}/>
+            <TranslationButton isEnglish={isEnglish} setIsEnglish={setIsEnglish}/>
           
             <Typography 
             variant="h2" 
@@ -118,7 +118,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
             sx={{
                 fontSize: 'clamp(0.75rem, 2vw, 1rem)',
             }}>
-            Waiting for host to start game
+            {isEnglish ? 'Waiting for host to start game' : 'Esperando a que el anfitrión inicie el juego'}
             </Typography>
           
             <Lottie options={defaultOptions}
@@ -126,7 +126,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
              width={'clamp(200px, 30%, 1500px)'}
       />
       
-            <SpeechTips ws={webSocket}/>
+            <SpeechTips ws={webSocket} isEnglish={isEnglish}/>
 
             
          
@@ -138,7 +138,8 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     if(!gameEnded){
         return (
             <div className='game-1'>
-                 <GameCodeDisplay gameCode={String(gameCode)}/>
+                 <GameCodeDisplay gameCode={String(gameCode)} isEnglish={isEnglish}/>
+                 <TranslationButton isEnglish={isEnglish} setIsEnglish={setIsEnglish}/>
              <>
              <Typography 
              variant="h6" 
@@ -154,7 +155,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                  
                          fontSize: 'clamp(1rem, 3vw, 1.5rem)',
                      }}>
-                 Submit words that relate to:
+                 {isEnglish ? 'Enter as many words as you can that are related to the theme!' : '¡Ingresa tantas palabras como puedas que estén relacionadas con el tema!'}
              </Typography>
              <Typography 
              variant="h2" 
@@ -177,7 +178,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
             id="filled-basic"
             variant="outlined"
             type="text"
-            placeholder="Enter Answer"
+            placeholder={isEnglish ? 'Enter a word' : 'Ingresa una palabra'}
             value={inputText}
             onChange={(event) => setInputText(event.target.value)}
             disabled={!gameActive}
@@ -213,7 +214,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                         }}
         
                     >
-                        Submit
+                        {isEnglish ? 'Submit' : 'Enviar'}
                     </Button>
             </div></>
         
@@ -236,7 +237,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                         fontSize: 'clamp(0.5rem, 1vw, 1rem)',
                     }}
                     >
-                         Score:
+                         {isEnglish ? 'Points' : 'Puntos'}
                     </Typography>
                     <Typography 
                     position={'relative'}
@@ -269,7 +270,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                                 fontSize: 'clamp(1rem, 2vw, 2rem)',
                             }}
                         >
-                            Time Left: {timer}s
+                            {isEnglish ? 'Time:' : 'Tiempo'} {timer}s
                         </Typography>
                     </Box>
             </div>
@@ -297,7 +298,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
 }
 
 
-function GameCodeDisplay({ gameCode } : { gameCode: string }) {
+function GameCodeDisplay({ gameCode, isEnglish} : { gameCode: string, isEnglish: boolean}) {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => setIsHovered(true);
@@ -369,13 +370,13 @@ function GameCodeDisplay({ gameCode } : { gameCode: string }) {
                     
                 }}
             >
-                Copy
+                {isEnglish ? 'Copy' : 'Copiar'}
             </Typography>
         </Box>
     );
 }
 
-function SpeechTips({ws} : {ws: WebSocket | null}){
+function SpeechTips({ws, isEnglish} : {ws: WebSocket | null, isEnglish: boolean}){
 
     const [showTip, setShowTip] = useState(true);
     const [currentTipIndex, setCurrentTipIndex] = useState(0);
@@ -403,27 +404,27 @@ function SpeechTips({ws} : {ws: WebSocket | null}){
         setShowTip(false); 
     };
    
-
     const loadingScreenTips = [
-        "Tip: Practice makes perfect. The more you speak, the more confident you'll become!",
-        "Did you know? The ability to understand and use language effectively is known as linguistic intelligence.",
-        "Fun Fact: The most commonly spoken language in the world is Mandarin Chinese.",
-        "Advice: Listening is as important as speaking. Good listeners are often great communicators.",
-        "Language Tip: Reading out loud can significantly improve your pronunciation and fluency.",
-        "Did you know? 'Eunoia' is the shortest English word containing all five main vowels. It means 'beautiful thinking.'",
-        "Public Speaking Tip: Before a speech, take deep breaths to calm your nerves.",
-        "Fun Fact: There are over 7,000 languages spoken in the world today.",
-        "Reminder: Body language is a key part of communication. Your posture and gestures say a lot!",
-        "Did you know? Shakespeare invented many words, such as 'birthplace' and 'eyeball'.",
-        "Language Learning Tip: Immersion is one of the most effective ways to learn a new language.",
-        "Interesting Fact: The word 'alphabet' comes from the first two letters of the Greek alphabet: alpha and beta.",
-        "Advice: Keeping a vocabulary journal can help you learn new words and expressions.",
-        "Fun Fact: A pangram is a sentence that contains every letter of the alphabet, like 'The quick brown fox jumps over a lazy dog.'",
-        "Public Speaking Tip: Use stories and anecdotes in your speeches to make them more engaging.",
-        "Did you know? The longest word in the English language is 'pneumonoultramicroscopicsilicovolcanoconiosis'.",
-        "Language Learning Tip: Watching movies in a foreign language can improve your listening skills and vocabulary.",
-        "Reminder: Communication isn't just about words; it's about understanding and being understood."
+        ["Tip: Practice makes perfect. The more you speak, the more confident you'll become!", "Consejo: La práctica hace al maestro. ¡Cuanto más hables, más confianza ganarás!"],
+        ["Did you know? The ability to understand and use language effectively is known as linguistic intelligence.", "¿Sabías? La capacidad de entender y utilizar el lenguaje de manera efectiva se conoce como inteligencia lingüística."],
+        ["Fun Fact: The most commonly spoken language in the world is Mandarin Chinese.", "Dato Curioso: El idioma más hablado en el mundo es el chino mandarín."],
+        ["Advice: Listening is as important as speaking. Good listeners are often great communicators.", "Consejo: Escuchar es tan importante como hablar. Los buenos oyentes suelen ser grandes comunicadores."],
+        ["Language Tip: Reading out loud can significantly improve your pronunciation and fluency.", "Consejo de Idioma: Leer en voz alta puede mejorar significativamente tu pronunciación y fluidez."],
+        ["Did you know? 'Eunoia' is the shortest English word containing all five main vowels. It means 'beautiful thinking.'", "¿Sabías? 'Eunoia' es la palabra más corta en inglés que contiene las cinco vocales principales. Significa 'pensamiento hermoso'."],
+        ["Public Speaking Tip: Before a speech, take deep breaths to calm your nerves.", "Consejo de Oratoria: Antes de un discurso, respira profundamente para calmar tus nervios."],
+        ["Fun Fact: There are over 7,000 languages spoken in the world today.", "Dato Curioso: Hay más de 7,000 idiomas que se hablan en el mundo hoy."],
+        ["Reminder: Body language is a key part of communication. Your posture and gestures say a lot!", "Recordatorio: El lenguaje corporal es una parte clave de la comunicación. ¡Tu postura y gestos dicen mucho!"],
+        ["Did you know? Shakespeare invented many words, such as 'birthplace' and 'eyeball'.", "¿Sabías? Shakespeare inventó muchas palabras, como 'birthplace' y 'eyeball'."],
+        ["Language Learning Tip: Immersion is one of the most effective ways to learn a new language.", "Consejo para Aprender Idiomas: La inmersión es una de las formas más efectivas de aprender un nuevo idioma."],
+        ["Interesting Fact: The word 'alphabet' comes from the first two letters of the Greek alphabet: alpha and beta.", "Dato Interesante: La palabra 'alfabeto' proviene de las dos primeras letras del alfabeto griego: alfa y beta."],
+        ["Advice: Keeping a vocabulary journal can help you learn new words and expressions.", "Consejo: Mantener un diario de vocabulario puede ayudarte a aprender nuevas palabras y expresiones."],
+        ["Fun Fact: A pangram is a sentence that contains every letter of the alphabet, like 'The quick brown fox jumps over a lazy dog.'", "Dato Curioso: Un pangrama es una oración que contiene todas las letras del alfabeto, como 'El veloz murciélago hindú comía feliz cardillo y kiwi'."],
+        ["Public Speaking Tip: Use stories and anecdotes in your speeches to make them more engaging.", "Consejo de Oratoria: Utiliza historias y anécdotas en tus discursos para hacerlos más atractivos."],
+        ["Did you know? The longest word in the English language is 'pneumonoultramicroscopicsilicovolcanoconiosis'.", "¿Sabías? La palabra más larga en inglés es 'neumonoultramicroscópicosilicovolcanoconiosis'."],
+        ["Language Learning Tip: Watching movies in a foreign language can improve your listening skills and vocabulary.", "Consejo para Aprender Idiomas: Ver películas en un idioma extranjero puede mejorar tus habilidades auditivas y vocabulario."],
+        ["Reminder: Communication isn't just about words; it's about understanding and being understood.", "Recordatorio: La comunicación no se trata solo de palabras; se trata de entender y ser entendido."]
     ];
+    
 
     return (
         <CSSTransition
@@ -450,9 +451,55 @@ function SpeechTips({ws} : {ws: WebSocket | null}){
                             transition:'all 0.2s ease-in-out'
                         }
                     }}>
-                        {loadingScreenTips[currentTipIndex]}
+                        {loadingScreenTips[currentTipIndex][isEnglish ? 0 : 1]}
                     </Typography>
                 </CSSTransition>
+    )
+}
+
+function TranslationButton({isEnglish, setIsEnglish} : {isEnglish: boolean, setIsEnglish: any}) {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
+
+    return (
+        <Box 
+            borderRadius={16} 
+            paddingLeft={1} 
+            paddingRight={1} 
+            boxShadow={3}
+            border={'3px solid black'}
+            sx={{
+                background: 'white',
+                position: 'absolute',
+                fontWeight: 'bold',
+                top: 'clamp(10px, 2.5%, 25px)',
+                left: '120px',
+                width: '4em',
+                transition: 'transform 0.3s ease-in-out',
+                ":hover": {
+                    cursor: 'pointer',
+                    transform: 'scale(1.05)',
+                }
+            }}
+            onClick={() => setIsEnglish(!isEnglish)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            <Typography 
+                sx={{ 
+                    color: "black", 
+                    fontWeight: 'bold', 
+                    textAlign: 'center',
+                    transition: 'opacity 0.3s ease-in-out',
+                    transitionDelay: isHovered ? '0s' : '0.1s',
+                    userSelect: 'none',
+                }}
+            >
+                {isEnglish ? 'Español' : 'English'}
+            </Typography>
+        </Box>
     )
 }
 
