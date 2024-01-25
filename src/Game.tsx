@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { Typography, Box } from '@mui/material';
 import './Game.css';
 import { CSSTransition } from 'react-transition-group';
+import { set } from 'firebase/database';
 
 function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [inputText, setInputText] = useState("");
@@ -57,6 +58,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
 
             if (message.message === 'Game ended' ) {
                 setLeaderboards(message.leaderboard);
+                setGameEnded(true);
 
             }
 
