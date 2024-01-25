@@ -58,44 +58,44 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
     };
     const accuracyPercentage = gameStats.totalAnswers > 0 ? (gameStats.correctAnswers / gameStats.totalAnswers) * 100 : 0;
 
-    // Doughnut chart data for accuracy
-    const accuracyData = {
-        labels: ['Correct Answers', 'Incorrect Answers'],
-        datasets: [{
-            data: [gameStats.correctAnswers, gameStats.totalAnswers - gameStats.correctAnswers],
-            backgroundColor: ['#36A2EB', '#FF6384'],
-            hoverBackgroundColor: ['#36A2EB', '#FF6384']
-        }]
-    };
+    // // Doughnut chart data for accuracy
+    // const accuracyData = {
+    //     labels: ['Correct Answers', 'Incorrect Answers'],
+    //     datasets: [{
+    //         data: [gameStats.correctAnswers, gameStats.totalAnswers - gameStats.correctAnswers],
+    //         backgroundColor: ['#36A2EB', '#FF6384'],
+    //         hoverBackgroundColor: ['#36A2EB', '#FF6384']
+    //     }]
+    // };
 
-    interface Word {
-        text: string;
-        value: number;
-    }
+    // interface Word {
+    //     text: string;
+    //     value: number;
+    // }
 
-    function endSession() {
-        if (webSocket){
-            const message = JSON.stringify({
-                role: 'instructor',
-                action: 'end',
-                sessionId: gameCode,
-              });
+    // function endSession() {
+    //     if (webSocket){
+    //         const message = JSON.stringify({
+    //             role: 'instructor',
+    //             action: 'end',
+    //             sessionId: gameCode,
+    //           });
             
-              webSocket.send(message); 
-        }
-      }
+    //           webSocket.send(message); 
+    //     }
+    //   }
     
-    const wordCloudData: Word[] = gameStats.allAnswers && Array.isArray(gameStats.allAnswers) 
-        ? gameStats.allAnswers.reduce<Word[]>((acc, answer) => {
-            const word = acc.find(item => item.text === answer);
-            if (word) {
-                word.value += 1;
-            } else {
-                acc.push({ text: answer, value: 1 });
-            }
-            return acc;
-        }, [])
-        : [];
+    // const wordCloudData: Word[] = gameStats.allAnswers && Array.isArray(gameStats.allAnswers) 
+    //     ? gameStats.allAnswers.reduce<Word[]>((acc, answer) => {
+    //         const word = acc.find(item => item.text === answer);
+    //         if (word) {
+    //             word.value += 1;
+    //         } else {
+    //             acc.push({ text: answer, value: 1 });
+    //         }
+    //         return acc;
+    //     }, [])
+    //     : [];
     
     return (
         <div className='game-host'>
