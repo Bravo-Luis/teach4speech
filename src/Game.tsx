@@ -16,7 +16,31 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [points, setPoints] = useState(0);
     const [currentTipIndex, setCurrentTipIndex] = useState(0);
     const [showTip, setShowTip] = useState(true);
+    const [timer, setTimer] = useState(10); 
+    const [timerActive, setTimerActive] = useState(false);
+    const [gameEnded, setGameEnded] = useState(false);
+    const [leaderboards, setLeaderboards] = useState([]);
 
+    useEffect(() => {
+        if (gameActive) {
+            setTimerActive(true);
+            setTimer(10);
+        }
+    }, [gameActive]);
+
+    useEffect(() => {
+        let interval;
+        if (timerActive && timer > 0) {
+            interval = setInterval(() => {
+                setTimer(prevTimer => prevTimer - 1);
+            }, 1000);
+        } else if (timer === 0) {
+            // Handle timer reaching zero, e.g., disable the game
+            setTimerActive(false);
+            // Additional actions when the timer reaches zero
+        }
+        return () => clearInterval(interval);
+    }, [timer, timerActive]);
 
     useEffect(() => {
         if (!webSocket) return;
@@ -28,9 +52,15 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                 setTheme(message.theme);
                 setGameActive(true);
             }
+
+            if (message.message === 'Game ended' ) {
+                setLeaderboards(message.leaderboards);
+            }
+
             if (message.action === 'update') {
                 setPoints(message.score);
             }
+
         };
     
         webSocket.addEventListener('message', handleMessage);
@@ -141,35 +171,174 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     }
 
 
-    return (
-        <div className='game-1'>
-            <h2>{theme}</h2>
-            <TextField
-                id="filled-basic"
-                variant="filled"
-                type="text"
-                placeholder="Enter answers here"
-                value={inputText}
-                onChange={(event) => setInputText(event.target.value)}
+    if(!gameEnded){
+        return (
+            <div className='game-1'>
+                <Box 
+                borderRadius={16} 
+                paddingLeft={1} 
+                paddingRight={1} 
+                boxShadow={3}
+                sx={{
+                    background:'white',
+                    position: 'absolute',
+                    top: 'clamp(10px, 2.5%, 25px)',
+                    left: 'clamp(10px, 2.5%, 25px)',
+                }}>
+                    <Typography sx={{color:"black"}}>
+                        {gameCode}
+                    </Typography>
+                </Box>
+        
+       
                
-                disabled={!gameActive}
-                style={{backgroundColor: 'transparent'}}
-                InputProps={{
-                    style: {color: 'whitesmoke'}
-                }}
-                
-            />
-            SCORE: {points}
-            <Button 
-                variant="contained" 
-                color="primary" 
-                onClick={handleSubmit} 
-                disabled={!gameActive}
-            >
-                Submit
-            </Button>
-        </div>
-    )
+    
+             <>
+             <Typography 
+             variant="h6" 
+                     component="p" 
+                     width={'clamp(200px, 90%, 1500px)'}
+                     textAlign={'center'}
+                     position={'absolute'}
+                     top={'clamp(100px, 15%, 250px)'}
+                     fontWeight={'regular'}
+    
+                     height={'100px'}
+                     sx={{
+                 
+                         fontSize: 'clamp(1rem, 3vw, 1.5rem)',
+                     }}>
+                 Submit words that relate to:
+             </Typography>
+             <Typography 
+             variant="h2" 
+             component="h2" 
+             fontWeight={'bold'} 
+             gutterBottom 
+             position={'absolute'}
+                     top={'clamp(10px, 20%, 600px)'}
+             sx={{
+                 fontSize: 'clamp(1.5rem, 5vw, 4rem)',
+             }}>
+                 {theme}
+             </Typography>
+            <div className='submit-row' >
+            <TextField
+            id="filled-basic"
+            variant="outlined"
+            type="text"
+            placeholder="Enter Answer"
+            value={inputText}
+            onChange={(event) => setInputText(event.target.value)}
+            disabled={!gameActive}
+            style={{
+                backgroundColor: 'white',
+                borderRadius: '24px', // Rounded borders
+                border: '5px solid black', // Black border
+                fontSize: '25px',
+            }}
+            InputProps={{
+                style: {
+                    color: 'black', 
+                    borderRadius: '16px', 
+                    fontSize: '25px',
+                    fontWeight: 'bold',
+                    width:'100%',
+                    maxWidth: '320px',
+                }
+            }}
+        />
+        
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        onClick={handleSubmit} 
+                        disabled={!gameActive}
+                        sx={{
+                            borderRadius: '10px',
+                            height: '75px',
+                            fontWeight: 'bold',
+                            border: '5px solid black',
+                        }}
+        
+                    >
+                        Submit
+                    </Button>
+            </div></>
+        
+    
+        <Box 
+                borderRadius={16} 
+                paddingLeft={1} 
+                paddingRight={1}
+                sx={{
+                    position: 'absolute',
+                    top: 'clamp(10px, 2.5%, 25px)',
+                    right: 'clamp(10px, 2.5%, 25px)',
+                }}>
+                    <Typography 
+                    position={'relative'}
+                   
+                    sx={{
+                        color:"yellow",
+                        fontWeight: 'bold',
+                        fontSize: 'clamp(0.5rem, 1vw, 1rem)',
+                    }}
+                    >
+                         Score:
+                    </Typography>
+                    <Typography 
+                    position={'relative'}
+                   
+                    sx={{
+                        color:"yellow",
+                        fontWeight: 'bold',
+                        fontSize: 'clamp(1.5rem, 3vw, 3rem)',
+                    }}
+                    >
+                         {points * 100}
+                    </Typography>
+                    
+                </Box>
+    
+                    <Box 
+                        borderRadius={16} 
+                        paddingLeft={1} 
+                        paddingRight={1}
+                        sx={{
+                            position: 'absolute',
+                            bottom: 'clamp(10px, 5%, 25px)',
+                            right: 'clamp(10px, 5%, 25px)',
+                        }}
+                    >
+                        <Typography 
+                            sx={{
+                                color:"white",
+                                fontWeight: 'bold',
+                                fontSize: 'clamp(1rem, 2vw, 2rem)',
+                            }}
+                        >
+                            Time Left: {timer}s
+                        </Typography>
+                    </Box>
+            </div>
+        )
+    }
+
+    if (gameEnded){
+        return (
+            <div className='game-1'>
+                <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
+                    Leaderboard
+                </Typography>
+                {leaderboards.map((item, index) => (
+                    <Typography key={index} sx={{ mb: 1 }}>
+                        {item.name}: {item.score}
+                    </Typography>
+                ))}
+            </div>
+        );
+    }
 
 }
 

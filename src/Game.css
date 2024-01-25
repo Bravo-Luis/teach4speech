@@ -28,3 +28,13 @@
     transition: opacity 300ms ease-out;
   }
   
+.submit-row{
+    display: flex;
+    column-gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
