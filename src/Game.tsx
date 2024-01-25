@@ -48,6 +48,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     
         const handleMessage = (event : any) => {
             const message = JSON.parse(event.data);
+            console.log(message);
            
             if (message.message === 'Game started' && message.status === 'active') {
                 setTheme(message.theme);
@@ -55,7 +56,8 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
             }
 
             if (message.message === 'Game ended' ) {
-                setLeaderboards(message.leaderboards);
+                setLeaderboards(message.leaderboard);
+
             }
 
             if (message.action === 'update') {
@@ -329,12 +331,15 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     if (gameEnded){
         return (
             <div className='game-1'>
-                <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
+                <Typography variant="h2" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
                     Leaderboard
                 </Typography>
+                
                 {leaderboards.map((item : {"name" : string, "score" : string}, index) => (
-                    <Typography key={index} sx={{ mb: 1 }}>
-                        {item.name}: {item.score}
+                    <Typography 
+                    key={index} 
+                    sx={{ fontSize: 'clamp(20px, 2.5vw, 50px)'}}>
+                       {index + 1}. {item.name} with {Number(item.score) * 100} points
                     </Typography>
                 ))}
             </div>
