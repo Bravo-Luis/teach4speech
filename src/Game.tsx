@@ -29,7 +29,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     }, [gameActive]);
 
     useEffect(() => {
-        let interval;
+        let interval : any;
         if (timerActive && timer > 0) {
             interval = setInterval(() => {
                 setTimer(prevTimer => prevTimer - 1);
@@ -37,6 +37,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
         } else if (timer === 0) {
             // Handle timer reaching zero, e.g., disable the game
             setTimerActive(false);
+            setGameEnded(true);
             // Additional actions when the timer reaches zero
         }
         return () => clearInterval(interval);
@@ -331,7 +332,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                 <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
                     Leaderboard
                 </Typography>
-                {leaderboards.map((item, index) => (
+                {leaderboards.map((item : {"name" : string, "score" : string}, index) => (
                     <Typography key={index} sx={{ mb: 1 }}>
                         {item.name}: {item.score}
                     </Typography>
