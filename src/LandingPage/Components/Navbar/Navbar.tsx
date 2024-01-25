@@ -54,6 +54,7 @@ function Navbar() {
             </nav>
             <Button href="\signin" variant="contained" sx={{
               backgroundColor: isScrolled ? "#FFEF58" : "purple", 
+              fontWeight:"bold",
               color: isScrolled ? "black" : "white", 
               borderRadius:"1rem",
               ":hover": {

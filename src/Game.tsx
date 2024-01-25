@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import { Typography, Box } from '@mui/material';
 import './Game.css';
 import { CSSTransition } from 'react-transition-group';
+import lottieAnimation from './assets/lottie_1.json';
+import Lottie from 'react-lottie';
 
 function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [inputText, setInputText] = useState("");
@@ -80,26 +82,54 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
         webSocket.send(JSON.stringify({ role: 'student', action: 'answer', sessionId: gameCode, answer: inputText, name: localStorage.getItem('username')}));
         setInputText("");
     };
-    
 
+    const defaultOptions = {
+        loop: true,
+        autoplay: true, 
+        animationData: lottieAnimation,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
+    
+  
     if (!gameActive) {
         return (
         <div className='game-1'>
 
             <GameCodeDisplay gameCode={String(gameCode)}/>
-            
+           
+          
             <Typography 
             variant="h2" 
             component="h2" 
             fontWeight={'bold'} 
             gutterBottom 
             sx={{
-                fontSize: 'clamp(1.5rem, 5vw, 4rem)',
+                fontSize: 'clamp(1rem, 5vw, 4rem)',
+            }}>
+            Teach4Speech
+            </Typography>
+            <Typography 
+            variant="h2" 
+            component="h2" 
+            fontWeight={'thin'} 
+            gutterBottom 
+            sx={{
+                fontSize: 'clamp(0.75rem, 2vw, 1rem)',
             }}>
             Waiting for host to start game
             </Typography>
+          
+            <Lottie options={defaultOptions}
+             height={'clamp(200px, 30%, 1500px)'}
+             width={'clamp(200px, 30%, 1500px)'}
+      />
+      
             <SpeechTips ws={webSocket}/>
 
+            
+         
         </div>
         )
     }
@@ -404,7 +434,7 @@ function SpeechTips({ws} : {ws: WebSocket | null}){
                 >
                     <Typography 
                     variant="h6" 
-                    fontWeight={'light'} 
+                    fontWeight={'bold'} 
                     component="p" 
                     width={'clamp(200px, 90%, 1500px)'}
                     textAlign={'center'}
