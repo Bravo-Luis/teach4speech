@@ -1,7 +1,6 @@
 import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Typography, Box } from '@mui/material';
-import { Doughnut } from 'react-chartjs-2';
 
 import {
     Chart as ChartJS,
@@ -44,7 +43,6 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
                 setStudents(prev => prev.filter(name => name !== studentName));
             }
     
-            // Handle other types of messages as needed
         };
     
         webSocket.addEventListener('message', handleMessage);
