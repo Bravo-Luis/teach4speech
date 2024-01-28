@@ -5,6 +5,8 @@ import axios from 'axios';
 
 function Game2() {
 
+  const [timer, setTimer] = useState(65);
+  const [preGameTimer, setPreGameTimer] = useState(5);
   const [gameWord, setGameWord] = useState("")
   const [recordings, setRecordings] = useState<Blob[]>([]);
   const objectsToDescribe = [
@@ -25,6 +27,45 @@ function Game2() {
     const randomIndex = Math.floor(Math.random() * objectsToDescribe.length);
     setGameWord("You must describe: " + objectsToDescribe[randomIndex]);
   }, []);
+
+  // Handles 5 second timer before the game
+  useEffect(() => {
+    const preGameInterval = setInterval(() => {
+        setPreGameTimer((prevTimer) => {
+            const newTimer = prevTimer - 1;
+            if (newTimer <= 0) {
+                clearInterval(preGameInterval);
+            }
+            return newTimer;
+        });
+    }, 1000);
+    return () => clearInterval(preGameInterval);
+  }, []);
+
+// Handles timer countdown from 20 seconds (Game timer)
+useEffect(() => {
+  const interval = setInterval(() => {
+    setTimer((prevTimer) => {
+
+      const newTimer = prevTimer - 1;
+      if (newTimer <= 0) {
+        clearInterval(interval);
+        return 0;
+      } else {
+        return newTimer;
+      }
+    });
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
+
+
+  // Set's the game word h2 element to "" once timer reaches 0
+  useEffect(() => {
+    if (timer === 0){
+        setGameWord("");
+    }
+} , [timer]);
 
   const addAudioElement = (blob: Blob) => {
     setRecordings((prevRecordings) => [...prevRecordings, blob]);
@@ -87,11 +128,14 @@ function Game2() {
   return (
     <>
       <div className='game-2'>
+        <h1 id ='gameTimer'>{preGameTimer > 0 ? `Countdown: ${preGameTimer}` : timer > 0 ? `Time Remaining: ${timer}` : "Time's up!"}</h1>
         <h1 id='currentGameWord'>{gameWord}</h1>
       
+        {(preGameTimer <= 0 && timer > 0) && (
         <div className="recordButton">
           <AudioRecorder onRecordingComplete={addAudioElement} showVisualizer />
         </div>
+      )}
       
         <div>
           {recordings.length > 0 && (
