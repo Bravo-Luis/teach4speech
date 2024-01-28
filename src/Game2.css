@@ -10,6 +10,19 @@
     transform: translate(-50%, -50%);
 }
 
+#gameTimer {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
 #currentGameWord {
     background-color: black;
     display: flex;
