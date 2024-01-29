@@ -153,7 +153,17 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
         <TranslationButton isEnglish={isEnglish} setIsEnglish={setIsEnglish} />
         {!gameEnded && (
           <div className="student-grid">
+            
             {answers.map((answer, _) => (
+                <Box
+                paddingLeft={2}
+                paddingRight={2}
+                margin={2}
+           
+                sx={{
+                 borderRadius: 16,
+                 background:"gray"
+                }}>
               <Typography
                 variant="h6"
                 sx={{
@@ -164,6 +174,7 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
               >
                 {answer}
               </Typography>
+                </Box>
             ))}
           </div>
         )}
