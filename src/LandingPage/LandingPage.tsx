@@ -9,7 +9,7 @@ import Header from "./Components/Header/Header";
 
 import { useEffect } from 'react';
 
-function LandingPage(){
+function LandingPage(token: any){
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.pageYOffset;
@@ -38,7 +38,7 @@ function LandingPage(){
         <section className="landing-page">
             <div className="background-layer bg1"></div>
             <div className="background-layer bg2"></div>
-            <Navbar/>
+            <Navbar token={token}/>
            <div id="Home">
            <Header/>
            </div>

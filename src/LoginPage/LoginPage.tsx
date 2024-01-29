@@ -3,9 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, TextField, Typography, Container, Paper, Divider } from '@mui/material';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import GoogleIcon from '../assets/google.svg'
+import GoogleIcon from '../assets/google.svg';
 import './LoginPage.css';
-
 
 // Firebase imports
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -36,29 +35,26 @@ const LoginPage: React.FC = () => {
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-    .then((result) => {
-      console.log('Google sign in success:', result.user);
-      navigate('/instructor-dashboard');
-    })
-    .catch((error) => {
-      console.error('Google sign in error:', error);
-      alert(error.message);
-    });
+      .then((result) => {
+        console.log('Google sign in success:', result.user);
+        navigate('/instructor-dashboard'); // Navigate to dashboard on successful login
+      })
+      .catch((error) => {
+        console.error('Google sign in error:', error);
+        alert(error.message);
+      });
   };
 
-  const handleSubmit = (values: FormValues, { setSubmitting } : any) => {
+  const handleSubmit = (values: FormValues, { setSubmitting }: any) => {
     const { email, password } = values;
     signInWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        console.log('Logged in user:', response.user);
-        navigate('/instructor-dashboard')
+      .then(() => {
+        navigate('/instructor-dashboard'); // Navigate to dashboard on successful login
       })
       .catch((error) => {
         console.error('Login error:', error);
         alert(error.message);
       })
-      
-      
       .finally(() => setSubmitting(false));
   };
 

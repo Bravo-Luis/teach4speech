@@ -3,7 +3,7 @@ import { Button, Typography, Drawer, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar(token: any) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -101,7 +101,7 @@ function Navbar() {
             <Button href='#Contact' sx={{color:"black"}}
             
             > Contact </Button>
-              <Button href="\signin" variant="contained"
+              <Button href= {!token ? "\signin" : "\instructor-dashboard"} variant="contained"
               style={{
                 backgroundColor: "#FFEF58", color: "black",
               }}>

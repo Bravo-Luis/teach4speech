@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography, Box } from '@mui/material';
@@ -21,7 +21,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [timerActive, setTimerActive] = useState(false);
     const [gameEnded, setGameEnded] = useState(false);
     const [leaderboards, setLeaderboards] = useState([]);
-
+    const navigate = useNavigate()
     useEffect(() => {
         if (gameActive) {
             setTimerActive(true);
@@ -64,6 +64,11 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
 
             if (message.action === 'update') {
                 setPoints(message.score);
+            }
+
+            if (message.message === 'Client connected') {
+                setGameActive(false);
+                navigate(`/join`);
             }
 
         };
