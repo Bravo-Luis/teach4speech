@@ -18,16 +18,13 @@ function App() {
 
 
   useEffect(() => {
-    // Function to retrieve the token from local storage
     const getTokenFromLocalStorage = () => {
       const storedToken : any = localStorage.getItem('token');
       if (storedToken) {
         setToken(storedToken);
-        // Here, you can also establish WebSocket connection using the token if needed
       }
     };
 
-    // Function to store the token in local storage
     const storeTokenInLocalStorage = (token : any) => {
       localStorage.setItem('token', token);
     };
@@ -37,7 +34,6 @@ function App() {
       console.log("Auth state changed:", user);
       setCurrentUser(user);
       if (user) {
-        // Assuming 'user' has a method to get the token, modify as per your user object
         user.getIdToken().then((idToken : any) => {
           setToken(idToken);
           storeTokenInLocalStorage(idToken);
@@ -45,11 +41,9 @@ function App() {
       }
     });
 
-    // Initialize WebSocket connection
-    const ws : any = new WebSocket('wss://teach4speech-backend.onrender.com'); // Replace with your server URL
+    const ws : any = new WebSocket('wss://teach4speech-backend.onrender.com/'); 
     setWebSocket(ws);
 
-    // Function to close WebSocket
     const closeWebSocket = () => {
       if (ws) {
         ws.close();
@@ -57,16 +51,13 @@ function App() {
       }
     };
 
-    // Event listener for closing the WebSocket when the window is about to be unloaded
     window.addEventListener('beforeunload', closeWebSocket);
 
-    // Retrieve token from local storage on component mount
     getTokenFromLocalStorage();
 
     return () => {
       unsubscribe();
       closeWebSocket();
-      // Remove the event listener on cleanup
       window.removeEventListener('beforeunload', closeWebSocket);
     };
   }, []);

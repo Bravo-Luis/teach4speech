@@ -21,6 +21,7 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
     const [timerActive, setTimerActive] = useState(false);
     const [gameEnded, setGameEnded] = useState(false);
     const [leaderboards, setLeaderboards] = useState([]);
+    const [answers, setAnswers] = useState([]);
     const navigate = useNavigate()
     useEffect(() => {
         if (gameActive) {
@@ -64,6 +65,8 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
 
             if (message.action === 'update') {
                 setPoints(message.score);
+                setAnswers(message.answers);
+                
             }
 
             if (message.message === 'Client connected') {
@@ -148,6 +151,15 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
             <div className='game-1'>
                  <GameCodeDisplay gameCode={String(gameCode)} isEnglish={isEnglish}/>
                  <TranslationButton isEnglish={isEnglish} setIsEnglish={setIsEnglish}/>
+                 {!gameEnded && (<div className='student-grid'>
+                            {answers.map((answer, _) => (
+                                <Typography variant='h6' sx={{color:"white",
+                                fontWeight:"bold",
+                                fontSize:"clamp(2rem, 2.25vw, 4rem)",}}>
+                         {answer}
+                        </Typography>
+                            ))}
+                        </div>)}
              <>
              <Typography 
              variant="h6" 
@@ -299,6 +311,19 @@ function Game({ webSocket } : {webSocket: WebSocket | null}) {
                        {index + 1}. {item.name} with {Number(item.score) * 100} points
                     </Typography>
                 ))}
+<br />
+<Typography variant="h2" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
+                    Your Words
+                </Typography>
+<div className='student-grid'>
+                            {answers.map((answer, _) => (
+                                <Typography variant='h6' sx={{color:"white",
+                                fontWeight:"bold",
+                                fontSize:"clamp(2rem, 2.25vw, 4rem)",}}>
+                         {answer}
+                        </Typography>
+                            ))}
+                        </div>
             </div>
         );
     }

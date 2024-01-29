@@ -67,7 +67,20 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
             <br />
             <br />
 
+            {!gameActive && (<div className='student-grid'>
+                            {students.map((student, _) => (
+                                <Typography variant='h6' sx={{color:"white",
+                                fontWeight:"bold",
+                                fontSize:"clamp(2rem, 2.25vw, 4rem)",}}>
+                         {student}
+                        </Typography>
+                            ))}
+                        </div>)}
+
             {!gameActive ? (
+
+                
+
                 <Button 
                     variant='contained' 
                     color='secondary'
@@ -158,16 +171,6 @@ function GameHost({ webSocket} : {webSocket: WebSocket | null}) {
                         </Typography> 
                     </Box>
                     </div>
-
-                    {/* <Typography variant="h6"> Accuracy: {accuracyPercentage.toFixed(2)}%</Typography>
-                
-                    <Typography variant="h6" style={{ marginTop: '20px' }}>Most Common Words:</Typography>
-
-                  
-                        {gameStats.mostCommonAnswers.map((answer, index) => (
-                            <li key={index}>{answer}</li>
-                        ))}
-                    */}
 
 
 

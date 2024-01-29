@@ -13,8 +13,8 @@ function InstructorDashboard({ webSocket } : {webSocket: WebSocket | null}) {
   ];
 
   const handleGameClick = () => {
+    setIsLoading(true); // Set loading to true when the game is clicked
     if (webSocket && webSocket.readyState === WebSocket.OPEN) {
-      setIsLoading(true); // Set loading to true when the game is clicked
       webSocket.send(JSON.stringify({ role: 'instructor', action: 'create' }));
     }
   };
@@ -45,7 +45,7 @@ function InstructorDashboard({ webSocket } : {webSocket: WebSocket | null}) {
     <div className='instructor-dashboard'>
       <div className="background-layer bg2"></div>
       <div className="background-layer bg1"></div>
-      <Typography variant="h3">Choose A Game</Typography>
+      <Typography variant="h3"> Games </Typography>
       <br />
       <div className='dashboard-games'>
         {gameDictList.map((gameDict, index) => (
