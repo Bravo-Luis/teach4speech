@@ -24,9 +24,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    row-gap: 20px;
+    row-gap: 15px;
     align-items: center;
-    width: clamp(300px, 50vw, 800px);
+    width: clamp(300px, 90vw, 1200px);
 }
 
 .game-stats{

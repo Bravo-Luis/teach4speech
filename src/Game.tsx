@@ -151,6 +151,7 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
       <div className="game-1">
         <GameCodeDisplay gameCode={String(gameCode)} isEnglish={isEnglish} />
         <TranslationButton isEnglish={isEnglish} setIsEnglish={setIsEnglish} />
+        <br />
         {!gameEnded && (
           <div className="student-grid">
             
@@ -158,7 +159,6 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
                 <Box
                 paddingLeft={2}
                 paddingRight={2}
-                margin={2}
            
                 sx={{
                  borderRadius: 16,
@@ -319,6 +319,11 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
   if (gameEnded) {
     return (
       <div className="game-1">
+        <Button
+        variant="contained"
+        href="https://docs.google.com/forms/d/e/1FAIpQLScpWWt608r0DQj7Ttd4ScFl4wB9yfS0ABos6qpfEP0A4p-5mQ/viewform?usp=sf_link"> 
+          <Typography variant="h4" component="h4" sx={{ fontWeight: "bold" }}  > Feedback Form </Typography> </Button>
+          <br />
         <Typography
           variant="h2"
           component="h2"
@@ -346,7 +351,8 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
             <Box
             paddingLeft={2}
             paddingRight={2}
-            margin={2}
+            margin={0.25}
+
        
             sx={{
              borderRadius: 16,
