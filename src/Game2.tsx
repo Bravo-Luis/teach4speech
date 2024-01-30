@@ -72,7 +72,7 @@ useEffect(() => {
     const url = URL.createObjectURL(blob);
     const audio = document.createElement('audio');
     audio.src = url;
-    audio.controls = true;
+    audio.controls = false;
     document.body.appendChild(audio);
     console.log("Adding to array")
   };
@@ -130,15 +130,24 @@ useEffect(() => {
       <div className='game-2'>
         <h1 id ='gameTimer'>{preGameTimer > 0 ? `Countdown: ${preGameTimer}` : timer > 0 ? `Time Remaining: ${timer}` : "Time's up!"}</h1>
         <h1 id='currentGameWord'>{gameWord}</h1>
+        
       
         {(preGameTimer <= 0 && timer > 0) && (
         <div className="recordButton">
           <AudioRecorder onRecordingComplete={addAudioElement} showVisualizer />
         </div>
-      )}
+        
+        )}
+
+        {(preGameTimer <= 0 && timer > 0) && (
+          <div>
+            <h3 id="recordingPrompt">Click here to start recording</h3>
+          </div>
+          
+        )}
       
         <div>
-          {recordings.length > 0 && (
+          {(recordings.length > 0 && timer > 0) && (
             <div>
               {/* YOU WILL GET AN ERROR MESSAGE BECAUSE THERE IS NOWHERE TO SEND AUDIO YET */}
               <button id="sendRecordingToBackend" onClick={handleSaveAndSubmit}>Save and Submit</button>
