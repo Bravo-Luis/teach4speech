@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 // Other imports...
 import LandingPage from './LandingPage/LandingPage';
@@ -15,31 +16,17 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [webSocket, setWebSocket] = useState(null);
   const [token, setToken] = useState(null);
+  const navigate = useNavigate()
+
 
 
   useEffect(() => {
-    const getTokenFromLocalStorage = () => {
-      const storedToken : any = localStorage.getItem('token');
-      if (storedToken) {
-        setToken(storedToken);
-      }
-    };
-
-    const storeTokenInLocalStorage = (token : any) => {
-      localStorage.setItem('token', token);
-    };
-
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user : any) => {
       console.log("Auth state changed:", user);
       setCurrentUser(user);
-      if (user) {
-        user.getIdToken().then((idToken : any) => {
-          setToken(idToken);
-          storeTokenInLocalStorage(idToken);
-        });
-      }
     });
+
 
     const ws : any = new WebSocket('wss://teach4speech-backend.onrender.com/'); 
     setWebSocket(ws);
@@ -53,7 +40,6 @@ function App() {
 
     window.addEventListener('beforeunload', closeWebSocket);
 
-    getTokenFromLocalStorage();
 
     return () => {
       unsubscribe();
@@ -65,15 +51,31 @@ function App() {
 
 
   const ProtectedRoute = ({ children } : any) => {
-    return currentUser ? children : <Navigate to="/signin" />;
+    return currentUser ? children : <Navigate to="/" />;
   };
 
+  const FastTrack = ({children} : any) => {
+    return currentUser ? <Navigate to="/instructor-dashboard" /> : children;
+  }
+
   return (
-    <BrowserRouter>
+
       <Routes>
         <Route path="/" element={<LandingPage token={token}/>} />
-        <Route path="/signin" element={<LoginPage />} />
-        <Route path="/signup" element={<Signup />} />
+      
+          <Route path="/signin" element={
+          <FastTrack>
+            <LoginPage />
+          </FastTrack>
+          } />
+          <Route path="/signup" element={
+            <FastTrack>
+            <Signup />
+          </FastTrack>
+          } />
+
+       
+
         <Route path="/join" element={<JoinSection webSocket={webSocket} />} />
         <Route path="/game/:gameCode" element={
             <Game  webSocket={webSocket}/>
@@ -90,7 +92,7 @@ function App() {
         } />
        
       </Routes>
-    </BrowserRouter>
+
   );
 }
 
