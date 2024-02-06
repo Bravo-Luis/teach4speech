@@ -4,7 +4,7 @@ import { Typography, CircularProgress } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import wcloud from "../assets/wcloud.png";
 
-function InstructorDashboard({ webSocket } : {webSocket: WebSocket | null}) {
+function InstructorDashboard({ webSocket, setWebSocket } : {webSocket: WebSocket | null, setWebSocket: (any: any) => void}) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false); // State for loading indicator
 
@@ -13,22 +13,32 @@ function InstructorDashboard({ webSocket } : {webSocket: WebSocket | null}) {
   ];
 
   const handleGameClick = () => {
-    setIsLoading(true); // Set loading to true when the game is clicked
+    setIsLoading(true); 
     if (webSocket && webSocket.readyState === WebSocket.OPEN) {
+      console.log('WebSocket is open, sending message...');
       webSocket.send(JSON.stringify({ role: 'instructor', action: 'create' }));
+    } else {
+      console.log('WebSocket is not open, opening connection...');
+      const newWS = new WebSocket('wss://teach4speech-backend.onrender.com/');
+      newWS.onopen = () => {
+        // Wait for the connection to open before sending the message
+        console.log('WebSocket is open, sending message...');
+        newWS.send(JSON.stringify({ role: 'instructor', action: 'create' }));
+      };
+      setWebSocket(newWS);
     }
   };
+  
 
   useEffect(() => {
     if (!webSocket) return;
 
     const handleMessage = (message: any) => {
-      setIsLoading(false); // Set loading to false when a message is received
-      // Handle messages received from the server
+      setIsLoading(false); 
+    
       const data = JSON.parse(message.data);
       console.log(JSON.stringify(data));
       if (data.sessionId) {
-        // If a session ID is received, navigate to the game host page
         navigate(`/game-host/${data.sessionId}`);
       }
     };

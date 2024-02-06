@@ -15,14 +15,12 @@ import Signup from './SignUp/SignUp';
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [webSocket, setWebSocket] = useState(null);
-  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user : any) => {
       console.log("Auth state changed:", user);
       setCurrentUser(user);
-      setToken(user?.getIdToken());
     });
 
 
@@ -59,7 +57,7 @@ function App() {
   return (
 
       <Routes>
-        <Route path="/" element={<LandingPage token={token}/>} />
+        <Route path="/" element={<LandingPage/>} />
       
           <Route path="/signin" element={
           <FastTrack>
@@ -80,7 +78,7 @@ function App() {
         } />
         <Route path="/instructor-dashboard" element={
           <ProtectedRoute>
-            <InstructorDashboard webSocket={webSocket} />
+            <InstructorDashboard webSocket={webSocket} setWebSocket={setWebSocket} />
           </ProtectedRoute>
         } />
         <Route path="/game-host/:gameCode" element={

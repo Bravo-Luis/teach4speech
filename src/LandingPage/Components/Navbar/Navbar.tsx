@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import './Navbar.css';
 import { useNavigate } from 'react-router-dom';
 
-function Navbar(token: any) {
+function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,7 +54,8 @@ function Navbar(token: any) {
             <Button sx={{color: isScrolled ? "white" : "black", fontWeight:"bold"}} href="#About"> About </Button>
             <Button sx={{color: isScrolled ? "white" : "black", fontWeight:"bold"}} href='#Contact'> Contact </Button>
             </nav>
-            <Button href="\signin" variant="contained" sx={{
+            <Button href="\signin" variant="contained" 
+            sx={{
               backgroundColor: isScrolled ? "#FFEF58" : "purple", 
               fontWeight:"bold",
               color: isScrolled ? "black" : "white", 
@@ -105,12 +106,7 @@ function Navbar(token: any) {
             > Contact </Button>
               <Button
               onClick={()=>{
-                if (!token){
-                  navigate("/signin");
-                } else {
-                  navigate("/instructor-dashboard");
-                }
-
+                navigate('/signin')
               }}
               variant="contained"
               style={{
