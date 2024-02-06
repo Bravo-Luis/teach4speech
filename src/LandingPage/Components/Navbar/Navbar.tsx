@@ -2,11 +2,13 @@ import  { useState, useEffect } from 'react';
 import { Button, Typography, Drawer, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import './Navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar(token: any) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate()
 
 
   const toggleDrawer = (open : any) => (event : any) => {
@@ -101,7 +103,16 @@ function Navbar(token: any) {
             <Button href='#Contact' sx={{color:"black"}}
             
             > Contact </Button>
-              <Button href= {!token ? "\signin" : "\instructor-dashboard"} variant="contained"
+              <Button
+              onClick={()=>{
+                if (!token){
+                  navigate("/signin");
+                } else {
+                  navigate("/instructor-dashboard");
+                }
+
+              }}
+              variant="contained"
               style={{
                 backgroundColor: "#FFEF58", color: "black",
               }}>
