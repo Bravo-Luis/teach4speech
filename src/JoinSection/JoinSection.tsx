@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import './JoinSection.css';
 
-function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
+function JoinSection({ webSocket, setWebSocket }: { webSocket: WebSocket | null, setWebSocket: (any: any) => void }) {
     const [gameCode, setGameCode] = useState('');
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
@@ -23,13 +23,16 @@ function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
     };
 
     useEffect(() => {
-        if (!webSocket) return;
+        if (!webSocket) {
+            console.log('Creating new WebSocket');
+            setWebSocket(new WebSocket('wss://teach4speech-backend.onrender.com/'))
+        };
     
         const handleMessage = (message : any) => {
+
             try {
                 const data = JSON.parse(message.data);
                 if (data.message === 'Successfully joined session') {
-                    // Navigate to the game page upon successful join
                     navigate(`/game/${gameCode}`); // Replace with your game page route
                 }
             } catch (e) {
@@ -37,10 +40,10 @@ function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
             }
         };
     
-        webSocket.addEventListener('message', handleMessage);
+        webSocket?.addEventListener('message', handleMessage);
     
         return () => {
-            webSocket.removeEventListener('message', handleMessage);
+            webSocket?.removeEventListener('message', handleMessage);
         };
     }, [webSocket, navigate, gameCode]);
     
@@ -102,7 +105,7 @@ function JoinSection({ webSocket }: { webSocket: WebSocket | null }) {
             <Button 
                 variant="contained" 
                 color="secondary"
-                onClick={handleJoinGame} // Use onClick instead of href
+                onClick={handleJoinGame} 
                 sx={{ 
                     fontSize: 'clamp(2rem, 3vw, 3rem)',
                     width: 'clamp(250px, 40vw, 500px)',
