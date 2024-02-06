@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { Typography, Box } from "@mui/material";
+
 import "./Game.css";
 import { CSSTransition } from "react-transition-group";
 import lottieAnimation from "./assets/lottie_1.json";
 import Lottie from "react-lottie";
+import {
+  Button,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Link,
+  TextField,
+} from "@mui/material";
 
 function Game({ webSocket }: { webSocket: WebSocket | null }) {
   const [inputText, setInputText] = useState("");
@@ -153,27 +161,26 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
         <br />
         {!gameEnded && (
           <div className="student-grid">
-            
             {answers.map((answer, _) => (
-                <Box
+              <Box
                 paddingLeft={2}
                 paddingRight={2}
-           
                 sx={{
-                 borderRadius: 16,
-                 background:"gray"
-                }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  color: "white",
-                  fontWeight: "bold",
-                  fontSize: "clamp(2rem, 2.25vw, 4rem)",
+                  borderRadius: 16,
+                  background: "gray",
                 }}
               >
-                {answer}
-              </Typography>
-                </Box>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "clamp(2rem, 2.25vw, 4rem)",
+                  }}
+                >
+                  {answer}
+                </Typography>
+              </Box>
             ))}
           </div>
         )}
@@ -314,65 +321,84 @@ function Game({ webSocket }: { webSocket: WebSocket | null }) {
       </div>
     );
   }
-
   if (gameEnded) {
     return (
-      <div className="game-1">
-        <Button
-        variant="contained"
-        href="https://docs.google.com/forms/d/e/1FAIpQLScpWWt608r0DQj7Ttd4ScFl4wB9yfS0ABos6qpfEP0A4p-5mQ/viewform?usp=sf_link"> 
-          <Typography variant="h4" component="h4" sx={{ fontWeight: "bold" }}  > Feedback Form </Typography> </Button>
-          <br />
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ mb: 2, fontWeight: "bold" }}
-        >
-          Leaderboard
-        </Typography>
-
-        {leaderboards.map((item: { name: string; score: string }, index) => (
-          <Typography key={index} sx={{ fontSize: "clamp(20px, 2.5vw, 50px)" }}>
-            {index + 1}. {item.name} with {Number(item.score) * 100} points
-          </Typography>
-        ))}
-        <br />
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ mb: 2, fontWeight: "bold" }}
-        >
-          Your Words
-        </Typography>
-        <div className="student-grid">
-          
-          {answers.map((answer, index) => (
-            <Box
-            paddingLeft={2}
-            paddingRight={2}
-            margin={0.25}
-
-       
-            sx={{
-             borderRadius: 16,
-             background:"gray"
-            }}>
-            <Typography
-              variant="h6"
-              key={index}
-              sx={{
-                color: "white",
-                fontWeight: "bold",
-                fontSize: "clamp(2rem, 2.25vw, 4rem)",
-              }}
+      <Box className="game-1-end" >
+        <Grid container spacing={2} direction="column" alignItems="center">
+          <Grid item>
+            <Link
+              href="https://docs.google.com/forms/d/e/1FAIpQLScpWWt608r0DQj7Ttd4ScFl4wB9yfS0ABos6qpfEP0A4p-5mQ/viewform?usp=sf_link"
+              underline="none"
+              target="_blank"
             >
-              {answer}
-            </Typography>
-            </Box>
-          ))}
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#4A90E2",
+                  position: "absolute",
+                  top: "clamp(20px, 2.5vw, 40px)",
+                  right: "clamp(10px, 2.5vw, 25px)",
+                  "&:hover": { backgroundColor: "#357ABD" },
+                  fontWeight: "bold",
+                }}
+              >
+                Feedback Form
+              </Button>
+            </Link>
+          </Grid>
 
-        </div>
-      </div>
+          <Grid item sx={{display:"flex", flexDirection:"column", marginTop:"7.5vh"}}>
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{ fontWeight: "bold", textAlign: "center", fontSize: "clamp(25px, 5vw, 50px)"}}
+            >
+              Leaderboard
+            </Typography>
+            {leaderboards.map((item :any, index :any ) => (
+              <Typography
+                key={index}
+                sx={{
+                  fontSize: "clamp(20px, 2.5vw, 50px)",
+                  textAlign: "center",
+                }}
+              >
+                {index + 1}. {item.name} with {Number(item.score) * 100} points
+              </Typography>
+            ))}
+          </Grid>
+
+          <Grid item>
+            <br />
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{ fontWeight: "bold", fontSize: "clamp(25px, 5vw, 50px)", mb: 2, textAlign: "center"}}
+            >
+              Your Words
+            </Typography>
+            <Grid container spacing={2} justifyContent="center">
+              {answers.map((answer, index) => (
+                <Grid item key={index}>
+                  <Card sx={{ minWidth: 0, backgroundColor: "gray", borderRadius: "16px"  }}>
+                    <CardContent>
+                      <Typography
+                        sx={{
+                          color: "white",
+                          fontWeight: "bold",
+                          fontSize: "clamp(14px, 5vw, 25px)"
+                        }}
+                      >
+                        {answer}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
     );
   }
 }
