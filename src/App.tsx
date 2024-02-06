@@ -76,7 +76,7 @@ function App() {
 
        
 
-        <Route path="/join" element={<JoinSection webSocket={webSocket} />} />
+        <Route path="/join" element={<JoinSection />} />
         <Route path="/game/:gameCode" element={
             <Game  webSocket={webSocket}/>
         } />
