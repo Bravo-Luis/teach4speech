@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
@@ -16,15 +16,13 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [webSocket, setWebSocket] = useState(null);
   const [token, setToken] = useState(null);
-  const navigate = useNavigate()
-
-
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user : any) => {
       console.log("Auth state changed:", user);
       setCurrentUser(user);
+      setToken(user?.getIdToken());
     });
 
 

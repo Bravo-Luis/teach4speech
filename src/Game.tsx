@@ -10,7 +10,6 @@ import Lottie from "react-lottie";
 
 function Game({ webSocket }: { webSocket: WebSocket | null }) {
   const [inputText, setInputText] = useState("");
-
   const [isEnglish, setIsEnglish] = useState(true);
   const [gameActive, setGameActive] = useState(false);
   const { gameCode } = useParams();
