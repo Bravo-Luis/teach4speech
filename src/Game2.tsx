@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function Game2() {
 
-  const [timer, setTimer] = useState(15);
+  const [timer, setTimer] = useState(65);
   const [preGameTimer, setPreGameTimer] = useState(5);
   const [gameWord, setGameWord] = useState("")
   const [recordings, setRecordings] = useState<Blob[]>([]);
