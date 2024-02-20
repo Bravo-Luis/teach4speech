@@ -5,6 +5,7 @@ import axios from 'axios';
 
 function Game2() {
 
+  const[controls, setControls] = useState(false);
   const [timer, setTimer] = useState(65);
   const [preGameTimer, setPreGameTimer] = useState(5);
   const [gameWord, setGameWord] = useState("")
@@ -34,6 +35,7 @@ function Game2() {
         setPreGameTimer((prevTimer) => {
             const newTimer = prevTimer - 1;
             if (newTimer <= 0) {
+                // auto call start recording
                 clearInterval(preGameInterval);
             }
             return newTimer;
@@ -49,6 +51,11 @@ useEffect(() => {
 
       const newTimer = prevTimer - 1;
       if (newTimer <= 0) {
+        // auto save audio here
+        // const button = document.Query (class = audio-recorder-mic)
+        // button.click()
+        
+        document.querySelector
         clearInterval(interval);
         return 0;
       } else {
@@ -64,7 +71,8 @@ useEffect(() => {
   useEffect(() => {
     if (timer === 0){
         setGameWord("");
-        // handleSaveAndSubmit();
+        handleSaveAndSubmit();
+        setControls(true);
     }
 } , [timer]);
 
@@ -73,7 +81,7 @@ useEffect(() => {
     const url = URL.createObjectURL(blob);
     const audio = document.createElement('audio');
     audio.src = url;
-    audio.controls = false;
+    audio.controls = controls;
     document.body.appendChild(audio);
     console.log("Adding to array")
   };
@@ -100,18 +108,18 @@ useEffect(() => {
       formData.append('audioBlob', combinedBlob);
 
       // Replace with backend API endpoint URL
-      axios.post('placeholder-backend-api-endpoint', formData)
-        .then(response => {
-          // After player sends recording, redirect them to another screen
-          // to listen to other recording and play game?
-          // import { useHistory } from 'react-router-dom'
-          // history.push('/send-to-directory-here')
-          console.log('Audio submitted successfully', response);
-        })
-        .catch(error => {
-          console.error('Error submitting audio', error);
-          alert('An error occurred while submitting audio. Please try again.')
-        });
+      //axios.post('placeholder-backend-api-endpoint', formData)
+        // .then(response => {
+        //   // After player sends recording, redirect them to another screen
+        //   // to listen to other recording and play game?
+        //   // import { useHistory } from 'react-router-dom'
+        //   // history.push('/send-to-directory-here')
+        //   console.log('Audio submitted successfully', response);
+        // })
+        // .catch(error => {
+        //   console.error('Error submitting audio', error);
+        //   alert('An error occurred while submitting audio. Please try again.')
+        // });
     }
   };
 
@@ -120,10 +128,10 @@ useEffect(() => {
       .then(() => {
         submitRecordings();
       })
-      .catch(error => {
-        console.error('Error during save:', error);
-        alert('An error occurred during save. Please try again.');
-      });
+      // .catch(error => {
+      //   console.error('Error during save:', error);
+      //   alert('An error occurred during save. Please try again.');
+      // });
   };
 
   return (
