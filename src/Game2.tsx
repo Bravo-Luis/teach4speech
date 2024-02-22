@@ -11,16 +11,22 @@ function Game2() {
   const [gameWord, setGameWord] = useState("")
   const [recordings, setRecordings] = useState<Blob[]>([]);
   const objectsToDescribe = [
-    'Fire', 
-    'Cold', 
-    'Anything Purple', 
-    'Fruits', 
-    'Vegetables', 
-    'Shapes', 
-    'Breakfast Foods',
-    'Instruments',
-    'Sports',
-    'Types of Snacks'
+      'Fire', 
+      'Fruits', 
+      'Vegetables', 
+      'Pancakes',
+      'Violin',
+      'Tennis',
+    // 'Fire', 
+    // 'Cold', 
+    // 'Anything Purple', 
+    // 'Fruits', 
+    // 'Vegetables', 
+    // 'Shapes', 
+    // 'Breakfast Foods',
+    // 'Instruments',
+    // 'Sports',
+    // 'Types of Snacks'
   ];
 
   // Generates a random object to describe in game
