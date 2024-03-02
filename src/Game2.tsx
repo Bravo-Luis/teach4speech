@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import './Game2.css';
 import { AudioRecorder } from 'react-audio-voice-recorder';
-import axios from 'axios';
 
 function Game2() {
 
-  const[controls, setControls] = useState(false);
-  const [timer, setTimer] = useState(65);
+  const [isActive, setActive] = useState(false);
+  const [controls, setControls] = useState(false);
+  const [timer, setTimer] = useState(15);
   const [preGameTimer, setPreGameTimer] = useState(5);
   const [gameWord, setGameWord] = useState("")
   const [recordings, setRecordings] = useState<Blob[]>([]);
@@ -16,17 +16,7 @@ function Game2() {
       'Vegetables', 
       'Pancakes',
       'Violin',
-      'Tennis',
-    // 'Fire', 
-    // 'Cold', 
-    // 'Anything Purple', 
-    // 'Fruits', 
-    // 'Vegetables', 
-    // 'Shapes', 
-    // 'Breakfast Foods',
-    // 'Instruments',
-    // 'Sports',
-    // 'Types of Snacks'
+      'Tennis'
   ];
 
   // Generates a random object to describe in game
@@ -40,8 +30,9 @@ function Game2() {
     const preGameInterval = setInterval(() => {
         setPreGameTimer((prevTimer) => {
             const newTimer = prevTimer - 1;
-            if (newTimer <= 0) {
+            if (newTimer < 0) {
                 // auto call start recording
+                setActive(true);
                 clearInterval(preGameInterval);
             }
             return newTimer;
@@ -50,18 +41,34 @@ function Game2() {
     return () => clearInterval(preGameInterval);
   }, []);
 
+
+
+  // Handles voice-recording button automation
+  useEffect(() => {
+    const button = document.querySelector(".audio-recorder-mic ");
+    button?.click();
+  }, [isActive]);
+
+
+  
+
 // Handles timer countdown from 20 seconds (Game timer)
 useEffect(() => {
   const interval = setInterval(() => {
     setTimer((prevTimer) => {
 
       const newTimer = prevTimer - 1;
-      if (newTimer <= 0) {
-        // auto save audio here
-        // const button = document.Query (class = audio-recorder-mic)
-        // button.click()
-        
-        document.querySelector
+      if (newTimer <= 1) {
+        const button = document.querySelector(".audio-recorder-mic ");
+        if(button){
+          button?.click();
+          console.log("exists");
+        }
+        else{
+          console.log("Dne");
+        }  
+      }
+      if(newTimer <= 0){
         clearInterval(interval);
         return 0;
       } else {
@@ -72,12 +79,10 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, []);
 
-
   // Set's the game word h2 element to "" once timer reaches 0
   useEffect(() => {
     if (timer === 0){
         setGameWord("");
-        handleSaveAndSubmit();
         setControls(true);
     }
 } , [timer]);
@@ -92,24 +97,10 @@ useEffect(() => {
     console.log("Adding to array")
   };
 
-  const saveRecordingLocally = () => {
-    return new Promise<void>((resolve, reject) => {
-      // Storing the blob in the recordings array
-      if (recordings.length > 0) {
-        console.log("Newly recorded audio blob:", recordings[recordings.length - 1]);
-        console.log(recordings.length);
-        resolve();
-      }
-      else {
-        reject(new Error('No recordings available.'));
-      }
-    });
-  };
-
   const submitRecordings = () => {
     if(recordings.length > 0){
       const combinedBlob = new Blob(recordings, {type: 'audio/webm'});
-
+      
       const formData = new FormData();
       formData.append('audioBlob', combinedBlob);
 
@@ -127,17 +118,6 @@ useEffect(() => {
         //   alert('An error occurred while submitting audio. Please try again.')
         // });
     }
-  };
-
-  const handleSaveAndSubmit = () => {
-    saveRecordingLocally()
-      .then(() => {
-        submitRecordings();
-      })
-      // .catch(error => {
-      //   console.error('Error during save:', error);
-      //   alert('An error occurred during save. Please try again.');
-      // });
   };
 
   return (
@@ -165,7 +145,7 @@ useEffect(() => {
           {(recordings.length > 0 && timer > 0) && (
             <div>
               {/* YOU WILL GET AN ERROR MESSAGE BECAUSE THERE IS NOWHERE TO SEND AUDIO YET */}
-              <button id="sendRecordingToBackend" onClick={handleSaveAndSubmit}>Save and Submit</button>
+              <button id="sendRecordingToBackend" onClick={submitRecordings}>Save and Submit</button>
             </div>
           )}
         </div>
