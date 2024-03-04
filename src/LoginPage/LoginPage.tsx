@@ -1,137 +1,107 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button, TextField, Typography, Container, Paper, Divider } from '@mui/material';
-import * as Yup from 'yup';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button, TextField, Typography, Container, Divider, Box, Paper } from '@mui/material';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+
 import GoogleIcon from '../assets/google.svg';
-import './LoginPage.css';
+import app from '../Firebase';
 
-// Firebase imports
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import app from '../Firebase'; // Adjust the path as necessary
-
-// Define the form values interface
-interface FormValues {
-  email: string;
-  password: string;
-}
-
-// Initial values for the form
-const initialValues: FormValues = {
-  email: '',
-  password: '',
-};
-
-// Validation schema for the form
-const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string().required('Required'),
-});
-
-const LoginPage: React.FC = () => {
-  const auth = getAuth(app);  
+const LoginPage = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
 
-  const handleGoogleLogin = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log('Google sign in success:', result.user);
-        navigate('/instructor-dashboard'); // Navigate to dashboard on successful login
-      })
-      .catch((error) => {
-        console.error('Google sign in error:', error);
-        alert(error.message);
-      });
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Invalid email format').required('Required'),
+    password: Yup.string().required('Required')
+  });
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate('/instructor-dashboard');
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
 
-  const handleSubmit = (values: FormValues, { setSubmitting }: any) => {
+  const handleSubmit = async (values: any, { setSubmitting }: any) => {
     const { email, password } = values;
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate('/instructor-dashboard'); // Navigate to dashboard on successful login
-      })
-      .catch((error) => {
-        console.error('Login error:', error);
-        alert(error.message);
-      })
-      .finally(() => setSubmitting(false));
-  };
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/instructor-dashboard');
+    } catch (error: any) {
+      setError(error.message);
+    }
+    setSubmitting(false);
+  }
 
   return (
-    <Container component="main"  sx={{width: 'clamp(350px, 80vw, 600px)'}}>
-      <div className="background-layer bg2"></div>
-             <div className="background-layer bg1"></div>
-      <Paper style={{ padding: 20, marginTop: 40 }}>
-        <Typography component="h1" variant="h5" sx={{fontWeight:'bold'}}>
-          Sign in
-        </Typography>
-        <Button
-          onClick={handleGoogleLogin}
-          fullWidth
-          variant="contained"
-          style={{ 
-            margin: '10px 0', 
-            backgroundColor: '#fff', 
-            color: '#757575', 
-            boxShadow: 'none',
-            textTransform: 'none',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            fontWeight: 'bold',
-          }}
-        >
-          <img 
-            src={GoogleIcon} 
-            alt="Google sign-in" 
-            style={{ marginRight: '10px', width: '15px', height: '15px' }}
-          />
-          Sign In with Google
+    <Paper sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        padding: 2.5,
+        overflow: 'hidden',
+        background: 'transparent',
+
+        
+    }}>
+      <Paper
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 2,
+          maxWidth: '100%',
+          padding: '2rem 5rem',
+          width: 300,
+          textAlign: 'center'
+        }}
+      >
+      <Typography variant="h5" gutterBottom>
+        Login Page
+      </Typography>
+      {error && <Typography color="error">{error}</Typography>}
+      <Button
+        startIcon={<img src={GoogleIcon} alt="Google" style={{ width: 24, height: 24 }} />}
+        onClick={handleGoogleLogin}
+        sx={{ 
+            mb: 2,
+            padding: '10px 20px',
+            boxShadow: '2',
+         }}
+      >
+        Login with Google
+      </Button>
+      <Divider sx={{ width: '100%', mb: 2 }} />
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting }) => {
+            handleSubmit(values, { setSubmitting });
+            setSubmitting(false);
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <Field as={TextField} name="email" type="email" label="Email" fullWidth margin="normal" error={touched.email && Boolean(errors.email)} helperText={touched.email && errors.email} />
+            <Field as={TextField} name="password" type="password" label="Password" fullWidth margin="normal" error={touched.password && Boolean(errors.password)} helperText={touched.password && errors.password} />
+            <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2, width: '100%' }}>
+              Login
+            </Button>
+          </Form>
+        )}
+      </Formik>
+        <Button variant="text" onClick={() => navigate('/instructor-signup')}>
+            Don't have an account?
         </Button>
-        <Divider style={{ margin: '20px 0', width: '100%' }}>OR</Divider>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting }) => (
-            <Form>
-              <Field
-                as={TextField}
-                name="email"
-                label="Email Address"
-                fullWidth
-                margin="normal"
-                variant="filled"
-                helperText={<ErrorMessage name="email" />}
-              />
-              <Field
-                as={TextField}
-                type="password"
-                name="password"
-                label="Password"
-                fullWidth
-                margin="normal"
-                variant="filled"
-                helperText={<ErrorMessage name="password" />}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                style={{ margin: '20px 0' }}
-                disabled={isSubmitting}
-              >
-                Sign In
-              </Button>
-            </Form>
-          )}
-        </Formik>
-        Don't have an account? <a href="/signup">Sign Up</a>
       </Paper>
-    </Container>
+    </Paper>
   );
 };
 

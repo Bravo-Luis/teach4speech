@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import './Game2.css';
+import './AudioSharingGame.css';
 import { AudioRecorder } from 'react-audio-voice-recorder';
 
-function Game2() {
+function AudioSharingGame() {
 
   const [isActive, setActive] = useState(false);
   const [controls, setControls] = useState(false);
@@ -154,4 +154,4 @@ useEffect(() => {
   );
 }
 
-export default Game2;
+export default AudioSharingGame;
