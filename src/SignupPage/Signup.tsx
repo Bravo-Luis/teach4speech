@@ -1,8 +1,7 @@
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Button, TextField, Typography, Container, Paper, Divider } from '@mui/material';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Button, TextField, Typography, Paper, Divider } from '@mui/material';
+import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import * as Yup from 'yup';
 
 import app from '../Firebase'; 
@@ -13,11 +12,6 @@ interface FormValues {
     password: string;
   }
   
-  const initialValues: FormValues = {
-    email: '',
-    password: '',
-  };
-
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
@@ -26,7 +20,7 @@ const validationSchema = Yup.object().shape({
 function SignupPage(){
     const navigate = useNavigate()
     const auth = getAuth(app);
-    const [error, setError] = useState<string | null>(null);
+
 
     const handleGoogleSignup = () => {
         const provider = new GoogleAuthProvider();
@@ -81,7 +75,7 @@ function SignupPage(){
           <Typography variant="h5" gutterBottom>
             Sign Up Page
           </Typography>
-          {error && <Typography color="error">{error}</Typography>}
+
           <Button
             startIcon={<img src={GoogleIcon} alt="Google" style={{ width: 24, height: 24 }} />}
             onClick={handleGoogleSignup}
