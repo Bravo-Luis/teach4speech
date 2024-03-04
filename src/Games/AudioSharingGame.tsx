@@ -45,7 +45,7 @@ function AudioSharingGame() {
 
   // Handles voice-recording button automation
   useEffect(() => {
-    const button = document.querySelector(".audio-recorder-mic ");
+    const button = document.querySelector(".audio-recorder-mic ") as HTMLButtonElement;
     button?.click();
   }, [isActive]);
 
@@ -59,7 +59,7 @@ useEffect(() => {
 
       const newTimer = prevTimer - 1;
       if (newTimer <= 1) {
-        const button = document.querySelector(".audio-recorder-mic ");
+        const button = document.querySelector(".audio-recorder-mic ") as HTMLButtonElement;
         if(button){
           button?.click();
           console.log("exists");
