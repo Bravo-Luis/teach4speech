@@ -4,9 +4,16 @@ import { io } from 'socket.io-client';
 const dummySocketManager = {
   connect: () => {},
   disconnect: () => {},
-  on: (event: string, callback: Function) => {},
-  off: (event: string) => {},
-  emit: (event: string, data: any) => {},
+  on: (event: string, callback: Function) => {
+    console.log("Listening for event: ", event);
+    callback();
+  },
+  off: (event: string) => {
+    console.log("Stopped listening for event: ", event);
+  },
+  emit: (event: string, data: any) => {
+    console.log("Emitting event: ", event, " with data: ", data);
+  },
   isConnected: () => false,
 };
 
