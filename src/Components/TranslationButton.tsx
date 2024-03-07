@@ -47,6 +47,8 @@ function TranslationButton({
             transition: "opacity 0.3s ease-in-out",
             transitionDelay: isHovered ? "0s" : "0.1s",
             userSelect: "none",
+            padding: "5px",
+            msUserSelect: "none",
           }}
             variant="h4"
         >

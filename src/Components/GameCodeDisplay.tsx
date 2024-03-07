@@ -61,6 +61,8 @@ function GameCodeDisplay({ gameCode} : { gameCode: string, isEnglish: boolean}) 
                     textAlign: 'center',
                     transition: 'opacity 0.3s ease-in-out',
                     transitionDelay: isHovered ? '0s' : '0.1s',
+                    padding: "5px",
+                    userSelect: 'none',
                 }}
                 variant='h4'
             >
@@ -73,6 +75,7 @@ function GameCodeDisplay({ gameCode} : { gameCode: string, isEnglish: boolean}) 
                 }}>
                      <Typography variant='h4' sx={{
                         fontWeight: 'bold',
+                        userSelect: 'none',
                      }}> Copied </Typography>
 
                 </div>) : gameCode}

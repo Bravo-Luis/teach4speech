@@ -54,6 +54,9 @@ function JoinPage() {
 
         socket.on('game_joined_successfully', (data: any) => {
             console.log("Game joined successfully");
+            localStorage.setItem('game_code', data.game_code);
+            localStorage.setItem('game_name', data.game_name);
+            localStorage.setItem('socket_id', data.socket_id);
             navigate(`/waiting-room/${data.game_name}/${data.game_code}`)
             setIsLoading(false);
         });

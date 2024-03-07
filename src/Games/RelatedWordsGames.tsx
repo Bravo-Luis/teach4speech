@@ -5,6 +5,7 @@ import { TextField, Container, Box, Typography, Chip } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import TranslationButton from "../Components/TranslationButton";
 import CircularCountdown from "../Components/CircularCountdown";
+import RelatedWordsBackground from "../Backgrounds/RelatedWordsBackground";
 
 
 
@@ -12,6 +13,7 @@ function RelatedWordsGame(){
 
     const socket = SocketConsumer();
     const gameCode = useParams().gameCode as string;
+    const theme = useParams().theme as string;
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [answer, setAnswer] = useState<string>('');
     const [isEnglish, setIsEnglish] = useState(localStorage.getItem('language') === "en" ? true : false);
@@ -115,17 +117,18 @@ function RelatedWordsGame(){
     }
 
     return (
-      <Container sx={{
+      <RelatedWordsBackground theme={theme}>
+        <Container maxWidth={false} sx={{
         height: 'clamp(600px, 50vh, 80vh)',
-        width: '95vw',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: '2.5%',
+        paddingTop: '2.5vh',
+
         alignItems: 'center'
       }}>
-         <Container sx={{
-          width: '100vw',
+         <Container maxWidth={false} sx={{
+          width: '95%',
           display: 'flex',
           justifyContent: 'space-between',
          }}>
@@ -160,7 +163,6 @@ function RelatedWordsGame(){
                   variant="outlined"
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
-                  disabled={isSubmitting}
                   fullWidth
               />
               <LoadingButton
@@ -174,6 +176,7 @@ function RelatedWordsGame(){
           </form>
           </Box>
       </Container>
+      </RelatedWordsBackground>
   );
 }
 

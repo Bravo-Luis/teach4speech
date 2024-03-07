@@ -12,7 +12,9 @@ import WaitingRoomPage from './WaitingRoomPage/WaitingRoomPage';
 import { SocketProvider } from './SocketProvider'
 import theme from './Theme';
 
+
 function App() {
+ 
   return (
     <SocketProvider>
       <ThemeProvider theme={theme}>
@@ -22,7 +24,7 @@ function App() {
           {/* Player Routes */}
           <Route path='/join' element={<JoinPage/>} />
           <Route path='/waiting-room/:gameName/:gameCode' element={<WaitingRoomPage/>} />
-          <Route path='/game/related_words/:gameCode' element={<RelatedWordsGame/>} />
+          <Route path='/game/related_words/:gameCode/:theme' element={<RelatedWordsGame/>} />
 
           {/* Instructor Routes */}
           <Route path='/instructor-login' element={<LoginPage/>} />

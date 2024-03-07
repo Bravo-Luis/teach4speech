@@ -58,7 +58,7 @@ function WaitingRoomPage(){
         })
 
         socket.on('game_started', (data: any) => {
-            navigate(`/game/${data.game_name}/${gameCode}`);
+            navigate(`/game/${data.game_name}/${gameCode}/${data.theme}`);
         })
 
     }, [socket]);

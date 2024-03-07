@@ -14,8 +14,6 @@ const CircularCountdown = ({ duration } : any) => {
             setTimeLeft(timeLeftInSeconds);
             if (timeLeftInSeconds > 0) {
                 requestRef.current = requestAnimationFrame(updateCountdown);
-
-                
             }
         };
 
@@ -25,8 +23,8 @@ const CircularCountdown = ({ duration } : any) => {
     }, [startTime, duration]);
 
     const strokeDashoffset = () => {
-        const totalLength = 283; // The total length of the circle's stroke
-        return totalLength * (1 - timeLeft / duration); // Calculate the offset
+        const totalLength = 283; 
+        return totalLength * (1 - timeLeft / duration);
     };
 
     return (
@@ -36,7 +34,7 @@ const CircularCountdown = ({ duration } : any) => {
                     cx="50"
                     cy="50"
                     r="45"
-                    fill="none"
+                    fill="white"
                     stroke="white"
                     strokeWidth="10"
                 />
@@ -51,7 +49,7 @@ const CircularCountdown = ({ duration } : any) => {
                     strokeDashoffset={strokeDashoffset()}
                     transform="rotate(-90 50 50)"
                 />
-                <text x="50%" y="58%" textAnchor="middle" fill="#51c5cf" style={{
+                <text x="50%" y="58%" textAnchor="middle" fill="black" style={{
                     fontSize: "1.5em",
                     fontWeight: "bold"
                 }}>
