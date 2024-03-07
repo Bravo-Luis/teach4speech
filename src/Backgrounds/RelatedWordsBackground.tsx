@@ -75,7 +75,6 @@ import water_16_10 from '../assets/16_10/water.svg';
 import water_16_9 from '../assets/16_9/water.svg';
 import water_4_3 from '../assets/4_3/water.svg';
 import water_19_5_9 from '../assets/19.5_9/water.svg';
-import { string } from "yup";
 
 
 
