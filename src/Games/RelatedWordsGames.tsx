@@ -121,6 +121,7 @@ function RelatedWordsGame(){
         <Container maxWidth={false} sx={{
         height: 'clamp(600px, 50vh, 80vh)',
         display: 'flex',
+        backgroundImage: '', // put image here?
         flexDirection: 'column',
         justifyContent: 'space-between',
         paddingTop: '2.5vh',
