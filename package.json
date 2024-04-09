@@ -23,6 +23,7 @@
     "react-audio-voice-recorder": "^2.2.0",
     "react-dom": "^18.2.0",
     "react-lottie": "^1.2.4",
+    "react-parallax-tilt": "^1.7.220",
     "react-router-dom": "^6.21.1",
     "react-transition-group": "^4.4.5",
     "socket.io-client": "^4.7.5",

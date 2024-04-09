@@ -1,11 +1,13 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { TextField, Typography, Container, Paper, Divider } from '@mui/material';
+import { TextField, Typography, Container, Button } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { SocketConsumer } from '../SocketProvider';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
 
 interface FormValues {
   game_code: string;
@@ -42,6 +44,7 @@ function JoinPage() {
             console.log("Socket not connected... trying to connect.");
             socket.connect();
         }
+
         setIsLoading(true);
 
         socket.emit('join_game', {
@@ -69,12 +72,36 @@ function JoinPage() {
     }
 
   return (
-    <Container maxWidth="sm">
-      <Paper elevation={3} style={{ padding: '2rem', marginTop: '2rem' }}>
-        <Typography variant="h4" align="center" gutterBottom>
+    <Container maxWidth="sm" sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      marginTop: '10vh'
+    }}>
+           <Button
+        startIcon={<ArrowBackIosIcon
+        sx={{
+          width:"clamp(12px, 2vw, 24px)",
+        }}
+        />}
+        sx={{
+          position:'absolute',
+          top:'2vh',
+          left:'2vw',
+
+        }}
+        onClick={()=>{
+          navigate('/')
+        }}
+        variant='outlined'
+        color='primary'
+   
+        >
+        Back
+      </Button>
+        <Typography variant="h2" align="center" gutterBottom>
           Join Game
         </Typography>
-        <Divider style={{ margin: '20px 0' }} />
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -118,7 +145,7 @@ function JoinPage() {
             </Form>
           )}
         </Formik>
-      </Paper>
+
     </Container>
   );
 }

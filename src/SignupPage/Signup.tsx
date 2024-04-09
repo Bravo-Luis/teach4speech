@@ -1,8 +1,9 @@
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Button, TextField, Typography, Paper, Divider } from '@mui/material';
+import { Button, TextField, Typography, Container, Divider } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import * as Yup from 'yup';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import app from '../Firebase'; 
 import GoogleIcon from '../assets/google.svg'
@@ -49,45 +50,37 @@ function SignupPage(){
       };
 
       return (
-        <Paper sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            padding: 2.5,
-            overflow: 'hidden',
-            background: 'transparent',
-    
-            
+        <Container maxWidth="sm" sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginTop: '10vh'
         }}>
-          <Paper
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 2,
-              maxWidth: '100%',
-              padding: '2rem 5rem',
-              width: 300,
-              textAlign: 'center'
-            }}
-          >
-          <Typography variant="h5" gutterBottom>
+           <Button
+        startIcon={<ArrowBackIosIcon
+        sx={{
+          width:"clamp(12px, 2vw, 24px)",
+        }}
+        />}
+        sx={{
+          position:'absolute',
+          top:'2vh',
+          left:'2vw',
+
+        }}
+        onClick={()=>{
+          navigate('/')
+        }}
+        variant='outlined'
+        color='primary'
+   
+        >
+        Back
+      </Button>
+          <Typography variant="h2" gutterBottom>
             Sign Up Page
           </Typography>
-
-          <Button
-            startIcon={<img src={GoogleIcon} alt="Google" style={{ width: 24, height: 24 }} />}
-            onClick={handleGoogleSignup}
-            sx={{ 
-                mb: 2,
-                padding: '10px 20px',
-                boxShadow: '2',
-             }}
-          >
-            Sign Up with Google
-          </Button>
-          <Divider sx={{ width: '100%', mb: 2 }} />
+         
           <Formik
             initialValues={{ email: '', password: '' }}
             validationSchema={validationSchema}
@@ -98,6 +91,18 @@ function SignupPage(){
           >
             {({ errors, touched }) => (
               <Form>
+                 <Button
+        startIcon={<img src={GoogleIcon} alt="Google" style={{
+          width:"clamp(16px, 2vw, 24px)",
+        }} />}
+        onClick={handleGoogleSignup}
+        variant='outlined'
+        color='primary'
+        fullWidth
+        >
+        Sign Up with Google
+      </Button>
+      <Divider variant='middle' sx={{ mb: 2, mt:3.5, background:"gray"}}  />
                 <Field as={TextField} name="email" type="email" label="Email" fullWidth margin="normal" error={touched.email && Boolean(errors.email)} helperText={touched.email && errors.email} />
                 <Field as={TextField} name="password" type="password" label="Password" fullWidth margin="normal" error={touched.password && Boolean(errors.password)} helperText={touched.password && errors.password} />
                 <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2, width: '100%' }}>
@@ -106,11 +111,16 @@ function SignupPage(){
               </Form>
             )}
           </Formik>
-            <Button variant="text" onClick={() => navigate('/instructor-login')}>
-                Already have an account? Login
-            </Button>
-          </Paper>
-        </Paper>
+          <Link to="/instructor-login" style={{ textDecoration: "none", position:'absolute', bottom:'2.5%'}}>
+        <Typography variant="body1" color={"primary.light"} sx={{
+          ':hover' : {
+            textDecoration: "underline"
+          }
+        }}>
+          Already have an account?
+        </Typography>
+      </Link>
+        </Container>
       );
 }
 

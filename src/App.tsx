@@ -9,6 +9,7 @@ import JoinPage from './JoinPage/JoinPage';
 import GameHostPage from './GameHostPage/GameHostPage'
 import RelatedWordsGame from './Games/RelatedWordsGames'
 import WaitingRoomPage from './WaitingRoomPage/WaitingRoomPage';
+import About from './About';
 import { SocketProvider } from './SocketProvider'
 import theme from './Theme';
 
@@ -20,6 +21,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
+          <Route path='/about' element={<About/>} />
 
           {/* Player Routes */}
           <Route path='/join' element={<JoinPage/>} />

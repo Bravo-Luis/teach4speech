@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, TextField, Typography, Divider, Paper } from '@mui/material';
+import { useNavigate, Link } from 'react-router-dom';
+import { Button, TextField, Typography, Divider, Container } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import GoogleIcon from '../assets/google.svg';
 import app from '../Firebase';
@@ -40,45 +41,39 @@ const LoginPage = () => {
   }
 
   return (
-    <Paper sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        padding: 2.5,
-        overflow: 'hidden',
-        background: 'transparent',
 
-        
+    <Container maxWidth="sm" sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      marginTop: '10vh'
     }}>
-      <Paper
+      <Button
+        startIcon={<ArrowBackIosIcon
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 2,
-          maxWidth: '100%',
-          padding: '2rem 5rem',
-          width: 300,
-          textAlign: 'center'
+          width:"clamp(12px, 2vw, 24px)",
         }}
-      >
-      <Typography variant="h5" gutterBottom>
+        />}
+        sx={{
+          position:'absolute',
+          top:'2vh',
+          left:'2vw',
+
+        }}
+        onClick={()=>{
+          navigate('/')
+        }}
+        variant='outlined'
+        color='primary'
+   
+        >
+        Back
+      </Button>
+      <Typography variant="h2" gutterBottom>
         Login Page
       </Typography>
       {error && <Typography color="error">{error}</Typography>}
-      <Button
-        startIcon={<img src={GoogleIcon} alt="Google" style={{ width: 24, height: 24 }} />}
-        onClick={handleGoogleLogin}
-        sx={{ 
-            mb: 2,
-            padding: '10px 20px',
-            boxShadow: '2',
-         }}
-      >
-        Login with Google
-      </Button>
-      <Divider sx={{ width: '100%', mb: 2 }} />
+      
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={validationSchema}
@@ -87,8 +82,21 @@ const LoginPage = () => {
             setSubmitting(false);
         }}
       >
+        
         {({ errors, touched }) => (
           <Form>
+            <Button
+        startIcon={<img src={GoogleIcon} alt="Google" style={{
+          width:"clamp(16px, 2vw, 24px)",
+        }} />}
+        onClick={handleGoogleLogin}
+        variant='outlined'
+        color='primary'
+        fullWidth
+        >
+        Login with Google
+      </Button>
+      <Divider variant='middle' sx={{ mb: 2, mt:3.5, background:"gray"}}  />
             <Field as={TextField} name="email" type="email" label="Email" fullWidth margin="normal" error={touched.email && Boolean(errors.email)} helperText={touched.email && errors.email} />
             <Field as={TextField} name="password" type="password" label="Password" fullWidth margin="normal" error={touched.password && Boolean(errors.password)} helperText={touched.password && errors.password} />
             <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2, width: '100%' }}>
@@ -97,11 +105,17 @@ const LoginPage = () => {
           </Form>
         )}
       </Formik>
-        <Button variant="text" onClick={() => navigate('/instructor-signup')}>
-            Don't have an account?
-        </Button>
-      </Paper>
-    </Paper>
+        <Link to="/instructor-signup" style={{ textDecoration: "none", position:'absolute', bottom:'2.5%'}}>
+        <Typography variant="body1" color={"primary.light"} sx={{
+          ':hover' : {
+            textDecoration: "underline"
+          }
+        }}>
+          Don't have an account?
+        </Typography>
+      </Link>
+
+      </Container>
   );
 };
 

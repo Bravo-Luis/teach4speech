@@ -1,8 +1,5 @@
-import { Grid, Paper, Box, Typography } from "@mui/material";
+import { Grid, Container, Box, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import Lottie from 'react-lottie';
-import WordCloudAnimation from "../assets/wcloud.json";
-import AudioAnimation from "../assets/audio.json";
 import { SocketConsumer } from "../SocketProvider";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -35,26 +32,10 @@ function DashboardPage() {
         })
     }
 
-    const defaultOptionsOne = {
-        loop: true,
-        autoplay: true,
-        animationData: WordCloudAnimation,
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid meet',
-        },
-    };
 
-    const defaultOptionsTwo = {
-        loop: true,
-        autoplay: true,
-        animationData: AudioAnimation,
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid meet',
-        },
-    };
 
     return (
-        <Paper sx={{ 
+        <Container sx={{ 
             minHeight: "100vh",
             padding: 5,
         }} >
@@ -81,20 +62,18 @@ function DashboardPage() {
                         flexWrap: "wrap"
                     }}
                 >
-                    <Box sx={{
+                    <Box 
+                    sx={{
                         boxShadow: 5,
                         padding: "20px 30px",
                         borderRadius: 2,
-                        height: 350, 
-                        width: 350,
+                        gap: '2vh',
                         display: "flex", 
                         flexDirection: "column", 
                         justifyContent: "space-between", 
+                        border: (theme) => `2px solid ${theme.palette.primary.main}`, 
                     }}>
                         <Typography variant="h4">Related Words </Typography>
-                        <div style={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Lottie options={defaultOptionsOne} height="100%" width="100%" />
-                        </div>
                         <LoadingButton 
                              loading={isLoading}
                             variant="contained"
@@ -102,20 +81,18 @@ function DashboardPage() {
                          >Play</LoadingButton>
                     </Box>
 
-                    <Box sx={{
+                    <Box 
+                    sx={{
                         boxShadow: 5,
                         padding: "20px 30px",
                         borderRadius: 2,
-                        height: 350, 
-                        width: 350, 
+                        gap: '2vh',
                         display: "flex", 
                         flexDirection: "column", 
                         justifyContent: "space-between", 
+                        border: (theme) => `2px solid ${theme.palette.primary.main}`, 
                     }}>
                         <Typography variant="h4">Audio Sharing (WIP) </Typography>
-                        <div style={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Lottie options={defaultOptionsTwo} height="100%" width="100%" />
-                        </div>
                         <LoadingButton 
                             loading={isLoading}
                             variant="contained"
@@ -126,7 +103,7 @@ function DashboardPage() {
                     </Box>
                 </Grid>
             </Grid>
-        </Paper>
+        </Container>
     );
 }
 
