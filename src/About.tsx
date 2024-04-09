@@ -147,7 +147,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, description, avatarUrl 
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    maxWidth: 'clamp(200px, 25vw, 400px)',
+                    maxWidth: 'clamp(150px, 20vw, 300px)',
                     boxShadow: 3,
                 }}
             >

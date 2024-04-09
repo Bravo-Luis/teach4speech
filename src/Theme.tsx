@@ -13,69 +13,42 @@ const palette = {
 // Font Sizing
 const typography = {
     h1: {
-        fontSize: "6rem",
+        fontSize: "4.8rem",
         fontWeight: "bold",
         color: "white",
         '@media (max-width:1400px)': {
-            fontSize: "5rem",
+            fontSize: "4rem",
         },
         '@media (max-width:1000px)': {
-            fontSize: "3rem",
+            fontSize: "2.4rem",
         }, '@media (max-width:350px)': {
-            fontSize: "2rem",
+            fontSize: "1.6rem",
         }
     },
     h2: {
-        fontSize: "2.75rem",
+        fontSize: "2.2rem",
         color: "white",
-        '@media (max-width:1400px)': {
-            fontSize: "2.5rem",
-        },
-        '@media (max-width:1000px)': {
-            fontSize: "1.5rem",
-        }, '@media (max-width:350px)': {
-            fontSize: "1rem",
-        }
-        
-    },
-    h3: {
-        fontSize: "3rem",
-        '@media (max-width:1400px)': {
-            fontSize: "2.75rem",
-        },
-        '@media (max-width:1000px)': {
-            fontSize: "1.75rem",
-        }
-    },
-    h4: {
-        fontSize: "2.125rem",
         '@media (max-width:1400px)': {
             fontSize: "2rem",
         },
         '@media (max-width:1000px)': {
-            fontSize: "1.5rem",
+            fontSize: "1.2rem",
+        }, '@media (max-width:350px)': {
+            fontSize: "0.8rem",
         }
-    },
-    h5: {
-        fontSize: "1.5rem",
-        '@media (max-width:1400px)': {
-            fontSize: "1.4rem",
-        },
-        '@media (max-width:1000px)': {
-            fontSize: "1rem",
-        }
+        
     },
     body1: {
-        fontSize: "1.25rem",
+        fontSize: "1rem",
         color : "white",
         '@media (max-width:1400px)': {
-            fontSize: "1.25rem",
+            fontSize: "1rem",
             fontweight: "bold"
         },
         '@media (max-width:1000px)': {
-            fontSize: "0.75rem",
+            fontSize: "0.6rem",
         }, '@media (max-width:350px)': {
-            fontSize: "0.55rem",
+            fontSize: "0.44rem",
         }
     },
 }
