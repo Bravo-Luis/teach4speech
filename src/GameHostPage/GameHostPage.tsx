@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { SocketConsumer } from "../SocketProvider";
-import { Typography, Button, Container } from "@mui/material";
+import { Typography, Button, Container, Divider} from "@mui/material";
 import { useParams } from "react-router-dom";
 import GameCodeDisplay from "../Components/GameCodeDisplay";
+import { red, grey } from "@mui/material/colors";
 
 interface Student {
   id: string;
@@ -73,6 +74,7 @@ function GameHostPage() {
             flexDirection: "row",
           }}
         >
+
           <Typography
             variant="h3"
   
@@ -161,67 +163,95 @@ function GameHostPage() {
             flexWrap: "wrap",
             justifyContent: "space-between",
             alignItems: "center",
-            borderBottom: "1px solid #ccc",
-            marginBottom: "20px",
-            paddingBottom: "10px",
+
             paddingTop: "5vh",
             flexDirection: "row",
           }}
         >
           <Typography
-            variant="h3"
+            variant="h1"
   
           >
             {gameNameDisplay}
           </Typography>
-          <GameCodeDisplay gameCode={gameCode} isEnglish={true}/>
+          
   
         </div>
-  
-        <Typography variant="h4" fontWeight={"bold"} sx={{ marginBottom: "10px", borderBottom: "1px solid #ccc", paddingBottom: "10px",width:"100%", textAlign:"center"}}>
-          PLAYERS
+        <Divider variant='middle' sx={{background:"gray"}}  />
+
+        <Typography variant="h2" textAlign={'center'} padding={1} >
+        Join with Code 
+        <Typography onClick={()=>{
+          
+        }} sx={{
+          ":hover" : {
+            transition: 'scale 1s ease-in',
+            cursor: 'pointer'
+          }
+        }} variant="h1" color={'primary.light'} fontWeight={'bold'}>
+          {gameCode}
         </Typography>
-  
-        {players.map((player) => (
+        </Typography>
+        <Divider variant='middle' sx={{ mb: '1vh', background:"gray"}}  />
+        <br />
+        <Typography variant="h2" fontWeight={"bold"} >
+          Players
+        </Typography>
+        <br />
+
+        <Container sx={{
+          padding: '2.5%',
+          gap:'0'
+        }}>
+        {players.map((player, idx) => (
           <div
             key={player.id}
             style={{
-              marginBottom: "10px",
               borderBottom: "1px solid #ccc",
               paddingBottom: "10px",
-              paddingLeft: "5px",
-              paddingRight: "5px",
+              paddingLeft: "10px",
+              paddingRight: "10px",
               display: "flex",
               justifyContent: "space-between",
+              background: idx % 2 == 0 ? grey[800] : grey[900],
               alignItems: "center",
+              paddingTop: '10px'
+
             }}
           >
-            <Typography variant="h4">{player.name}</Typography>
+            <Typography variant="h2">{player.name}</Typography>
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "red",
-                fontWeight: "bold",
+                backgroundColor: red[500],
+                ":hover" : {
+                  backgroundColor: red[900]
+                }
               }}
               onClick={() => handleDeletePlayer(player.id, gameCode)}
             >
-              Kick
+Kick
             </Button>
           </div>
         ))}
-        {players.length > 0 && !isGameStarted && (
-        <Button variant="contained" onClick={()=>{startGame(gameCode)}}>
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-            Start Game
-          </Typography>
-        </Button>
-        )}
+        
         {players.length === 0 && (
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-            Waiting for players to join...
+          <Typography variant="body1" >
+            No players have joined yet.
           </Typography>
         
         )}
+        </Container>
+        {players.length > 0 && !isGameStarted && (
+
+          <Button variant="contained" sx={{
+            ml:'clamp(5px, 2.5vw, 25px)'
+          }} onClick={()=>{startGame(gameCode)}} >
+            Start Game
+        </Button>
+
+        )}
+        
       </Container>
     );
   }

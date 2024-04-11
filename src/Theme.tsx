@@ -39,16 +39,16 @@ const typography = {
         
     },
     body1: {
-        fontSize: "1rem",
+        fontSize: "1.2rem",
         color : "white",
         '@media (max-width:1400px)': {
-            fontSize: "1rem",
+            fontSize: "1.2rem",
             fontweight: "bold"
         },
         '@media (max-width:1000px)': {
-            fontSize: "0.6rem",
+            fontSize: "1rem",
         }, '@media (max-width:350px)': {
-            fontSize: "0.44rem",
+            fontSize: "0.8rem",
         }
     },
 }
@@ -60,6 +60,7 @@ const components = {
             styleOverrides: {
                 root:{
                     ...typography.body1,
+                    
                 },
             },
         },

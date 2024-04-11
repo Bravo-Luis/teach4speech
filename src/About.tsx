@@ -14,8 +14,6 @@ function About() {
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent:'center',
-            marginTop: '10vh',
-            marginBottom:'10vh',
             gap:'2vw',
         }}>
 
@@ -109,7 +107,7 @@ function About() {
             <Typography variant="h2" fontWeight={'bold'} gutterBottom>
                 Interested in Joining?
             </Typography>
-            <Typography variant="body1" fontWeight={'bold'} gutterBottom>
+            <Typography variant="body1"  gutterBottom>
                 Send an email telling us what youre interested in contributing.
                 Send an email telling us what youre interested in contributing.
                 Send an email telling us what youre interested in contributing.
