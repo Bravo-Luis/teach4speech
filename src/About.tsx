@@ -1,12 +1,10 @@
 import React from 'react';
-import { Box, Button, Container, Typography, Avatar } from '@mui/material';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate } from 'react-router-dom';
+import { Box, Container, Typography, Avatar } from '@mui/material';
 import Tilt from 'react-parallax-tilt';
 import { grey} from "@mui/material/colors";
 
 function About() {
-    const navigate = useNavigate();
+
     return (
         <Container sx={{
             display: 'flex',
@@ -15,20 +13,12 @@ function About() {
             alignItems: 'center',
             justifyContent:'center',
             gap:'2vw',
+            marginBottom:'20vh'
         }}>
+            <div id='About'></div>
 
 
-            <Button
-                startIcon={<ArrowBackIosIcon sx={{ width:"clamp(12px, 2vw, 24px)" }} />}
-                sx={{ position:'absolute', top:'2vh', left:'2vw' }}
-                onClick={() => navigate('/')}
-                variant='outlined'
-                color='primary'
-            >
-                Back
-            </Button>
-
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
+            <Typography  variant="h2" fontWeight={'bold'} gutterBottom>
                 Our Goal
             </Typography>
 
@@ -83,9 +73,12 @@ function About() {
             </Typography>
 
             <br />
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
+            <Typography variant="h2" fontWeight={'bold'} gutterBottom sx={{
+                id:'Team'
+            }} >
                 The Team
             </Typography>
+            <div id='Team'></div>
 
             <Container sx={{
             display: 'flex',
@@ -107,6 +100,7 @@ function About() {
             <Typography variant="h2" fontWeight={'bold'} gutterBottom>
                 Interested in Joining?
             </Typography>
+            <div id='Interest'></div>
             <Typography variant="body1"  gutterBottom>
                 Send an email telling us what youre interested in contributing.
                 Send an email telling us what youre interested in contributing.
