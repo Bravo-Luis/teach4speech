@@ -6,6 +6,15 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+import AdultMonroe from './assets/charts/AdultMonroe.png';
+import ConfAge from './assets/charts/ConfAge.png';
+import ConfHispanic from './assets/charts/ConfHispanic.png';
+import GenderPublicSmall from './assets/charts/GenderPublicSmall.png';
+import LearnHispanic from './assets/charts/LearnHispanic.png';
+import LearnMonroe from './assets/charts/LearnMonroe.png';
+import SmallAge from './assets/charts/SmallAge.png';
+import SmallGender from './assets/charts/SmallGender.png';
+
 function About() {
 
 
@@ -23,10 +32,10 @@ function About() {
             
         }}>
             <br id='Goal'/>
-            <br />
 
 
-            <Typography  variant="h2" fontWeight={'bold'} gutterBottom>
+
+            <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 Our Goal
             </Typography>
 
@@ -39,7 +48,7 @@ The first aspect of this program involves implementing this public speaking curr
 
             </Typography>
 
-            <br />
+
             <Typography  variant="h2" fontWeight={'bold'} gutterBottom>
                 Message from the Founder
             </Typography>
@@ -59,8 +68,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
 - Riya Nilkant, Founder and Executive Director
             </Typography>
             <br id='Impact'/>
-            <br />
-            <Typography  variant="h2" fontWeight={'bold'} gutterBottom>
+            <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 Impact and Initiatives
             </Typography>
 
@@ -170,7 +178,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     padding: '2vw'
 
 }}>
-    <img src="src/SmallAge.png" alt="" style={{
+    <img src={SmallAge} alt="" style={{
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
@@ -183,7 +191,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     padding: '2vw',
 
 }}>
-    <img src="src/SmallGender.png" alt="" style={{
+    <img src={SmallGender} alt="" style={{
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
@@ -196,7 +204,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     padding: '2vw',
 
 }}>
-    <img src="src/AdultMonroe.png" alt="" style={{
+    <img src={AdultMonroe} alt="" style={{
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
@@ -209,7 +217,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     padding: '2vw',
 
 }}>
-    <img src="src/ConfAge.png" alt="" style={{
+    <img src={ConfAge} alt="" style={{
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
@@ -222,7 +230,20 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     padding: '2vw',
 
 }}>
-    <img src="src/ConfHispanic.png" alt="" style={{
+    <img src={ConfHispanic} alt="" style={{
+        width:'clamp(300px, 80vw, 800px)',
+    }}/>
+</Paper>
+<Paper sx={{
+    paddingTop:'1vw',
+    background: 'white',
+    borderRadius: '1vw',
+    boxShadow: 5,
+    maxHeight:'clamp(300px, 70vw, 800px)',
+    padding: '2vw',
+
+}}>
+    <img src={GenderPublicSmall} alt="" style={{
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
@@ -235,7 +256,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     padding: '2vw',
 
 }}>
-    <img src="src/GenderPublicSmall.png" alt="" style={{
+    <img src={LearnHispanic} alt="" style={{
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
@@ -248,20 +269,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     padding: '2vw',
 
 }}>
-    <img src="src/LearnHispanic.png" alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src="src/LearnMonroe.png" alt="" style={{
+    <img src={LearnMonroe} alt="" style={{
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
@@ -271,7 +279,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
             </Container>
             <br id='Curriculum'/>
             <br />
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
+            <Typography variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 The Curriculum 
             </Typography>
             {
@@ -294,10 +302,8 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
             </Typography>
 
             <br id='Team'/>
-            <br />
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom sx={{
-  
-            }} >
+
+            <Typography variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 The Team
             </Typography>
             
