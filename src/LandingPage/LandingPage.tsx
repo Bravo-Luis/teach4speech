@@ -1,5 +1,5 @@
 import { Box, Typography, ButtonGroup, Drawer } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+
 import About from "../About";
 import { useEffect, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -53,29 +53,49 @@ function LandingPage() {
           <>
 
       <ButtonGroup sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent : 'center',
+        alignItems: 'center',
         marginTop:'4vh',
         gap: 'clamp(10px, 5vw, 200px)',
+        width:"100vw",
+        position: "fixed",
+        top: "0",
+        margin: "0",
+        padding: "2vh",
+        borderRadius: '0px',
+        boxShadow: '0px 0px 3px 0px black',
+        background: 'white',
+        zIndex: 1,
       }}>
 
-          <a href="#About" style={{
+          <a href="#Goal" style={{
             textDecoration: 'none',
           }}>
-            <Typography>
-              About
+            <Typography variant="body2">
+            Our Goal
+            </Typography>
+          </a>
+          <a href="#Impact" style={{
+            textDecoration: 'none',
+          }}>
+          <Typography variant="body2" >
+              Impact
+            </Typography>
+          </a>
+          <a href="#Curriculum" style={{
+            textDecoration: 'none',
+          }}>
+          <Typography variant="body2">
+              Curriculum
             </Typography>
           </a>
           <a href="#Team" style={{
             textDecoration: 'none',
           }}>
-          <Typography>
+          <Typography variant="body2" >
               Team
-            </Typography>
-          </a>
-          <a href="#Interest" style={{
-            textDecoration: 'none',
-          }}>
-          <Typography>
-              Interest
             </Typography>
           </a>
          
@@ -101,21 +121,36 @@ function LandingPage() {
             padding: '1vh',
             background: 'white',
             borderBottom: '1px solid black',
-          }} href="#About">About</a>
+          }} href="#About">
+            <Typography variant="body2"> Goal </Typography>
+          </a>
           <a style={{
             textDecoration: 'none',
             textAlign: 'center',
             padding: '1vh',
             background: 'white',
             borderBottom: '1px solid black',
-          }} href="#Team">Team</a>
+          }} href="#Team">
+            <Typography variant="body2"> Impact </Typography>
+          </a>
           <a style={{
             textDecoration: 'none',
             textAlign: 'center',
             padding: '1vh',
             background: 'white',
             borderBottom: '1px solid black',
-          }} href="#Interest">Interest</a>
+          }} href="#Interest">
+            <Typography variant="body2"> Curriculum </Typography>
+          </a>
+          <a style={{
+            textDecoration: 'none',
+            textAlign: 'center',
+            padding: '1vh',
+            background: 'white',
+            borderBottom: '1px solid black',
+          }} href="#Interest">
+            <Typography variant="body2"> Team </Typography>
+          </a>
 
 
       </ButtonGroup>

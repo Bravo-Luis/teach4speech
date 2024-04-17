@@ -22,7 +22,8 @@ function About() {
             marginBottom:'20vh'
             
         }}>
-            <div id='About'></div>
+            <br id='Goal'/>
+            <br />
 
 
             <Typography  variant="h2" fontWeight={'bold'} gutterBottom>
@@ -55,8 +56,9 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
             <Typography variant='body1' sx={{
             }}>
 
-– Riya Nilkant, Founder and Executive Director
+- Riya Nilkant, Founder and Executive Director
             </Typography>
+            <br id='Impact'/>
             <br />
             <Typography  variant="h2" fontWeight={'bold'} gutterBottom>
                 Impact and Initiatives
@@ -267,6 +269,7 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
                 
 
             </Container>
+            <br id='Curriculum'/>
             <br />
             <Typography variant="h2" fontWeight={'bold'} gutterBottom>
                 The Curriculum 
@@ -289,13 +292,15 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
             <br />
 
             </Typography>
+
+            <br id='Team'/>
             <br />
             <Typography variant="h2" fontWeight={'bold'} gutterBottom sx={{
-                id:'Team'
+  
             }} >
                 The Team
             </Typography>
-            <div id='Team'></div>
+            
 
             <Container sx={{
             display: 'flex',
