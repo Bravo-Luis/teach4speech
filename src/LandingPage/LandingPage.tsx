@@ -1,11 +1,11 @@
-import { Box, Typography, Button, ButtonGroup, Drawer } from "@mui/material";
+import { Box, Typography, ButtonGroup, Drawer } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import About from "../About";
 import { useEffect, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 
 function LandingPage() {
-  const navigate = useNavigate();
+
   const screenwidth = useState(window.innerWidth) 
   const openDrawer = useState(false)
   
@@ -30,10 +30,12 @@ function LandingPage() {
         px: "5%",                                    
         overflow: "hidden",
         textAlign: "center",
+        background: (theme)=>{return theme.palette.background.default}
       }}
     >
 
       {screenwidth[0] <= 720 ? (<MenuIcon
+      
         onClick={() =>{
           openDrawer[1](!openDrawer[0])
         }}
@@ -41,6 +43,7 @@ function LandingPage() {
         position: "absolute",
         top: "clamp(30px, 2vh, 5%)",
         left: "clamp(30px, 2vw, 5%)",
+        color: "black",
         scale: "2",
       }}
       />) : (null)}
@@ -48,27 +51,34 @@ function LandingPage() {
       {
         screenwidth[0] > 720 ? (
           <>
-          <Button
-        variant="contained"
-        sx={{
-          position: "absolute",
-          top: "clamp(10px, 2vh, 5%)",             
-          right: "clamp(10px, 2vw, 5%)",              
-        }}
-        onClick={() => navigate("/instructor-login")}
-      >
-        Instructor
-      </Button>
+
       <ButtonGroup sx={{
         marginTop:'4vh',
-        marginRight:'50vw',
         gap: 'clamp(10px, 5vw, 200px)',
       }}>
 
-          <a href="#About">About</a>
-          <a href="#Team">Team</a>
-          <a href="#Interest">Interest</a>
-          <a href="/join">Play</a>
+          <a href="#About" style={{
+            textDecoration: 'none',
+          }}>
+            <Typography>
+              About
+            </Typography>
+          </a>
+          <a href="#Team" style={{
+            textDecoration: 'none',
+          }}>
+          <Typography>
+              Team
+            </Typography>
+          </a>
+          <a href="#Interest" style={{
+            textDecoration: 'none',
+          }}>
+          <Typography>
+              Interest
+            </Typography>
+          </a>
+         
 
       </ButtonGroup>
           </>
@@ -78,15 +88,7 @@ function LandingPage() {
           }
         
         } open={openDrawer[0]} anchor="top">
-          <Button
-          sx={{
-            borderRadius:'0',
-          }}
-        variant="contained"
-        onClick={() => navigate("/instructor-login")}
-      >
-        Instructor
-      </Button>
+       
       <ButtonGroup sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -114,12 +116,7 @@ function LandingPage() {
             background: 'white',
             borderBottom: '1px solid black',
           }} href="#Interest">Interest</a>
-          <a style={{
-            textDecoration: 'none',
-            textAlign: 'center',
-            padding: '1vh',
-            background: 'white',
-          }} href="/join">Play</a>
+
 
       </ButtonGroup>
         </Drawer>)
