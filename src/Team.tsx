@@ -89,7 +89,7 @@ function Team(){
 
             <ProfileCard 
                 name="Jayne Romero" 
-                description="TBD" 
+                description="Jayne is a third year Environmental Studies major at UCSB and is part of the t4s outreach and administration teams. Outside of school and outreach, she is a ballet dancer and loves to read." 
                 avatarUrl={jayne}
             />
 
