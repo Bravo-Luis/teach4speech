@@ -47,7 +47,7 @@ function Team(){
 
             <ProfileCard 
                 name="Olivia Candelaria" 
-                description="TBD" 
+                description="I’m Olivia, I’m a third year Statistics and Data Science major at UCSB and I volunteer as the statistician for T4S. In my free time I like to swim, hike, and read." 
                 avatarUrl={olivia} 
             />
 
