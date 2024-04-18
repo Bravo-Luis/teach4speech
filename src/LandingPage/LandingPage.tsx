@@ -98,6 +98,20 @@ function LandingPage() {
               Team
             </Typography>
           </a>
+          <a href="/join" style={{
+            textDecoration: 'none',
+          }}>
+          <Typography variant="body2" >
+              Play
+            </Typography>
+          </a>
+          <a href="/instructor-login" style={{
+            textDecoration: 'none',
+          }}>
+          <Typography variant="body2" >
+              Instructor
+            </Typography>
+          </a>
          
 
       </ButtonGroup>
@@ -121,7 +135,7 @@ function LandingPage() {
             padding: '1vh',
             background: 'white',
             borderBottom: '1px solid black',
-          }} href="#About">
+          }} href="#Goal">
             <Typography variant="body2"> Goal </Typography>
           </a>
           <a style={{
@@ -130,7 +144,7 @@ function LandingPage() {
             padding: '1vh',
             background: 'white',
             borderBottom: '1px solid black',
-          }} href="#Team">
+          }} href="#Impact">
             <Typography variant="body2"> Impact </Typography>
           </a>
           <a style={{
@@ -139,7 +153,7 @@ function LandingPage() {
             padding: '1vh',
             background: 'white',
             borderBottom: '1px solid black',
-          }} href="#Interest">
+          }} href="#Curriculum">
             <Typography variant="body2"> Curriculum </Typography>
           </a>
           <a style={{
@@ -148,8 +162,26 @@ function LandingPage() {
             padding: '1vh',
             background: 'white',
             borderBottom: '1px solid black',
-          }} href="#Interest">
+          }} href="#Team">
             <Typography variant="body2"> Team </Typography>
+          </a>
+          <a style={{
+            textDecoration: 'none',
+            textAlign: 'center',
+            padding: '1vh',
+            background: 'white',
+            borderBottom: '1px solid black',
+          }} href="/join">
+            <Typography variant="body2"> Play </Typography>
+          </a>
+          <a style={{
+            textDecoration: 'none',
+            textAlign: 'center',
+            padding: '1vh',
+            background: 'white',
+            borderBottom: '1px solid black',
+          }} href="/instructor-login">
+            <Typography variant="body2"> Instructor </Typography>
           </a>
 
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Typography, Container, Box, Avatar } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { Typography, Container, Box } from '@mui/material';
 import Tilt from 'react-parallax-tilt';
 
 import andres from './assets/Team_Headshots/andres.png';
@@ -103,34 +102,59 @@ function Team(){
 
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ name, description, avatarUrl }) => {
+    const [showDescription, setShowDescription] = React.useState(false);
+
     return (
         <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.05} transitionSpeed={2500} glareEnable={true} glareMaxOpacity={0.1} glareColor="purple" style={{
-
+            borderRadius: '10px',
+            position: 'relative', // Ensure the positioning context for the pseudo-element
+            overflow: 'hidden',  // Contain the pseudo-element within the box
         }}>
-            <Box
+            <Box onClick={() => setShowDescription(!showDescription)}
                 sx={{
-                    background: grey[900],
+                    position: 'relative',  // Relative positioning for the layering
                     padding: '24px',
-
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    maxWidth: 'clamp(150px, 20vw, 300px)',
+                    width: 'clamp(150px, 20vw, 300px)',
+                    height: 'clamp(150px, 20vw, 300px)',
                     boxShadow: 3,
+                    borderRadius: '10px',
+                    '&::before': { // Pseudo-element for the background
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundImage: `url(${avatarUrl})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        opacity: showDescription ? 0.5 : 1, // Only change opacity of the background
+                        transition: 'opacity 0.3s ease' // Smooth transition for opacity change
+                    }
                 }}
             >
-                <Typography variant='h2' fontWeight={'bold'} gutterBottom color={'primary.medium'}>
+                <Typography variant='h2' fontWeight={'bold'} gutterBottom color={'white'} sx={{
+                    textShadow: `-2px 2px 1px black`,
+                    zIndex: 1, // Ensure text is above the pseudo-background
+                }}>
                     {name}
                 </Typography>
-
-                <Avatar src={avatarUrl} sx={{ width: 'clamp(100px, 25vw, 250px)', height: 'clamp(100px, 25vw, 250px)' }} />
                 <br />
-                <Typography variant='body1' textAlign={'center'} color={'primary.light'} >
-                    {description}   
-                </Typography>
+                {showDescription && (
+                    <Typography variant='body1' color={'black'} fontWeight={'bold'} sx={{
+                        textShadow: `-1px 1px 1px white`,
+                        zIndex: 1, // Ensure text is above the pseudo-background
+                    }}>
+                        {description}
+                    </Typography>
+                )}
             </Box>
         </Tilt>
     );
 };
+
 
 export default Team;

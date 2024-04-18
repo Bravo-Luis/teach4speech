@@ -88,7 +88,7 @@ function JoinPage() {
           position:'absolute',
           top:'2vh',
           left:'2vw',
-
+          color: 'black'
         }}
         onClick={()=>{
           navigate('/')

@@ -58,13 +58,12 @@ const LoginPage = () => {
           position:'absolute',
           top:'2vh',
           left:'2vw',
-
+          color: 'black'
         }}
         onClick={()=>{
           navigate('/')
         }}
         variant='outlined'
-        color='primary'
    
         >
         Back
@@ -91,7 +90,10 @@ const LoginPage = () => {
         }} />}
         onClick={handleGoogleLogin}
         variant='outlined'
-        color='primary'
+        sx={{
+          color: 'black',
+        }}
+
         fullWidth
         >
         Login with Google

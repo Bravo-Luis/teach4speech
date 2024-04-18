@@ -168,7 +168,65 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
   initially
 </Typography>
 
-<Paper sx={{
+
+
+                
+
+            </Container>
+            <br id='Curriculum'/>
+            <br />
+            <Typography variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
+                The Curriculum 
+            </Typography>
+            {
+                ["Overview", "Session 1", " Session 2", "Session 3", "Session 4", "Session 5", "Session 6", "Session 7", "Session 8", "Session 9", "Session 10"].map((session) => (
+                    <Accordion key={session}>
+                      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                        <Typography>{session}</Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <Typography>
+                          Details about {session}...
+                        </Typography>
+                      </AccordionDetails>
+                    </Accordion>
+                          ))
+            }
+
+            <br />
+
+            </Typography>
+
+            <br id='Team'/>
+            <Team />
+
+            
+        <br />
+
+        
+            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
+                Interested in Joining?
+            </Typography>
+            <div id='Interest'></div>
+            <Typography variant="body1"  gutterBottom>
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+                Send an email telling us what youre interested in contributing.
+            </Typography>
+
+            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
+                The Data
+            </Typography>
+            <div id='Data'></div>
+
+            <Paper sx={{
     paddingTop:'1vw',
     background: 'white',
     borderRadius: '1vw',
@@ -272,57 +330,6 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
         width:'clamp(300px, 80vw, 800px)',
     }}/>
 </Paper>
-
-                
-
-            </Container>
-            <br id='Curriculum'/>
-            <br />
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
-                The Curriculum 
-            </Typography>
-            {
-                ["Overview", "Session 1", " Session 2", "Session 3", "Session 4", "Session 5", "Session 6", "Session 7", "Session 8", "Session 9", "Session 10"].map((session) => (
-                    <Accordion key={session}>
-                      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>{session}</Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography>
-                          Details about {session}...
-                        </Typography>
-                      </AccordionDetails>
-                    </Accordion>
-                          ))
-            }
-
-            <br />
-
-            </Typography>
-
-            <br id='Team'/>
-            <Team />
-
-            
-        <br />
-
-        
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
-                Interested in Joining?
-            </Typography>
-            <div id='Interest'></div>
-            <Typography variant="body1"  gutterBottom>
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-                Send an email telling us what youre interested in contributing.
-            </Typography>
 
             
         </Container>

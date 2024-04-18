@@ -67,12 +67,15 @@ function SignupPage(){
           top:'2vh',
           left:'2vw',
 
+          color: 'black',
+
+
         }}
         onClick={()=>{
           navigate('/')
         }}
         variant='outlined'
-        color='primary'
+
    
         >
         Back
@@ -97,7 +100,10 @@ function SignupPage(){
         }} />}
         onClick={handleGoogleSignup}
         variant='outlined'
-        color='primary'
+        sx={{
+          color: 'black',
+        }}
+
         fullWidth
         >
         Sign Up with Google

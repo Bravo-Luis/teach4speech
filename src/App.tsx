@@ -12,6 +12,7 @@ import WaitingRoomPage from './WaitingRoomPage/WaitingRoomPage';
 import About from './About';
 import { SocketProvider } from './SocketProvider'
 import theme from './Theme';
+import './App.css';
 
 
 function App() {
