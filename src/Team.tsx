@@ -10,6 +10,7 @@ import eric from './assets/Team_Headshots/eric.png';
 import jayne from './assets/Team_Headshots/jayne.png';
 import olivia from './assets/Team_Headshots/olivia.png';
 import riya from './assets/Team_Headshots/riya.png';
+import julianna from './assets/Team_Headshots/julianna.png';
 
 interface ProfileCardProps {
     name: string;
@@ -77,8 +78,8 @@ function Team(){
 
             <ProfileCard 
                 name="Julianna" 
-                description="TBD" 
-                avatarUrl="https://tr.rbxcdn.com/d5a7a6b9ac9fe4b94c6d8a82476d6a1f/420/420/Hat/Png" 
+                description="I'm Julianna, a first year studying Computer Science at UCSB. I am part of the Web Design and Graphic Design teams! I am passionate about learning German and AR." 
+                avatarUrl={julianna}
             />
 
             <ProfileCard 
