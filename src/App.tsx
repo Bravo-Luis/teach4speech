@@ -15,6 +15,8 @@ import { SocketProvider } from './SocketProvider'
 import theme from './Theme';
 import './App.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import Mission from './Mission';
+import RiyasMessage from './RiyasMessage';
 
 
 function App() {
@@ -67,6 +69,9 @@ function App() {
             
             }} >Instructor</Button>
           </Box>} />
+
+          <Route path='/ourmission' element={<Mission/>} />
+          <Route path='/riyasmessage' element={<RiyasMessage/>} />
 
           {/* Player Routes */}
           <Route path='/join' element={<JoinPage/>} />
