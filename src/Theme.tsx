@@ -69,6 +69,19 @@ const typography = {
             fontSize: "0.8rem",
         }
     },
+    caption: {
+        fontSize: "1.2rem",
+        color : "black",
+        '@media (max-width:1400px)': {
+            fontSize: "1rem",
+            fontweight: "bold"
+        },
+        '@media (max-width:1000px)': {
+            fontSize: "1rem",
+        }, '@media (max-width:350px)': {
+            fontSize: "1rem",
+        }
+    },
 }
 
 

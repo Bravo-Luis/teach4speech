@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Box, Button } from '@mui/material';
 
 import LandingPage from "./LandingPage/LandingPage";
 import LoginPage from './LoginPage/LoginPage';
@@ -13,9 +14,12 @@ import About from './About';
 import { SocketProvider } from './SocketProvider'
 import theme from './Theme';
 import './App.css';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
 function App() {
+
+  const navigate = useNavigate()
  
   return (
     <SocketProvider>
@@ -23,6 +27,46 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage/>} />
           <Route path='/about' element={<About/>} />
+          <Route path='/redirect' element={<Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "1rem",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw"
+          
+          }}
+          >
+              <Button
+        startIcon={<ArrowBackIosIcon
+        sx={{
+          width:"clamp(12px, 2vw, 24px)",
+        }}
+        />}
+        sx={{
+          position:'absolute',
+          top:'2vh',
+          left:'2vw',
+          color: 'black'
+        }}
+        onClick={()=>{
+          navigate('/')
+        }}
+        variant='outlined'
+        color='primary'
+   
+        >
+        Back
+      </Button>
+            <Button variant='contained' onClick={()=>navigate('/join')}
+            >Student</Button>
+            <Button variant='contained' onClick={()=>{
+              navigate('/instructor-login')
+            
+            }} >Instructor</Button>
+          </Box>} />
 
           {/* Player Routes */}
           <Route path='/join' element={<JoinPage/>} />

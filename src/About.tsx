@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Paper } from '@mui/material';
+import { Box, Container, Typography, Paper, Button } from '@mui/material';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -33,39 +33,10 @@ function About() {
             <br id='Goal'/>
 
 
-
-            <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
-                Our Goal
-            </Typography>
-
-  
-
-            <Typography variant='body1'>
-            Teach4Speech is a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this. 
-The first aspect of this program involves implementing this public speaking curriculum in elementary and middle schools, individualized by grade level. This incluces a children’s book that demonstrates diversity, equity, and inclusion, which is greatly lacking from the literature. The second aspect of this program includes a teacher-training model that allows easy classroom integration in an effort to increase accessiblity. This would involve a video supplemented curriculum that demonstrates how each lesson should be communicated. In order make these lessons accessible to the community, especially for students who have barriers to learning and education, the third aspect of the curriculum involves multiple web based applications of speech and debate games that our team has developed. 
+            <HeaderAndText header="Mission Statement" text="Teach4Speech is a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this." link='/ourmission' />
+            <HeaderAndText header="Message From Our Founder" text="Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Unfortunately, classrooms and after-school programs did little to address this. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders." link='riyasmessage' />
 
 
-            </Typography>
-
-
-            <Typography  variant="h2" fontWeight={'bold'} gutterBottom>
-                Message from the Founder
-            </Typography>
-
-  
-
-            <Typography variant='body1'>
-            Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Unfortunately, classrooms and after-school programs did little to address this.
- Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders. The program takes the form of a 10-week series of speech and debate games, which are specifically tailored to pique the interest of elementary school students. By the end of the program, students can give speeches at the front of the room with limited preparation, a skill that I believe is crucial in the empowerment of the next generation. 
-In each school we have implemented Teach4Speech workshops in Santa Barbara, there was a measurable increase in the elementary students’ willingness to come to the front of the room and voice their opinions. Their improvement motivated me to further develop and expand this initiative. I aim to make the program accessible to more communities, and create resources to meet specific student communication needs. 
-
-
-            </Typography>
-            <Typography variant='body1' sx={{
-            }}>
-
-- Riya Nilkant, Founder and Executive Director
-            </Typography>
             <br id='Impact'/>
             <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 Impact and Initiatives
@@ -336,6 +307,35 @@ In each school we have implemented Teach4Speech workshops in Santa Barbara, ther
     );
 }
 
+
+
+function HeaderAndText({header, text, link} : {header: string, text: string, link?: string}) {
+    return (
+        <Box sx={{
+            maxWidth: 'clamp(300px, 80vw, 1000px)',
+        }} >
+            <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
+                {header}
+            </Typography>
+
+            <Typography variant='body1' >
+                {text}
+            </Typography>
+            {
+                link ? (
+                <>
+                <br />
+                <Button href={link} variant='outlined' >
+                <Typography variant='caption' color={"primary"}>
+                      Learn More
+                </Typography>
+             </Button>
+                </>
+             ) : null
+            }
+        </Box>
+    )
+}
 
 
 export default About;
