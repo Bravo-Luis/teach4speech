@@ -16,7 +16,37 @@ import SmallGender from './assets/charts/SmallGender.png';
 
 import Team from './Team';
 
+import overviewImage from './assets/curriculum_images/overviewImg.png';
+import session1Image from './assets/curriculum_images/session1Img.png';
+import session2Image from './assets/curriculum_images/session2Img.png';
+import session3Image from './assets/curriculum_images/session3Img.png';
+import session4Image from './assets/curriculum_images/session4Img.png';
+import session5Image from './assets/curriculum_images/session5Img.png';
+import session6Image from './assets/curriculum_images/session6Img.png';
+import session7Image from './assets/curriculum_images/session7Img.png';
+import session8Image from './assets/curriculum_images/session8Img.png';
+import session9Image from './assets/curriculum_images/session9Img.png';
+import session10Image from './assets/curriculum_images/session10Img.png';
+
 function About() {
+
+    // Moved hard-coded array of session titles to top of file.
+    // Assigning each imported session file a key to be accesses by curriculum code down below.
+
+    const sessions = ["Overview", "Session 1", " Session 2", "Session 3", "Session 4", "Session 5", "Session 6", "Session 7", "Session 8", "Session 9", "Session 10"];
+    const sessionDetails: Record<typeof sessions[number], string> = {
+        "Overview": overviewImage,
+        "Session 1": session1Image,
+        "Session 2": session2Image,
+        "Session 3": session3Image,
+        "Session 4": session4Image,
+        "Session 5": session5Image,
+        "Session 6": session6Image,
+        "Session 7": session7Image,
+        "Session 8": session8Image,
+        "Session 9": session9Image,
+        "Session 10": session10Image
+    };
 
     return (
         <Container sx={{
@@ -150,15 +180,13 @@ function About() {
                 The Curriculum 
             </Typography>
             {
-                ["Overview", "Session 1", " Session 2", "Session 3", "Session 4", "Session 5", "Session 6", "Session 7", "Session 8", "Session 9", "Session 10"].map((session) => (
+                sessions.map((session) => (
                     <Accordion key={session}>
                       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography>{session}</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography>
-                          Details about {session}...
-                        </Typography>
+                        <img src={sessionDetails[session]}/>
                       </AccordionDetails>
                     </Accordion>
                           ))
