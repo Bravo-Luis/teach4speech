@@ -186,7 +186,10 @@ function About() {
                         <Typography>{session}</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <img src={sessionDetails[session]} style={{"maxWidth": "clamp(250px, 80vw, 1000px)"}} />
+                        <img src={sessionDetails[session]} style={{
+                            "maxWidth": "clamp(250px, 80vw, 1000px)", 
+                            "maxHeight": "80vh",
+                            }} />
                       </AccordionDetails>
                     </Accordion>
                           ))
