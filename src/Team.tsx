@@ -106,23 +106,25 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, description, avatarUrl 
     const [showDescription, setShowDescription] = React.useState(false);
 
     return (
-        <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.05} transitionSpeed={2500} glareEnable={true} glareMaxOpacity={0.1} glareColor="purple" style={{
+        <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.01} transitionSpeed={2500} glareEnable={true} glareMaxOpacity={0.1} glareColor="purple" style={{
             borderRadius: '10px',
-            position: 'relative', // Ensure the positioning context for the pseudo-element
-            overflow: 'hidden',  // Contain the pseudo-element within the box
+            position: 'relative', 
+            overflow: 'hidden', 
         }}>
             <Box onClick={() => setShowDescription(!showDescription)}
                 sx={{
-                    position: 'relative',  // Relative positioning for the layering
+                    position: 'relative',  
                     padding: '24px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    width: 'clamp(150px, 20vw, 300px)',
-                    height: 'clamp(150px, 20vw, 300px)',
+                    width: 'clamp(250px, 25vw, 400px)',
+                    height: 'clamp(250px, 25vw, 400px)',
                     boxShadow: 3,
                     borderRadius: '10px',
-                    '&::before': { // Pseudo-element for the background
+                    backgroundColor: 'black',
+                    gap: '1rem',
+                    '&::before': { 
                         content: '""',
                         position: 'absolute',
                         top: 0,
@@ -132,22 +134,24 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, description, avatarUrl 
                         backgroundImage: `url(${avatarUrl})`,
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
-                        opacity: showDescription ? 0.5 : 1, // Only change opacity of the background
-                        transition: 'opacity 0.3s ease' // Smooth transition for opacity change
+                        opacity: showDescription ? 0.5 : 1, 
+                        transition: 'opacity 0.3s ease' 
                     }
                 }}
             >
                 <Typography variant='h2' fontWeight={'bold'} gutterBottom color={'white'} sx={{
                     textShadow: `-2px 2px 1px black`,
-                    zIndex: 1, // Ensure text is above the pseudo-background
+                    zIndex: 1, 
                 }}>
                     {name}
                 </Typography>
-                <br />
                 {showDescription && (
-                    <Typography variant='body1' color={'black'} fontWeight={'bold'} sx={{
-                        textShadow: `-1px 1px 1px white`,
-                        zIndex: 1, // Ensure text is above the pseudo-background
+                    <Typography variant='caption' color={'white'} fontWeight={'bold'} sx={{
+                        textShadow: `-2px 2px 1px black`,
+                        zIndex: 1, 
+                        opacity: 0.95,
+                        width: '100%',
+                        overflow: 'auto',
                     }}>
                         {description}
                     </Typography>
