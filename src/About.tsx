@@ -30,8 +30,6 @@ import session10Image from './assets/curriculum_images/session10Img.png';
 
 function About() {
 
-    // Moved hard-coded array of session titles to top of file.
-    // Assigning each imported session file a key to be accesses by curriculum code down below.
 
     const sessions = ["Overview", "Session 1", " Session 2", "Session 3", "Session 4", "Session 5", "Session 6", "Session 7", "Session 8", "Session 9", "Session 10"];
     const sessionDetails: Record<typeof sessions[number], string> = {
@@ -188,7 +186,7 @@ function About() {
                         <Typography>{session}</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <img src={sessionDetails[session]}/>
+                        <img src={sessionDetails[session]} style={{"maxWidth": "clamp(250px, 80vw, 1000px)"}} />
                       </AccordionDetails>
                     </Accordion>
                           ))
