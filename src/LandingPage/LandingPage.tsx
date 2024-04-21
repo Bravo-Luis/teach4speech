@@ -71,8 +71,7 @@ function ScrollDown({yPos} = {yPos: 0}){
         alignItems: 'center',
         justifyContent: 'center',
         bottom: '2vh',
-        opacity: `clamp(0, 1, ${1 - yPos/1000})`,
-
+        opacity: `clamp(0, 1, ${1 - yPos/500})`,
       }}
     >
     <Typography variant="caption" sx={{
