@@ -66,9 +66,7 @@ function About() {
 
 
             <br id='Impact'/>
-            <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
-                Impact and Initiatives
-            </Typography>
+            <HeaderAndText header="Impact" text="After just 5 sessions students on average tripled their speaking times. The record speaker spoke 4x the initial time. By the tenth session, 66% of students who spoke at the front of the room had not done so during the first session, and 66% were girls (compared to only 25% of girls initially)" />
 
   
 
@@ -139,34 +137,7 @@ function About() {
                 <br />
 
               
-                <Typography variant='body1' fontWeight={'bold'} component={'span'}>
-  After just 
-  <Typography component={'span'} variant="body2" fontWeight={'bold'}  sx={{
-      
-  }}> 5 sessions  </Typography>
-  students on average 
-  <Typography component={'span'} variant='body2' fontWeight={'bold'} > tripled </Typography>
-   their
-   <Typography component={'span'} variant='body2' fontWeight={'bold'}> speaking times. </Typography>
-  The record speaker spoke 
-  <Typography component={'span'} variant='body2' fontWeight={'bold'}  sx={{
-
-  }}> 4x the initial time. </Typography>
-  By the tenth session, 
-  <Typography component={'span'} variant='body2' fontWeight={'bold'} sx={{
-
-  }}> 66% </Typography>
-  of students who spoke at the front of the room had not done so during the first session, and 
-  <Typography component={'span'} variant='body2' fontWeight={'bold'}  sx={{
-
-  }}> 66% were girls </Typography>
-  compared to only
-  <Typography component={'span'} variant='body2' fontWeight={'bold'}  sx={{
-
-  }}> 25% of girls </Typography>
-  initially
-</Typography>
-
+                
 
 
                 
