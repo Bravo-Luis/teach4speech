@@ -1,18 +1,9 @@
-import { Box, Container, Typography, Paper, Button } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-import AdultMonroe from './assets/charts/AdultMonroe.png';
-import ConfAge from './assets/charts/ConfAge.png';
-import ConfHispanic from './assets/charts/ConfHispanic.png';
-import GenderPublicSmall from './assets/charts/GenderPublicSmall.png';
-import LearnHispanic from './assets/charts/LearnHispanic.png';
-import LearnMonroe from './assets/charts/LearnMonroe.png';
-import SmallAge from './assets/charts/SmallAge.png';
-import SmallGender from './assets/charts/SmallGender.png';
 
 import Team from './Team';
 
@@ -27,6 +18,7 @@ import session7Image from './assets/curriculum_images/session7Img.png';
 import session8Image from './assets/curriculum_images/session8Img.png';
 import session9Image from './assets/curriculum_images/session9Img.png';
 import session10Image from './assets/curriculum_images/session10Img.png';
+import Charts from './Charts';
 
 function About() {
 
@@ -137,11 +129,7 @@ function About() {
                 <br />
 
               
-                
-
-
-                
-
+            
             </Container>
             <br id='Curriculum'/>
             <br />
@@ -152,7 +140,7 @@ function About() {
                 sessions.map((session) => (
                      
                     // Background color TDB
-                    <Accordion key={session} sx={{ backgroundColor: '' }}>  
+                    <Accordion key={session} sx={{ backgroundColor: 'primary.light' }}>  
                       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography>{session}</Typography>
                       </AccordionSummary>
@@ -194,115 +182,10 @@ function About() {
                 Send an email telling us what youre interested in contributing.
             </Typography>
 
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
-                The Data
-            </Typography>
-            <div id='Data'></div>
+            <Charts/>
+   
 
-            <Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw'
-
-}}>
-    <img src={SmallAge} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src={SmallGender} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src={AdultMonroe} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src={ConfAge} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src={ConfHispanic} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 70vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src={GenderPublicSmall} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src={LearnHispanic} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
-<Paper sx={{
-    paddingTop:'1vw',
-    background: 'white',
-    borderRadius: '1vw',
-    boxShadow: 5,
-    maxHeight:'clamp(300px, 80vw, 800px)',
-    padding: '2vw',
-
-}}>
-    <img src={LearnMonroe} alt="" style={{
-        width:'clamp(300px, 80vw, 800px)',
-    }}/>
-</Paper>
+            
 
             
         </Container>

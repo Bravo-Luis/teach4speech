@@ -11,7 +11,7 @@ import jayne from './assets/Team_Headshots/jayne.png';
 import olivia from './assets/Team_Headshots/olivia.png';
 import riya from './assets/Team_Headshots/riya.png';
 import julianna from './assets/Team_Headshots/julianna.png';
-
+import luis from './assets/Team_Headshots/luis.jpeg';
 interface ProfileCardProps {
     name: string;
     description: string;
@@ -73,7 +73,7 @@ function Team(){
             <ProfileCard 
                 name="Luis" 
                 description="A passionate software engineer who developed this website!" 
-                avatarUrl="https://tr.rbxcdn.com/d5a7a6b9ac9fe4b94c6d8a82476d6a1f/420/420/Hat/Png" 
+                avatarUrl={luis} 
             />
 
             <ProfileCard 
@@ -124,6 +124,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, description, avatarUrl 
                     borderRadius: '10px',
                     backgroundColor: 'black',
                     gap: '1rem',
+                    cursor: 'pointer',
                     '&::before': { 
                         content: '""',
                         position: 'absolute',

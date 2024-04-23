@@ -65,7 +65,7 @@ function Navbar(){
       borderRadius: '0px',
       boxShadow: `0px 0px ${Math.min(yPos[0] * 0.01, 4)}px -2px black`,
       background: 'white',
-      zIndex: 1,
+      zIndex: 100,
     }}>
 
         <Box sx={{
