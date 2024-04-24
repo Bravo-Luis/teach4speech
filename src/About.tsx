@@ -197,7 +197,7 @@ function About() {
 
             {/* Videos to be linked later */}
 
-            <Link href='' target="_blank" rel="noopener noreferrer">
+            <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAGp47zfxyhhhXyMfio-fIPV' target="_blank" rel="noopener noreferrer">
                 <Box sx={{
                     border: '1px solid black',
                     borderRadius: '1vw',
@@ -213,7 +213,7 @@ function About() {
 
             {/* To be linked later */}
 
-            <Link href='' target="_blank" rel="noopener noreferrer">
+            <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAFdH0uffJRDnTIlIzDDzhZx' target="_blank" rel="noopener noreferrer">
                 <Box sx={{
                     border: '1px solid black',
                     borderRadius: '1vw',
