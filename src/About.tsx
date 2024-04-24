@@ -139,8 +139,7 @@ function About() {
             {
                 sessions.map((session) => (
                      
-                    // Background color TDB
-                    <Accordion key={session} sx={{ backgroundColor: 'primary.light' }}>  
+                    <Accordion key={session} sx={{ backgroundColor: '#b5b3b3' }}>  
                       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography>{session}</Typography>
                       </AccordionSummary>
