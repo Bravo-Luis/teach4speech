@@ -165,7 +165,7 @@ function About() {
 
             {/* Curriculum PDF to be linked later */}
 
-            <Link href='./assets/curriculum_images/full_curriculum.pdf' target="_blank" rel="noopener noreferrer" download>
+            <Link href='' target="_blank" rel="noopener noreferrer" >
                 <Box sx={{
                     border: '1px solid black',
                     borderRadius: '1vw',
