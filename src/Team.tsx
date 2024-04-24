@@ -24,6 +24,10 @@ function Team(){
         <Typography variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 The Team
             </Typography>
+
+        <Typography variant="h2" gutterBottom marginTop={"5vh"}>
+                Founder and Executive Director
+            </Typography>
             
 
             <Container sx={{
@@ -39,6 +43,22 @@ function Team(){
                 description="Riya founded the Teach4Speech program creating a tailored curriculum for speaking and advocacy at local Santa Barbara elementary schools. She is a Biological Sciences major at UCSB passionate about medicine and life sciences research. In her free time, she enjoys exploring the outdoors and new coffee shops!" 
                 avatarUrl={riya}
             />
+        </Container>
+
+
+        <Typography variant="h2" gutterBottom marginTop={"15vh"}>
+                Curriculum Team
+            </Typography>
+            
+
+            <Container sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent:'center',
+            gap:'2vw',
+        }}>
 
             <ProfileCard 
                 name="Andres Stidger" 
@@ -58,6 +78,22 @@ function Team(){
                 avatarUrl={benicio}
             />
 
+        </Container>
+
+
+        <Typography variant="h2" gutterBottom marginTop={"15vh"}>
+                Web Development Team
+            </Typography>
+    
+
+            <Container sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent:'center',
+            gap:'2vw',
+        }}>
             <ProfileCard 
                 name="Eric Lee" 
                 description="Eric is a master’s student at Stanford studying Computer Science and helps manage development initiatives for the technology team. In his free time, he loves to cook and play violin!" 
@@ -81,7 +117,22 @@ function Team(){
                 description="I'm Julianna, a first year studying Computer Science at UCSB. I am part of the Web Design and Graphic Design teams! I am passionate about learning German and AR." 
                 avatarUrl={julianna}
             />
+        </Container>
 
+
+        <Typography variant="h2" gutterBottom marginTop={"15vh"}>
+                Management Team
+            </Typography>
+    
+
+            <Container sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent:'center',
+            gap:'2vw',
+        }}>
             <ProfileCard 
                 name="Anna Leith" 
                 description="I’m anna, I’m a 3rd year psych and brain science major at ucsb and I am part of the t4s outreach and administration teams. In my free time I enjoy hiking, slack lining, and working with neurodiverse populations." 
@@ -93,8 +144,6 @@ function Team(){
                 description="Jayne is a third year Environmental Studies major at UCSB and is part of the t4s outreach and administration teams. Outside of school and outreach, she is a ballet dancer and loves to read." 
                 avatarUrl={jayne}
             />
-
-
         </Container>
         </>
     );
