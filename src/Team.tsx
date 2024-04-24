@@ -71,13 +71,13 @@ function Team(){
             />
 
             <ProfileCard 
-                name="Luis" 
+                name="Luis Bravo" 
                 description="A passionate software engineer who developed this website!" 
                 avatarUrl={luis} 
             />
 
             <ProfileCard 
-                name="Julianna" 
+                name="Julianna Flores" 
                 description="I'm Julianna, a first year studying Computer Science at UCSB. I am part of the Web Design and Graphic Design teams! I am passionate about learning German and AR." 
                 avatarUrl={julianna}
             />
