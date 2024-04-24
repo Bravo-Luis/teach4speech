@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Button } from '@mui/material';
+import { Link } from '@mui/material';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -152,6 +153,79 @@ function About() {
                     </Accordion>
                           ))
             }
+
+            <Container sx={{
+                display:'flex',
+                flexDirection:'row',
+                flexWrap:'wrap',
+                gap:'2vw',
+                justifyContent:'center',
+                marginTop:"10vh"
+            }}> 
+
+            {/* Curriculum PDF to be linked later */}
+
+            <Link href='' target="_blank" rel="noopener noreferrer">
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    background: (theme) => theme.palette.primary.light,
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Download Full Curriculum
+                    </Typography>
+                </Box>
+            </Link>
+
+
+            {/* Survey PDF to be linked later */}    
+
+            <Link href='' target="_blank" rel="noopener noreferrer">
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    background: (theme) => theme.palette.primary.light,
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Download Surveys
+                    </Typography>
+                </Box>
+            </Link>
+
+
+            {/* Videos to be linked later */}
+
+            <Link href='' target="_blank" rel="noopener noreferrer">
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    background: (theme) => theme.palette.primary.light,
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Video Lessons
+                    </Typography>
+                </Box>
+            </Link>
+
+
+            {/* To be linked later */}
+
+            <Link href='' target="_blank" rel="noopener noreferrer">
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    background: (theme) => theme.palette.primary.light,
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Watch in Live Action
+                    </Typography>
+                </Box>
+            </Link>
+            </Container>
 
             <br />
 
