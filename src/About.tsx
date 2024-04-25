@@ -153,6 +153,92 @@ function About() {
             <Typography variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 The Curriculum 
             </Typography>
+
+
+            <Container sx={{
+                display:'flex',
+                flexDirection:'row',
+                flexWrap:'wrap',
+                gap:'2vw',
+                justifyContent:'center',
+                marginTop:"10vh",
+                marginBottom:"5vh"
+            }}> 
+
+            
+
+            <Link href='src/assets/curriculum_images/full_curriculum.pdf' target="_blank" rel="noopener noreferrer" underline='none'>
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    backgroundColor: '#b5b3b3',
+                    '&:hover': {
+                        textDecoration: 'underline',
+                    }
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Download Full Curriculum
+                    </Typography>
+                </Box>
+            </Link>
+
+
+
+            <Link href='src/assets/curriculum_images/student_surveys.pdf' target="_blank" rel="noopener noreferrer" underline='none'>
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    backgroundColor: '#b5b3b3',
+                    '&:hover': {
+                        textDecoration: 'underline',
+                    }
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Download Surveys
+                    </Typography>
+                </Box>
+            </Link>
+
+
+
+            <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAGp47zfxyhhhXyMfio-fIPV' target="_blank" rel="noopener noreferrer" underline='none'>
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    backgroundColor: '#b5b3b3',
+                    '&:hover': {
+                        textDecoration: 'underline',
+                    }
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Video Lessons
+                    </Typography>
+                </Box>
+            </Link>
+
+
+
+            <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAFdH0uffJRDnTIlIzDDzhZx' target="_blank" rel="noopener noreferrer" underline='none'>
+                <Box sx={{
+                    border: '1px solid black',
+                    borderRadius: '1vw',
+                    padding: '1vw',
+                    backgroundColor: '#b5b3b3',
+                    '&:hover': {
+                        textDecoration: 'underline',
+                    }
+                }}>
+                    <Typography variant='body1' fontWeight={'bold'} >
+                        Watch in Live Action
+                    </Typography>
+                </Box>
+            </Link>
+            </Container>
+
+
             {
                 sessions.map((session) => (
                      
@@ -170,75 +256,7 @@ function About() {
                           ))
             }
 
-            <Container sx={{
-                display:'flex',
-                flexDirection:'row',
-                flexWrap:'wrap',
-                gap:'2vw',
-                justifyContent:'center',
-                marginTop:"10vh"
-            }}> 
-
             
-
-            <Link href='src/assets/curriculum_images/full_curriculum.pdf' target="_blank" rel="noopener noreferrer">
-                <Box sx={{
-                    border: '1px solid black',
-                    borderRadius: '1vw',
-                    padding: '1vw',
-                    background: (theme) => theme.palette.primary.light,
-                }}>
-                    <Typography variant='body1' fontWeight={'bold'} >
-                        Download Full Curriculum
-                    </Typography>
-                </Box>
-            </Link>
-
-
-
-            <Link href='src/assets/curriculum_images/student_surveys.pdf' target="_blank" rel="noopener noreferrer">
-                <Box sx={{
-                    border: '1px solid black',
-                    borderRadius: '1vw',
-                    padding: '1vw',
-                    background: (theme) => theme.palette.primary.light,
-                }}>
-                    <Typography variant='body1' fontWeight={'bold'} >
-                        Download Surveys
-                    </Typography>
-                </Box>
-            </Link>
-
-
-
-            <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAGp47zfxyhhhXyMfio-fIPV' target="_blank" rel="noopener noreferrer">
-                <Box sx={{
-                    border: '1px solid black',
-                    borderRadius: '1vw',
-                    padding: '1vw',
-                    background: (theme) => theme.palette.primary.light,
-                }}>
-                    <Typography variant='body1' fontWeight={'bold'} >
-                        Video Lessons
-                    </Typography>
-                </Box>
-            </Link>
-
-
-
-            <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAFdH0uffJRDnTIlIzDDzhZx' target="_blank" rel="noopener noreferrer">
-                <Box sx={{
-                    border: '1px solid black',
-                    borderRadius: '1vw',
-                    padding: '1vw',
-                    background: (theme) => theme.palette.primary.light,
-                }}>
-                    <Typography variant='body1' fontWeight={'bold'} >
-                        Watch in Live Action
-                    </Typography>
-                </Box>
-            </Link>
-            </Container>
 
             <br />
 
