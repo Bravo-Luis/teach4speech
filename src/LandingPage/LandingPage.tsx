@@ -24,11 +24,13 @@ function LandingPage() {
         display: "flex",
         flexDirection: "column",                     
         justifyContent: "center",
-        alignItems: "center",
-        px: "5%",                                    
+        alignItems: "center",                
         overflow: "hidden",
         textAlign: "center",
-        background: (theme)=>{return theme.palette.background.default}
+        width: "100vw",
+        margin: 0,
+        padding: 0,
+
       }}
     >
       <div id="home"></div>
@@ -39,11 +41,12 @@ function LandingPage() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          gap: "0rem",                               
+          alignItems: "center",                              
           maxWidth: "100%",
           minHeight: "100vh",
           justifyContent: "center",
+          width: "100%",
+          background: "linear-gradient(180deg, white, white,  #CBC3E3)",
         }}
       >
         

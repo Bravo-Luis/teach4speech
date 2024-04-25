@@ -40,28 +40,44 @@ function About() {
     };
 
     return (
-        <Container sx={{
+        <Box sx={{
+            margin: '0',
+            width: '100vw',
             display: 'flex',
             flexDirection: 'column',
-            flexWrap: 'wrap',
+            justifyContent: 'center',
             alignItems: 'center',
-            justifyContent:'center',
-            gap:'2vw',
-            padding:'0',
-            marginBottom:'20vh'
-            
+            textAlign: 'center',
+
         }}>
+            <Box sx={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                background: "linear-gradient(180deg, #CBC3E3, #CBC3E3,#CBC3E3, #CBC3E3, white)",
+                paddingBottom: '15vh'
+               
+            }}>
             <br id='Goal'/>
+            <br />
+            <br />
+
+<HeaderAndText header="Our Mission" text="Teach4Speech provides a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this." link='/ourmission' />
+<HeaderAndText header="Message From Our Founder" text="Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Unfortunately, classrooms and after-school programs did little to address this. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders." link='riyasmessage' />
 
 
-            <HeaderAndText header="Our Mission" text="Teach4Speech provides a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this." link='/ourmission' />
-            <HeaderAndText header="Message From Our Founder" text="Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Unfortunately, classrooms and after-school programs did little to address this. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders." link='riyasmessage' />
 
+            </Box>
 
-            <br id='Impact'/>
-            <HeaderAndText header="Impact" text="After just 5 sessions students on average tripled their speaking times. The record speaker spoke 4x the initial time. By the tenth session, 66% of students who spoke at the front of the room had not done so during the first session, and 66% were girls (compared to only 25% of girls initially)" />
+<br id='Impact'/>
+<br />
+            <br />
 
-  
+<HeaderAndText header="Impact" text="After just 5 sessions students on average tripled their speaking times. The record speaker spoke 4x the initial time. By the tenth session, 66% of students who spoke at the front of the room had not done so during the first session, and 66% were girls (compared to only 25% of girls initially)" />
+<br />
 
             <Typography variant='body1'>
             <Container sx={{
@@ -229,13 +245,16 @@ function About() {
             </Typography>
 
             <br id='Team'/>
+            <br />
+            <br />
+
             <Team />
 
             
         <br />
 
         
-            <Typography variant="h2" fontWeight={'bold'} gutterBottom>
+            {/* <Typography variant="h2" fontWeight={'bold'} gutterBottom>
                 Interested in Joining?
             </Typography>
             <div id='Interest'></div>
@@ -250,15 +269,11 @@ function About() {
                 Send an email telling us what youre interested in contributing.
                 Send an email telling us what youre interested in contributing.
                 Send an email telling us what youre interested in contributing.
-            </Typography>
+            </Typography> */}
 
             <Charts/>
    
-
-            
-
-            
-        </Container>
+        </Box>
     );
 }
 
@@ -272,7 +287,7 @@ function HeaderAndText({header, text, link} : {header: string, text: string, lin
             alignItems: 'flex-start',
             textAlign: 'left',
         }} >
-            <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"} textAlign={"left"} >
+            <Typography  variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"} textAlign={"center"} >
                 {header}
             </Typography>
 

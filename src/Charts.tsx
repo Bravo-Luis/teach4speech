@@ -24,8 +24,16 @@ function Charts() {
   
 
     return (
-        <Container sx={{ position: 'relative', width: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 'bold', textAlign: 'center', marginBottom: '20px' }}>
+        <Container sx={{ 
+            position: 'relative', 
+            width: '100vw', 
+            overflow: 'hidden', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            paddingBottom: '25vh',
+            }}>
+            <Typography variant="h4" sx={{ fontWeight: 'bold', textAlign: 'center', marginBottom: '20px', color:'black'}}>
                 The Data
             </Typography>
             <Paper
@@ -37,7 +45,8 @@ function Charts() {
                     overflow: 'hidden',
                     padding: '2vw',
                     backgroundColor: 'white',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+
                 }}
                 onClick={() => setSelectedChart((selectedChart + 1) % charts.length)} // Optional: cycle through charts on main click
             >

@@ -20,7 +20,11 @@ interface ProfileCardProps {
 
 function Team(){
     return (
-        <>
+        <Box sx={{
+            width: '100vw',
+            background: 'linear-gradient(180deg, white,#CBC3E3,#CBC3E3 ,#CBC3E3, white)',
+            paddingBottom: '15vh',
+        }}>
         <Typography variant="h2" fontWeight={'bold'} gutterBottom marginTop={"5vh"}>
                 The Team
             </Typography>
@@ -145,7 +149,7 @@ function Team(){
                 avatarUrl={jayne}
             />
         </Container>
-        </>
+        </Box>
     );
 
 }

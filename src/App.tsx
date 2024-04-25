@@ -10,7 +10,6 @@ import JoinPage from './JoinPage/JoinPage';
 import GameHostPage from './GameHostPage/GameHostPage'
 import RelatedWordsGame from './Games/RelatedWordsGames'
 import WaitingRoomPage from './WaitingRoomPage/WaitingRoomPage';
-import About from './About';
 import { SocketProvider } from './SocketProvider'
 import theme from './Theme';
 import './App.css';
@@ -28,7 +27,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
-          <Route path='/about' element={<About/>} />
           <Route path='/redirect' element={<Box
           sx={{
             display: "flex",
