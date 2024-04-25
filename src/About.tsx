@@ -163,9 +163,9 @@ function About() {
                 marginTop:"10vh"
             }}> 
 
-            {/* Curriculum PDF to be linked later */}
+            
 
-            <Link href='' target="_blank" rel="noopener noreferrer" >
+            <Link href='src/assets/curriculum_images/full_curriculum.pdf' target="_blank" rel="noopener noreferrer">
                 <Box sx={{
                     border: '1px solid black',
                     borderRadius: '1vw',
@@ -179,9 +179,8 @@ function About() {
             </Link>
 
 
-            {/* Survey PDF to be linked later */}    
 
-            <Link href='' target="_blank" rel="noopener noreferrer">
+            <Link href='src/assets/curriculum_images/student_surveys.pdf' target="_blank" rel="noopener noreferrer">
                 <Box sx={{
                     border: '1px solid black',
                     borderRadius: '1vw',
@@ -195,7 +194,6 @@ function About() {
             </Link>
 
 
-            {/* Videos to be linked later */}
 
             <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAGp47zfxyhhhXyMfio-fIPV' target="_blank" rel="noopener noreferrer">
                 <Box sx={{
@@ -211,7 +209,6 @@ function About() {
             </Link>
 
 
-            {/* To be linked later */}
 
             <Link href='https://www.youtube.com/playlist?list=PLt-uUZKJjdAFdH0uffJRDnTIlIzDDzhZx' target="_blank" rel="noopener noreferrer">
                 <Box sx={{
