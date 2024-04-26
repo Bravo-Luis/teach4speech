@@ -161,7 +161,7 @@ function About() {
                 flexWrap:'wrap',
                 gap:'2vw',
                 justifyContent:'center',
-                marginTop:"10vh",
+                marginTop:"3vh",
                 marginBottom:"5vh"
             }}> 
 
@@ -174,7 +174,10 @@ function About() {
                     padding: '1vw',
                     backgroundColor: '#b5b3b3',
                     '&:hover': {
-                        textDecoration: 'underline',
+                        backgroundColor: '#e6e9ed',
+                    },
+                    '&:active': {
+                        backgroundColor: '#4b4c4d',
                     }
                 }}>
                     <Typography variant='body1' fontWeight={'bold'} >
@@ -192,7 +195,10 @@ function About() {
                     padding: '1vw',
                     backgroundColor: '#b5b3b3',
                     '&:hover': {
-                        textDecoration: 'underline',
+                        backgroundColor: '#e6e9ed',
+                    },
+                    '&:active': {
+                        backgroundColor: '#4b4c4d',
                     }
                 }}>
                     <Typography variant='body1' fontWeight={'bold'} >
@@ -210,7 +216,10 @@ function About() {
                     padding: '1vw',
                     backgroundColor: '#b5b3b3',
                     '&:hover': {
-                        textDecoration: 'underline',
+                        backgroundColor: '#e6e9ed',
+                    },
+                    '&:active': {
+                        backgroundColor: '#4b4c4d',
                     }
                 }}>
                     <Typography variant='body1' fontWeight={'bold'} >
@@ -228,7 +237,10 @@ function About() {
                     padding: '1vw',
                     backgroundColor: '#b5b3b3',
                     '&:hover': {
-                        textDecoration: 'underline',
+                        backgroundColor: '#e6e9ed',
+                    },
+                    '&:active': {
+                        backgroundColor: '#4b4c4d',
                     }
                 }}>
                     <Typography variant='body1' fontWeight={'bold'} >
