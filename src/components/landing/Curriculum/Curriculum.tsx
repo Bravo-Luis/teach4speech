@@ -54,7 +54,7 @@ function Curriculum(){
           }}
         >
           <a
-            href="/full_curriculum.pdf"
+            href="/pdfs/full_curriculum.pdf"
             download={"full_curriculum.pdf"}
           >
             <Box
