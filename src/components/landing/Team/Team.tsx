@@ -22,7 +22,7 @@ interface ProfileCardProps {
 
 function Team() {
   const gradient = (theme: Theme) => {
-    return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+    return `linear-gradient(180deg, white, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
   };
   return (
     <Box
