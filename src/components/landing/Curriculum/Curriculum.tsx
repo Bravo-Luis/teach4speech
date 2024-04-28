@@ -57,6 +57,7 @@ function Curriculum(){
             href="src/assets/curriculum_images/full_curriculum.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            download={"full_curriculum.pdf"}
           >
             <Box
               sx={{
