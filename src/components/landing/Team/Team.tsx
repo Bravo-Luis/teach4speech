@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Container, Box } from "@mui/material";
+import { Typography, Container, Box, Theme } from "@mui/material";
 import Tilt from "react-parallax-tilt";
 
 import andres from "../../../assets/Team_Headshots/andres.png";
@@ -12,6 +12,8 @@ import olivia from "../../../assets/Team_Headshots/olivia.png";
 import riya from "../../../assets/Team_Headshots/riya.png";
 import julianna from "../../../assets/Team_Headshots/julianna.png";
 import luis from "../../../assets/Team_Headshots/luis.jpeg";
+
+
 interface ProfileCardProps {
   name: string;
   description: string;
@@ -19,12 +21,14 @@ interface ProfileCardProps {
 }
 
 function Team() {
+  const gradient = (theme: Theme) => {
+    return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+  };
   return (
     <Box
       sx={{
         width: "100vw",
-        background:
-          "linear-gradient(180deg, white,#CBC3E3,#CBC3E3 ,#CBC3E3, white)",
+        background: gradient,
         paddingBottom: "15vh",
         paddingTop: "5vh",
       }}
