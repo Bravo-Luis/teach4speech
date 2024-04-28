@@ -77,11 +77,9 @@ function Curriculum(){
             </Box>
           </a>
 
-          <Link
-            href="src/assets/curriculum_images/student_surveys.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            underline="none"
+          <a
+            href="/pdfs/student_surveys.pdf"
+            download={"student_surveys.pdf"}
           >
             <Box
               sx={{
@@ -101,7 +99,7 @@ function Curriculum(){
                 Download Surveys
               </Typography>
             </Box>
-          </Link>
+          </a>
 
           <Link
             href="https://www.youtube.com/playlist?list=PLt-uUZKJjdAGp47zfxyhhhXyMfio-fIPV"
