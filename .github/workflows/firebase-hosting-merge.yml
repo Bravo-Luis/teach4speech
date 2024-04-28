@@ -13,6 +13,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '21.6.2'  # Ensures that the CI environment matches your local Node.js version
+
+      - name: List relevant directories
+        run: |
+            ls -l src/games
+            ls -l src/components
+            ls -l src/pages/LandingPage
+            ls -l src/pages
+        
     
       - name: Install dependencies & Build
         run: yarn install && yarn run build
