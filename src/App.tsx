@@ -2,7 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 
-import LandingPage from "./pages/LandingPage/LandingPage";
+import LandingPage from "./pages/LandingPage";
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage' ;
@@ -13,9 +13,10 @@ import WaitingRoomPage from './pages/WaitingRoomPage';
 import { SocketProvider } from './utils/SocketProvider'
 import theme from './styles/Theme';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import Mission from './pages/LandingPage/Mission';
-import RiyasMessage from './pages/LandingPage/RiyasMessage';
+import Mission from './components/landing/Mission/Mission';
+import Message from './components/landing/Message/Message';
 import './styles/App.css'
+import Charts from './components/landing/Charts/Charts';
 
 function App() {
 
@@ -68,7 +69,8 @@ function App() {
           </Box>} />
 
           <Route path='/ourmission' element={<Mission/>} />
-          <Route path='/riyasmessage' element={<RiyasMessage/>} />
+          <Route path='/message' element={<Message/>} />
+          <Route path='/data' element={<Charts/>} />
 
           {/* Player Routes */}
           <Route path='/join' element={<JoinPage/>} />

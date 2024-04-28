@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import app from '../utils/Firebase'; 
-import GoogleIcon from '../assets/google.svg'
+import GoogleIcon from '../assets/icons/google.svg'
 
 interface FormValues {
     email: string;

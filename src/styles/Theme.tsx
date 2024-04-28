@@ -6,8 +6,14 @@ const palette = {
     primary: {
         main: purple[500],
         medium: purple[300],
-        light: purple[100]
-    }, background: {
+        light: purple[100],
+        
+    }, 
+    secondary: {
+        main: "#CBC3E3",  // Define a main color for secondary
+        light: "#EDE7F6",
+    },
+    background: {
         default: "white",
         paper: "lightgray"
     }
@@ -114,7 +120,6 @@ const components = {
         },
 
 }
-
 
 const theme = createTheme({
     palette: palette,

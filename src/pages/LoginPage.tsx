@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import GoogleIcon from '../assets/google.svg';
+import GoogleIcon from '../assets/icons/google.svg';
 import app from '../utils/Firebase';
 
 const LoginPage = () => {
