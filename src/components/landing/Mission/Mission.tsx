@@ -44,7 +44,7 @@ function Mission() {
       <Typography
         variant="caption"
         sx={{ width: "80vw", padding: "2vw" }}
-        fontWeight={"bold"}
+        fontWeight={"regular"}
       >
         &emsp;&emsp;&emsp;&emsp; Teach4Speech is a program geared at providing
         elementary and middle school students from low-income and

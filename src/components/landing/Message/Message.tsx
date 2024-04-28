@@ -43,7 +43,7 @@ function Message() {
       <Typography
         variant="caption"
         sx={{ width: "80vw", padding: "2vw" }}
-        fontWeight={"bold"}
+        fontWeight={"regular"}
       >
         &emsp;&emsp;&emsp;&emsp; Teach4Speech is an organization that aims to
         bolster speech and communication skills in underrepresented elementary
@@ -76,7 +76,7 @@ function Message() {
         <Typography
           sx={{
             fontStyle: "italic",
-            fontWeight: "bold",
+            fontWeight: "regular",
             textAlign: "right",
           }}
         >
