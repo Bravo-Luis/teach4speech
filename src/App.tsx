@@ -2,21 +2,20 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 
-import LandingPage from "./LandingPage/LandingPage";
-import LoginPage from './LoginPage/LoginPage';
-import SignupPage from './SignupPage/Signup';
-import DashboardPage from './DashboardPage/DashboardPage' ;
-import JoinPage from './JoinPage/JoinPage';
-import GameHostPage from './GameHostPage/GameHostPage'
-import RelatedWordsGame from './Games/RelatedWordsGames'
-import WaitingRoomPage from './WaitingRoomPage/WaitingRoomPage';
-import { SocketProvider } from './SocketProvider'
-import theme from './Theme';
-import './App.css';
+import LandingPage from "./pages/LandingPage/LandingPage";
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import DashboardPage from './pages/DashboardPage' ;
+import JoinPage from './pages/JoinPage';
+import GameHostPage from './pages/GameHostPage'
+import RelatedWordsGame from './games/RelatedWordsGames'
+import WaitingRoomPage from './pages/WaitingRoomPage';
+import { SocketProvider } from './utils/SocketProvider'
+import theme from './styles/Theme';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import Mission from './Mission';
-import RiyasMessage from './RiyasMessage';
-
+import Mission from './pages/LandingPage/Mission';
+import RiyasMessage from './pages/LandingPage/RiyasMessage';
+import './styles/App.css'
 
 function App() {
 

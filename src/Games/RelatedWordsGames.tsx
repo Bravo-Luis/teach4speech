@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { SocketConsumer } from "../SocketProvider";
+import { SocketConsumer } from "../utils/SocketProvider";
 import { useParams } from "react-router-dom";
 import { TextField, Container, Box, Typography, Chip } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import TranslationButton from "../Components/TranslationButton";
-import CircularCountdown from "../Components/CircularCountdown";
-import RelatedWordsBackground from "../Backgrounds/RelatedWordsBackground";
+import TranslationButton from "../components/TranslationButton";
+import CircularCountdown from "../components/CircularCountdown";
+import RelatedWordsBackground from "./RelatedWordsBackground";
 
 
 
