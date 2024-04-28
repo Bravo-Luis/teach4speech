@@ -15,7 +15,7 @@ const useAboutStyles = makeStyles(() => ({
     flexWrap: "wrap",
     justifyContent: "center",
     gap: "2vw",
-    maxWidth: "90%",
+    maxWidth: "clamp(300px, 80%, 1200px)",
   }
 }));
 

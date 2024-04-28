@@ -63,7 +63,7 @@ function LandingPage() {
       <br id="Curriculum" />
       <Curriculum/>
 
-      <br id="Team" />
+
       <Team />
 
 

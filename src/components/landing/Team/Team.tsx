@@ -26,8 +26,11 @@ function Team() {
         background:
           "linear-gradient(180deg, white,#CBC3E3,#CBC3E3 ,#CBC3E3, white)",
         paddingBottom: "15vh",
+        paddingTop: "5vh",
       }}
     >
+      <br id="Team" />
+      <br />
       <Typography
         variant="h2"
         fontWeight={"bold"}

@@ -21,16 +21,19 @@ function About() {
 
   const content = [
     {
+      id : "Goal",
       header: "Our Mission",
       text: "Teach4Speech provides a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this.",
       link: "/ourmission",
     },
     {
+      id: "Founder",
       header: "Message From Our Founder",
       text: "Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Unfortunately, classrooms and after-school programs did little to address this. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders.",
       link: "/message",
     },
     {
+      id: "Impact",
       header: "Impact",
       text: "After just 5 sessions students on average tripled their speaking times. The record speaker spoke 4x the initial time. By the tenth session, 66% of students who spoke at the front of the room had not done so during the first session, and 66% were girls (compared to only 25% of girls initially)",
       link: "",
@@ -47,12 +50,16 @@ function About() {
         }}
       >
         {content.map((item, index) => (
-          <HeaderAndText
-            key={index}
-            header={item.header}
-            text={item.text}
-            link={item.link}
-          />
+          <>
+            <br id={item.id} />
+            <br />
+            <HeaderAndText
+              key={index}
+              header={item.header}
+              text={item.text}
+              link={item.link}
+            />
+          </>
         ))}
 
         <Box className={classes.ImpactBubbleCollection}>
