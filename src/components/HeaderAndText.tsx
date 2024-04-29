@@ -4,10 +4,12 @@ function HeaderAndText({
   header,
   text,
   link,
+  quoted
 }: {
   header: string;
   text: string;
   link?: string;
+  quoted?: string;
 }) {
   return (
     <Box
@@ -35,15 +37,30 @@ function HeaderAndText({
           {text}
         </Typography>
       )}
+      <br />
+    
       {link ? (
-        <>
-          <br />
+        <Box sx={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap-reverse",
+          width: "100%",
+          justifyContent:"space-between",
+          rowGap: "2.5vh",
+        }}>
           <Button href={link} variant="outlined">
             <Typography variant="caption" color={"primary"}>
               Learn More
             </Typography>
           </Button>
-        </>
+          {quoted && 
+       <Typography textAlign={"right"} paddingRight={"2.5vw"}>
+        <i>{quoted}</i>
+       </Typography>
+    
+        }
+
+        </Box>
       ) : null}
     </Box>
   );

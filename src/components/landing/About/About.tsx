@@ -4,6 +4,7 @@ import useAboutStyles from "./AboutStyles";
 import useCommonStyles from "../../../styles/CommonStyles";
 import GenderPublicSmall from "../../../assets/charts/GenderPublicSmall.png";
 import ConfHispanic from "../../../assets/charts/ConfHispanic.png";
+import ImpactText from "../../ImpactText";
 
 function About() {
   const classes = useAboutStyles();
@@ -28,17 +29,20 @@ function About() {
     },
     {
       id: "Founder",
-      header: "Message From Our Founder",
-      text: "Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Unfortunately, classrooms and after-school programs did little to address this. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders.",
+      header: "What is Teach4Speech? - A Message From Our Founder ",
+      text: "Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders.",
       link: "/message",
+      quoted: "- Riya Nilkant, Founder and Executive Director"
     },
     {
       id: "Impact",
       header: "Impact",
-      text: "After just 5 sessions students on average tripled their speaking times. The record speaker spoke 4x the initial time. By the tenth session, 66% of students who spoke at the front of the room had not done so during the first session, and 66% were girls (compared to only 25% of girls initially)",
+      text: "",
       link: "",
     },
   ];
+
+  const impactText = "After just {5} {sessions} students on average {tripled} their speaking times. The record speaker spoke {4x} the initial time. By the tenth session, 66% of students who spoke at the front of the room had not done so during the first session, and 66% were girls (compared to only 25% of girls initially)"
 
   return (
     <Box className={commonClasses.ColumnCenteredContainer}>
@@ -58,9 +62,12 @@ function About() {
               header={item.header}
               text={item.text}
               link={item.link}
+              quoted={item.quoted ? item.quoted : ""}
             />
           </>
         ))}
+
+        <ImpactText text={impactText} />
 
         <Box className={classes.ImpactBubbleCollection}>
           {items.map((item, index) => (
