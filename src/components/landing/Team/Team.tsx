@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Container, Box, Theme } from "@mui/material";
+import { Typography, Container, Box, Theme, Button } from "@mui/material";
 import Tilt from "react-parallax-tilt";
 
 import andres from "../../../assets/Team_Headshots/andres.png";
@@ -12,6 +12,7 @@ import olivia from "../../../assets/Team_Headshots/olivia.png";
 import riya from "../../../assets/Team_Headshots/riya.png";
 import julianna from "../../../assets/Team_Headshots/julianna.png";
 import luis from "../../../assets/Team_Headshots/luis.jpeg";
+import { useNavigate } from "react-router-dom";
 
 
 interface ProfileCardProps {
@@ -21,6 +22,7 @@ interface ProfileCardProps {
 }
 
 function Team() {
+  const navigate = useNavigate();
   const gradient = (theme: Theme) => {
     return `linear-gradient(180deg, white, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
   };
@@ -180,6 +182,16 @@ function Team() {
         />
 
       </Container>
+      <Typography variant="h2" gutterBottom marginTop={"5vh"} fontWeight={"regular"}>
+        Interested In Joining Our Team?
+        </Typography>
+      <Button onClick={()=>{
+        navigate('/join-us');
+      }} sx={{
+        color: 'black',
+      }} variant="outlined">
+         Join Us
+      </Button>
     </Box>
   );
 }

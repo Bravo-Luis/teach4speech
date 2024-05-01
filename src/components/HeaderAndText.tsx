@@ -1,15 +1,18 @@
 import { Box, Button, Typography } from "@mui/material";
+import ImpactText from "./ImpactText";
 
 function HeaderAndText({
   header,
   text,
   link,
-  quoted
+  quoted,
+  impact = false,
 }: {
   header: string;
   text: string;
   link?: string;
   quoted?: string;
+  impact?: boolean;
 }) {
   return (
     <Box
@@ -32,11 +35,13 @@ function HeaderAndText({
         </Typography>
       ) : null}
 
-      {text && (
+      {(text && !impact) && (
         <Typography variant="body1" textAlign={"left"}>
           {text}
         </Typography>
       )}
+      {(text && impact) && <ImpactText text={text} />}
+      <br />
       <br />
     
       {link ? (

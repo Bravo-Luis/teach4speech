@@ -17,6 +17,7 @@ import Mission from './components/landing/Mission/Mission';
 import Message from './components/landing/Message/Message';
 import './styles/App.css'
 import Charts from './components/landing/Charts/Charts';
+import JoinUs from './components/landing/JoinUs/JoinUs';
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
           <Route path='/ourmission' element={<Mission/>} />
           <Route path='/message' element={<Message/>} />
           <Route path='/data' element={<Charts/>} />
+          <Route path='/join-us' element={<JoinUs/>} />
 
           {/* Player Routes */}
           <Route path='/join' element={<JoinPage/>} />

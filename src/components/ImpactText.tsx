@@ -6,12 +6,17 @@ function ImpactText({text}: {text: string}){
 
     return (
         <Typography variant="body1" textAlign={"left"} component={"span"} sx={{
-            maxWidth: "clamp(300px, 80vw, 1000px)",
+            width: "clamp(200px, 80%, 600px)",
         }}>
           {textList.map((word, _) => {
-              if (word[0] === "{" && word[word.length - 1] === "}") {
+              if (word[0] === "{" && (word[word.length - 1] === "}" || ((word[word.length - 1] === "," || word[word.length - 1] === "." || word[word.length - 1] === "!" || word[word.length - 1] === "?") && word[word.length - 2] === "}"))) {
+                if ((word[word.length - 1] === "," || word[word.length - 1] === "." || word[word.length - 1] === "!" || word[word.length - 1] === "?") && word[word.length - 2] === "}"){
+                    const char = word[word.length - 1]
+                    word = word.slice(1, word.length - 2)
+                    return Impacted(word+ char+ " ") 
+                }
                 word = word.slice(1, word.length - 1)
-                  return Impacted(word + " ")
+                return Impacted(word + " ")
               } else {
                   return NormalText(word + " ")
               }
@@ -22,15 +27,19 @@ function ImpactText({text}: {text: string}){
 
 function Impacted(text:string){
     return (
-        <Typography variant="body1" textAlign={"left"} component={"span"} fontWeight={"bold"} color={"primary"}>
-          {text}
+        <Typography variant="body1" sx={{
+            width: "clamp(200px, 80%, 600px)",
+        }} textAlign={"left"} component={"span"} fontWeight={"bold"} color={"primary"}>
+          {text.toUpperCase()}
         </Typography>
     )
 }
 
 function NormalText(text:string){
     return (
-        <Typography variant="body1" textAlign={"left"} component={"span"}>
+        <Typography variant="body1" sx={{
+            width: "clamp(200px, 80%, 600px)",
+        }} textAlign={"left"} component={"span"}>
           {text}
         </Typography>
     )
