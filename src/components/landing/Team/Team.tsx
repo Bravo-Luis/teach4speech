@@ -12,6 +12,7 @@ import olivia from "../../../assets/Team_Headshots/olivia.png";
 import riya from "../../../assets/Team_Headshots/riya.png";
 import julianna from "../../../assets/Team_Headshots/julianna.png";
 import luis from "../../../assets/Team_Headshots/luis.jpeg";
+import brandonw from "../../../assets/Team_Headshots/brandonw.png";
 import { useNavigate } from "react-router-dom";
 
 
@@ -130,6 +131,12 @@ function Team() {
           name="Julianna Flores"
           description="I'm Julianna, a first year studying Computer Science at UCSB. I am part of the Web Design and Graphic Design teams! I am passionate about learning German and AR."
           avatarUrl={julianna}
+        />
+
+        <ProfileCard
+          name="Brandon Williams"
+          description="I'm Brandon, a first year electrical engineering student at UCSB. I help build this awesome website and I love playing basketball."
+          avatarUrl={brandonw}
         />
       </Container>
 
