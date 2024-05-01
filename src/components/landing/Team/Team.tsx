@@ -86,12 +86,6 @@ function Team() {
         />
 
         <ProfileCard
-          name="Olivia Candelaria"
-          description="I’m Olivia, I’m a third year Statistics and Data Science major at UCSB and I volunteer as the statistician for T4S. In my free time I like to swim, hike, and read."
-          avatarUrl={olivia}
-        />
-
-        <ProfileCard
           name="Benicio Rivera"
           description="I’m Benicio a third year applied mathematics student and am a part of the curriculum team for Teach4Speech. I am passionate about teaching and working on automotives."
           avatarUrl={benicio}
@@ -162,6 +156,29 @@ function Team() {
           description="Jayne is a third year Environmental Studies major at UCSB and is part of the t4s outreach and administration teams. Outside of school and outreach, she is a ballet dancer and loves to read."
           avatarUrl={jayne}
         />
+      </Container>
+
+      <Typography variant="h2" gutterBottom marginTop={"15vh"}>
+        Statistics Team
+      </Typography>
+
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "2vw",
+        }}
+      >
+    
+        <ProfileCard
+          name="Olivia Candelaria"
+          description="I’m Olivia, I’m a third year Statistics and Data Science major at UCSB and I volunteer as the statistician for T4S. In my free time I like to swim, hike, and read."
+          avatarUrl={olivia}
+        />
+
       </Container>
     </Box>
   );
