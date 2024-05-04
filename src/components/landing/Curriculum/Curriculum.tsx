@@ -62,9 +62,9 @@ function Curriculum(){
                 border: "1px solid black",
                 borderRadius: "1vw",
                 padding: "1vw",
-                backgroundColor: "#b5b3b3",
+                backgroundColor: "#ffdbbb",
                 "&:hover": {
-                  backgroundColor: "#e6e9ed",
+                  backgroundColor: "#ffc897",
                 },
                 "&:active": {
                   backgroundColor: "#4b4c4d",
@@ -86,9 +86,9 @@ function Curriculum(){
                 border: "1px solid black",
                 borderRadius: "1vw",
                 padding: "1vw",
-                backgroundColor: "#b5b3b3",
+                backgroundColor: "#ffdbbb",
                 "&:hover": {
-                  backgroundColor: "#e6e9ed",
+                  backgroundColor: "#ffc897",
                 },
                 "&:active": {
                   backgroundColor: "#4b4c4d",
@@ -112,9 +112,9 @@ function Curriculum(){
                 border: "1px solid black",
                 borderRadius: "1vw",
                 padding: "1vw",
-                backgroundColor: "#b5b3b3",
+                backgroundColor: "#ffdbbb",
                 "&:hover": {
-                  backgroundColor: "#e6e9ed",
+                  backgroundColor: "#ffc897",
                 },
                 "&:active": {
                   backgroundColor: "#4b4c4d",
@@ -138,9 +138,9 @@ function Curriculum(){
                 border: "1px solid black",
                 borderRadius: "1vw",
                 padding: "1vw",
-                backgroundColor: "#b5b3b3",
+                backgroundColor: "#ffdbbb",
                 "&:hover": {
-                  backgroundColor: "#e6e9ed",
+                  backgroundColor: "#ffc897",
                 },
                 "&:active": {
                   backgroundColor: "#4b4c4d",
@@ -155,7 +155,7 @@ function Curriculum(){
         </Container>
 
         {sessions.map((session, index) => (
-        <Accordion key={index} sx={{ backgroundColor: "#b5b3b3" }}>
+        <Accordion key={index} sx={{ backgroundColor: "#ffdbbb" }}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>{session.name}</Typography>
           </AccordionSummary>
