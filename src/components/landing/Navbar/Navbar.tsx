@@ -74,13 +74,24 @@ function Navbar(){
             fontWeight: 'bold',
             color: 'black',
         }}> 
+        <img 
+          src='pdfs/T4S.png' 
+          style={{ 
+            marginTop: '-20px',
+            marginBottom: '-40px',  // I am using random values and eye-balling the spacing
+            marginRight: '-3px',    // Feel free to change as you see fit
+            marginLeft: '-25px', 
+            width: '150px', 
+            height: '80px' 
+            }}>
+          </img>
         <NormalButton href={'#home'} label={'Teach4Speech'} bold={true}/> 
         </Box>
   
         <Box sx={{
             gap: 'clamp(10px, 5vw, 200px)',
             display: 'flex',
-
+            marginRight: '150px'    // Another random value to adjust positioning to center of navbar
         }}>
         <NormalButton href={"#Goal"} label={"Goal"}/>
         <NormalButton href={"#Impact"} label={"Impact"}/>
