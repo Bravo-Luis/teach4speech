@@ -79,7 +79,7 @@ function About() {
         </Box>
       </Box>
 
-      <HeaderAndText header="The Data" text="To evaluate the impact of the Teach4Speech curriculum on our students, we distributed surveys at the start and end of the Teach4Speech program. We quantified confidence in public speaking, speaking in small groups, and speaking to adults, on a 1 to 5 scale (with 1 being hard and 5 being easy), along with their interest in learning. The graphs below depict our findings after {only} {one} {week} of Teach4Speech lessons." link="" impact/>
+      <HeaderAndText header="The Data" text="To evaluate the impact of the Teach4Speech curriculum on our students, we distributed surveys at the start and end of the Teach4Speech program. We quantified confidence in public speaking, speaking in small groups, and speaking to adults, on a 1 to 5 scale (with 1 being hard and 5 being easy), along with their interest in learning. The graphs below depict our findings after only one week of Teach4Speech lessons." link="" impact/>
       <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap", alignItems:"center", justifyContent:"center", gap:"2.5vw", padding:"2.5vw" }}>
         <img
           src={GenderPublicSmall}
@@ -93,7 +93,7 @@ function About() {
             width: "clamp(200px, 80%, 800px)",
           }}
         />
-      <ImpactText text="Confidence in speaking increased across gender after just one week of Teach4Speech lessons.  {Confidence} in small group discussion for girls {increased} by {22%}." />
+      <ImpactText text="Confidence in speaking increased across gender after just one week of Teach4Speech lessons.  Confidence in small group discussion for girls increased by 22%." />
        
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap-reverse", alignItems:"center", justifyContent:"center", gap:"2.5vw", padding:"2.5vw" }}>
