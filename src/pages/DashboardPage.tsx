@@ -71,7 +71,8 @@ function DashboardPage() {
                         display: "flex", 
                         flexDirection: "column", 
                         justifyContent: "space-between", 
-                        border: (theme) => `2px solid ${theme.palette.primary.main}`, 
+                        border: (theme) => `2px solid ${theme.palette.primary.main}`,
+                        color: 'black', 
                     }}>
                         <Typography variant="h4">Related Words </Typography>
                         <LoadingButton 
@@ -90,7 +91,8 @@ function DashboardPage() {
                         display: "flex", 
                         flexDirection: "column", 
                         justifyContent: "space-between", 
-                        border: (theme) => `2px solid ${theme.palette.primary.main}`, 
+                        border: (theme) => `2px solid ${theme.palette.primary.main}`,
+                        color: 'black', 
                     }}>
                         <Typography variant="h4">Audio Sharing (WIP) </Typography>
                         <LoadingButton 
