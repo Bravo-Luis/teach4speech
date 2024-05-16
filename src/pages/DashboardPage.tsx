@@ -73,7 +73,7 @@ function DashboardPage() {
                         justifyContent: "space-between", 
                         border: (theme) => `2px solid ${theme.palette.primary.main}`, 
                     }}>
-                        <Typography variant="h4">Related Words </Typography>
+                        <Typography color={"black"} variant="h4">Related Words </Typography>
                         <LoadingButton 
                              loading={isLoading}
                             variant="contained"
@@ -92,7 +92,7 @@ function DashboardPage() {
                         justifyContent: "space-between", 
                         border: (theme) => `2px solid ${theme.palette.primary.main}`, 
                     }}>
-                        <Typography variant="h4">Audio Sharing (WIP) </Typography>
+                        <Typography color={"black"} variant="h4">Audio Sharing (WIP) </Typography>
                         <LoadingButton 
                             loading={isLoading}
                             variant="contained"

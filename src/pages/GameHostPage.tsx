@@ -33,13 +33,20 @@ function GameHostPage() {
   const startGame = (game_code: String) => {
     socket.emit("start_game", { game_code });
   }
+  console.log(socket)
 
   useEffect(() => {
+
+    if (!socket.isConnected()){
+      console.log("Socket not connected... trying to connect.");
+      socket.connect();
+    }
+
+    console.log("connected to socket");
 
     socket.off("player_list_for_host");
 
     socket.on("player_list_for_host", (data: any) => {
-      console.log(data);
       setPlayers(data.player_list);
     })
 
@@ -75,6 +82,7 @@ function GameHostPage() {
         >
 
           <Typography
+          color={"black"}
             variant="h3"
   
           >
@@ -83,7 +91,7 @@ function GameHostPage() {
   
         </div>
   
-        <Typography variant="h4" fontWeight={"bold"} sx={{ marginBottom: "10px", borderBottom: "1px solid #ccc", paddingBottom: "10px",width:"100%", textAlign:"center"}}>
+        <Typography color={"black"} variant="h4" fontWeight={"bold"} sx={{ marginBottom: "10px", borderBottom: "1px solid #ccc", paddingBottom: "10px",width:"100%", textAlign:"center"}}>
           PLAYERS
         </Typography>
 
@@ -100,9 +108,9 @@ function GameHostPage() {
               alignItems: "center",
             }}
           >
-            <Typography variant="h5">Rank</Typography>
-            <Typography variant="h5">Name</Typography>
-            <Typography variant="h5">Score</Typography>
+            <Typography color={"black"} variant="h5">Rank</Typography>
+            <Typography color={"black"} variant="h5">Name</Typography>
+            <Typography color={"black"} variant="h5">Score</Typography>
             <Button
               variant="contained"
               sx={{
@@ -133,9 +141,9 @@ function GameHostPage() {
               alignItems: "center",
             }}
           >
-            <Typography variant="h5">{index + 1}</Typography>
-            <Typography variant="h5">{player.name}</Typography>
-            <Typography variant="h5">{player.score}</Typography>
+            <Typography color={"black"} variant="h5">{index + 1}</Typography>
+            <Typography color={"black"} variant="h5">{player.name}</Typography>
+            <Typography color={"black"} variant="h5">{player.score}</Typography>
             <Button
               variant="contained"
               sx={{

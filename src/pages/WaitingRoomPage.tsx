@@ -80,7 +80,7 @@ function WaitingRoomPage(){
                 flexDirection: "row",
 
            }}>
-                <Typography variant="h3" margin={"1px"} sx={{
+                <Typography variant="h3" margin={"1px"} color={"black"} sx={{
                 }}>
                 
                 {gameNameDisplay}
@@ -95,19 +95,19 @@ function WaitingRoomPage(){
                 alignItems: "center",
             }}>
                 <Grid item xs={12} >
-                    <Typography variant="h4" sx={{
+                    <Typography variant="h4" color={"black"}  sx={{
                         padding: "10px",
                     }}>
                         {isEnglish ? "Instructions" : "Instrucciones"}
                     </Typography>
-                    <Typography variant="h5" sx={{
+                    <Typography variant="h5" color={"black"}  sx={{
                         padding: "10px",
                     }}>
                        { gameInstructions }
                     </Typography>
                 </Grid>
                 <Grid item xs={12} >
-                    <Typography variant="h4" sx={{
+                    <Typography variant="h4" color={"black"} sx={{
                         padding: "10px",
 
                     }}>

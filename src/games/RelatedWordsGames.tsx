@@ -70,6 +70,7 @@ function RelatedWordsGame(){
       return(
       <Container sx={{
         padding: '2.5%',
+        
       }}>
         <Typography variant="h4" fontWeight={"bold"} sx={{ marginBottom: "10px", borderBottom: "1px solid #ccc", paddingBottom: "10px",width:"100%", textAlign:"center"}}>
           PLAYERS
