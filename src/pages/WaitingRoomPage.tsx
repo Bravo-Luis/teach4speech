@@ -78,6 +78,7 @@ function WaitingRoomPage(){
                 paddingBottom: "10px",
                 paddingTop: "5vh",
                 flexDirection: "row",
+                color: 'black',
 
            }}>
                 <Typography variant="h3" margin={"1px"} color={"black"} sx={{
@@ -93,6 +94,7 @@ function WaitingRoomPage(){
                 flexWrap: "wrap",
                 justifyContent: "center",
                 alignItems: "center",
+                color: 'black',
             }}>
                 <Grid item xs={12} >
                     <Typography variant="h4" color={"black"}  sx={{
