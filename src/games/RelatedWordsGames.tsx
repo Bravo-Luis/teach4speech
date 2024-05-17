@@ -17,7 +17,6 @@ function RelatedWordsGame() {
   const [isDone, setIsDone] = useState(false);
   const [gameData, setGameData] = useState<any>({});
   const [yourAnswers, setYourAnswers] = useState<Array<string>>([]);
-  const [playerScores, setPlayerScores] = useState<Array<any>>([]);
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem('language');
@@ -31,10 +30,6 @@ function RelatedWordsGame() {
       setIsDone(true);
     });
 
-    socket.off('player_list_scores_for_host');
-    socket.on('player_list_scores_for_host', (data: any) => {
-      setPlayerScores(data.player_list);
-    });
   }, [socket]);
 
   useEffect(() => {
