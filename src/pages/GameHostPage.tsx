@@ -173,7 +173,7 @@ function GameHostPage() {
             </Button>
           </div>
         ))}
-                {isGameStarted && 
+          {isGameStarted && 
         <Button variant="contained" onClick={handleRestart} >
           Restart Game
         </Button>
