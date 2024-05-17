@@ -18,6 +18,23 @@ function GameHostPage() {
   const [isGameStarted, setIsGameStarted] = useState(false);
   let gameNameDisplay = ""
 
+
+  function handleRestart(){
+
+    if (!socket.isConnected()){
+      console.log("Socket not connected... trying to connect.");
+      socket.connect();
+    }
+    socket.emit("restart_game", {game_code: gameCode});
+    const newPlayerScores = playerScores.map((player) => {
+      player.score = 0;
+      return player;
+    });
+    setPlayerScores(newPlayerScores);
+    setIsGameStarted(false);
+  }
+
+
   if(gameName == "related_words"){
     gameNameDisplay = "Related Words";
   }
@@ -156,6 +173,12 @@ function GameHostPage() {
             </Button>
           </div>
         ))}
+                {isGameStarted && 
+        <Button variant="contained" onClick={handleRestart} >
+          Restart Game
+        </Button>
+        }
+
       </Container>
     )
   } else {
@@ -248,6 +271,7 @@ Kick
         
         )}
         </Container>
+
         {players.length > 0 && !isGameStarted && (
 
           <Button variant="contained" sx={{

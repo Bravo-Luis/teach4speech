@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SocketConsumer } from "../utils/SocketProvider";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TextField, Container, Box, Typography, Chip } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import TranslationButton from "../components/TranslationButton";
@@ -17,17 +17,26 @@ function RelatedWordsGame() {
   const [isDone, setIsDone] = useState(false);
   const [gameData, setGameData] = useState<any>({});
   const [yourAnswers, setYourAnswers] = useState<Array<string>>([]);
-
+  const navigate = useNavigate()
   useEffect(() => {
+    
     const storedLanguage = localStorage.getItem('language');
     setIsEnglish(storedLanguage === "en");
   }, []);
 
   useEffect(() => {
     socket.off('end_game');
+    socket.off('game_restarted');
     socket.on('end_game', (data: any) => {
       setGameData(data);
       setIsDone(true);
+    });
+
+    socket.on('game_restarted', () => {
+      setYourAnswers([]);
+      setIsDone(false);
+      navigate(`/waiting-room/related_words/${gameCode}`);
+
     });
 
   }, [socket]);
