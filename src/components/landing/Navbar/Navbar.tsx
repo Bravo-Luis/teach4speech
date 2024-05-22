@@ -98,6 +98,7 @@ function Navbar(){
         <NormalButton href={"#Goal"} label={"Goal"}/>
         <NormalButton href={"#Impact"} label={"Impact"}/>
         <NormalButton href={"#Curriculum"} label={"Curriculum"}/>
+        {/* <NormalButton href={"#Games"} label={"Games"}/> ADDING CORRESPONDING NAVBAR BUTTON FOR GAME DESCRIPTIONS*/}
         <NormalButton href={"#Team"} label={"Team"}/>
 
         </Box>
