@@ -7,12 +7,14 @@ function HeaderAndText({
   link,
   quoted,
   impact = false,
+  game,
 }: {
   header: string;
   text: string;
   link?: string;
   quoted?: string;
   impact?: boolean;
+  game?: string;
 }) {
   return (
     <Box
@@ -67,6 +69,25 @@ function HeaderAndText({
 
         </Box>
       ) : null}
+
+        {game ? (
+        <Box sx={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap-reverse",
+          width: "100%",
+          justifyContent:"center",
+          rowGap: "2.5vh",
+        }}>
+          <Button href={link} variant="contained">
+            <Typography variant="caption" color={"white"}>
+              Play
+            </Typography>
+          </Button>
+        </Box>
+      ) : null}
+
+      
     </Box>
   );
 }

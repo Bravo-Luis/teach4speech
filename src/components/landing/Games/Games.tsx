@@ -18,18 +18,35 @@ function Games() {
   
 	const content = [
 	  {
-		id : "Game 1 Description",
+		id : "Game 1 Description Part 1",
 		header: "About Game 1",
-		text: "Teach4Speech provides a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this.",
-		link: "/ourmission",
+		text: "This game allows students to think on their feet and voice their thoughts coherently to communicate ideas--a common struggle amongst adults.",
+		link: "",
 	  },
 	  {
-		id: "Game 2 Description",
+		id : "Game 1 Description Part 2",
+		header: "",
+		text: "In this game, players are shown a category word prompt on the screen and under a 60 second timer are tasked to name objects/items that fit the description. Players practice their abilities to communicate new ideas in a fun atmosphere with their peers. For each word that successfully matching the category, players are awarded points. Players also have the opportunity to practice forming a speech with these words at the end of the game.",
+		link: "",
+		game_link: "Test", // ADD LINK OT GAME 1 HERE
+	  },
+	  {
+		id: "Game 2 Description Part 1",
 		header: "About Game 2",
-		text: "Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders.",
-		link: "/message",
-		quoted: "- Riya Nilkant, Founder and Executive Director"
+		text: "This game provides students with the opportunities to practice giving a speech, as well as acgtive listening for their peer's speeches.",
+		link: "",
+		quoted: "Players are shown the name of a random object on the screen and under a 60 second timer are tasked with recording a voice memo describing said item without explicitly saying its name. After recording, players are to submit their voice memos where all the recordings will be randomly distributed amongst all players. Once every player receives a random player’s voice message, they are to listen to it and guess what object the previous player is describing."
+	  },
+	  {
+		id: "Game 2 Description Part 2",
+		header: "",
+		text: "Players are shown the name of a random object on the screen and under a 60 second timer are tasked with recording a voice memo describing said item without explicitly saying its name. After recording, players are to submit their voice memos where all the recordings will be randomly distributed amongst all players. Once every player receives a random player’s voice message, they are to listen to it and guess what object the previous player is describing.",
+		link: "",
+		game_link: "Test", // ADD LINK TO GAME 2 HERE
+		quoted: ""
 	  }
+
+	  
 	];
   
 	return (
@@ -55,6 +72,7 @@ function Games() {
 					link={item.link}
 					quoted={item.quoted ? item.quoted : ""}
 					impact={true}
+					game={item.game_link}
 				/>
 				</>
 			))}
