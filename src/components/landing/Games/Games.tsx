@@ -35,7 +35,7 @@ function Games() {
 		header: "About Game 2",
 		text: "This game provides students with the opportunities to practice giving a speech, as well as acgtive listening for their peer's speeches.",
 		link: "",
-		quoted: "Players are shown the name of a random object on the screen and under a 60 second timer are tasked with recording a voice memo describing said item without explicitly saying its name. After recording, players are to submit their voice memos where all the recordings will be randomly distributed amongst all players. Once every player receives a random player’s voice message, they are to listen to it and guess what object the previous player is describing."
+		quoted: ""
 	  },
 	  {
 		id: "Game 2 Description Part 2",
