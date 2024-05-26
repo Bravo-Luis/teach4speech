@@ -1,19 +1,16 @@
-import { Box, Container, Theme, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import HeaderAndText from "../../HeaderAndText";
-import useGamesStyles from "./GamesStyles";
+// import useGamesStyles from "./GamesStyles";
 import useCommonStyles from "../../../styles/CommonStyles";
-import GenderPublicSmall from "../../../assets/charts/GenderPublicSmall.png";
-import ConfHispanic from "../../../assets/charts/ConfHispanic.png";
-import ImpactText from "../../ImpactText";
 
 
 
 function Games() {
-	const classes = useGamesStyles();
+	// const classes = useGamesStyles();
 	const commonClasses = useCommonStyles();
-	const gradient = (theme: Theme) => {
-	  return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
-	};
+	// const gradient = (theme: Theme) => {
+	//   return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+	// };
 
   
 	const content = [

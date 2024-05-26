@@ -5,7 +5,6 @@ import About from "../components/landing/About/About.tsx";
 import Team from "../components/landing/Team/Team.tsx";
 import Navbar from "../components/landing/Navbar/Navbar.tsx";
 import Curriculum from "../components/landing/Curriculum/Curriculum.tsx";
-import Games from "../components/landing/Games/Games.tsx";
 
 import { useEffect, useState } from "react";
 
