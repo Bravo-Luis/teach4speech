@@ -1,16 +1,16 @@
-import { Box, Container } from "@mui/material";
+import { Box, Theme } from "@mui/material";
 import HeaderAndText from "../../HeaderAndText";
 // import useGamesStyles from "./GamesStyles";
 import useCommonStyles from "../../../styles/CommonStyles";
-import { Theme } from "@mui/system";
 
 
 function Games() {
 	// const classes = useGamesStyles();
 	const commonClasses = useCommonStyles();
+
 	const gradient = (theme: Theme) => {
-	  return `linear-gradient(180deg, white, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
-	};
+		return `linear-gradient(180deg, white ,${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+	  };
 
   
 	const content = [
@@ -47,7 +47,7 @@ function Games() {
 	];
   
 	return (
-	  <Container sx={{
+	  <Box sx={{
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
@@ -79,7 +79,7 @@ function Games() {
 			))}
 			</Box>
 		</Box>
-	  </Container>
+	  </Box>
 	);
   }
   
