@@ -5,6 +5,7 @@ import useCommonStyles from "../../../styles/CommonStyles";
 import GenderPublicSmall from "../../../assets/charts/GenderPublicSmall.png";
 import ConfHispanic from "../../../assets/charts/ConfHispanic.png";
 import ImpactText from "../../ImpactText";
+// import ProblemGender from "../../../assets/charts/ProblemGender.png"
 
 function About() {
   const classes = useAboutStyles();
@@ -27,6 +28,13 @@ function About() {
       text: "Teach4Speech provides a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this.",
       link: "/ourmission",
     },
+    // {
+    //   id: "",
+    //   header: "Learn More",
+    //   text: "",
+    //   link: "",
+    //   image: "ProblemGender",
+    // },
     {
       id: "Founder",
       header: "What is Teach4Speech? - A Message From Our Founder ",
@@ -59,6 +67,7 @@ function About() {
               quoted={item.quoted ? item.quoted : ""}
               impact={true}
             />
+            {/* <img src={item.image}/> */}
           </>
         ))}
         <br />

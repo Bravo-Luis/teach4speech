@@ -8,6 +8,7 @@ function HeaderAndText({
   quoted,
   impact = false,
   game,
+  image,
 }: {
   header: string;
   text: string;
@@ -15,6 +16,7 @@ function HeaderAndText({
   quoted?: string;
   impact?: boolean;
   game?: string;
+  image?: string;
 }) {
   return (
     <Box
@@ -86,6 +88,14 @@ function HeaderAndText({
           </Button>
         </Box>
       ) : null}
+
+        {image ? (
+          <Box sx={{
+            
+          }}>
+            <img src={image} />
+          </Box>
+        ) : null} 
 
       
     </Box>
