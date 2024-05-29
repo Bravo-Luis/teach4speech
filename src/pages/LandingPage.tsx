@@ -6,6 +6,7 @@ import Team from "../components/landing/Team/Team.tsx";
 import Navbar from "../components/landing/Navbar/Navbar.tsx";
 import Curriculum from "../components/landing/Curriculum/Curriculum.tsx";
 import Games from "../components/landing/Games/Games.tsx";
+import Socials from "../components/landing/Socials/Socials.tsx";
 
 import { useEffect, useState } from "react";
 
@@ -68,6 +69,7 @@ function LandingPage() {
 
       <Team />
 
+      <Socials />
 
     </Box>
   );

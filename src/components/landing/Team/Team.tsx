@@ -32,7 +32,7 @@ function Team() {
       sx={{
         width: "100vw",
         background: gradient,
-        paddingBottom: "15vh",
+        paddingBottom: "5vh",
         paddingTop: "5vh",
       }}
     >
