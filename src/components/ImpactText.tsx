@@ -39,7 +39,7 @@ function NormalText(text:string){
     return (
         <Typography variant="body1" sx={{
             width: "clamp(200px, 80%, 600px)",
-        }} textAlign={"left"} component={"span"}>
+        }} textAlign={"left"} component={"span"} id="Impact">
           {text}
         </Typography>
     )
