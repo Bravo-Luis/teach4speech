@@ -59,7 +59,7 @@ function HeaderAndText({
         }}>
           <Button href={link} variant="outlined">
             <Typography variant="caption" color={"primary"}>
-              Learn More
+              {header === 'The Impact' ? 'Learn More About The Problem' : 'Learn More'}
             </Typography>
           </Button>
           {quoted && 
