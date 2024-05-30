@@ -18,6 +18,7 @@ import Message from './components/landing/Message/Message';
 import './styles/App.css'
 import Charts from './components/landing/Charts/Charts';
 import JoinUs from './components/landing/JoinUs/JoinUs';
+import MoreAboutUs from './components/landing/MoreAboutUs/MoreAboutUs';
 
 function App() {
 
@@ -73,6 +74,7 @@ function App() {
           <Route path='/message' element={<Message/>} />
           <Route path='/data' element={<Charts/>} />
           <Route path='/join-us' element={<JoinUs/>} />
+          <Route path='/more-about-us' element={<MoreAboutUs/>} />
 
           {/* Player Routes */}
           <Route path='/join' element={<JoinPage/>} />
