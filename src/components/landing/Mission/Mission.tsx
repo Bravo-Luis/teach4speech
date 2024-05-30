@@ -16,7 +16,7 @@ function Mission() {
         flexDirection: "column",
         alignItems: "center",
         width: "100vw",
-        height: "100vh",
+        height: "90vh",
         paddingTop: "10vh",
         background: gradient,
       }}
