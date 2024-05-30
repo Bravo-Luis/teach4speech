@@ -1,19 +1,24 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Box, Button, Theme, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+
+const gradient = (theme: Theme) => {
+  return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+};
 
 function Mission() {
   const navigate = useNavigate();
 
   return (
-    <Container
-      maxWidth="sm"
+    <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginTop: "10vh",
         width: "100vw",
+        height: "100vh",
+        paddingTop: "10vh",
+        background: gradient,
       }}
     >
       <Button
@@ -66,7 +71,7 @@ function Mission() {
         <br />
         <br />
       </Typography>
-    </Container>
+    </Box>
   );
 }
 
