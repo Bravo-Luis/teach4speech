@@ -29,20 +29,6 @@ function About() {
       text: "Teach4Speech provides a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this.",
       link: "/ourmission",
     },
-    // {
-    //   id: "Initial Confidence Level Graph",
-    //   header: "Learn More About The Problem",
-    //   text: "Before the Teach4Speech program, students reported an average confidence score of 3 for public speaking on a 1-5 scale. This was notably lower than students’ confidence in small groups and speaking with adults. This disparity in low public speaking confidence in young students motivates our mission behind the Teach4Speech curriculum.",
-    //   link: "",
-    //   image: InitialProblem,
-    // },
-    // {
-    //   id: "Initial Confidence Level Graph By Gender",
-    //   header: " ",
-    //   text: "Girls showed significantly lower average confidence in public speaking and small group discussions compared to boys before Teach4Speech. We hope to bridge these gender disparities in Teach4Speech and promote all groups of students, including girls and students of underrepresented backgrounds, to develop their confidence, speech, and communication skills.",
-    //   link: "",
-    //   image: ProblemGender,
-    // },
     {
       id: "Founder",
       header: "What is Teach4Speech? - A Message From Our Founder ",
@@ -79,7 +65,6 @@ function About() {
               link={item.link}
               quoted={item.quoted ? item.quoted : ""}
               impact={true}
-              // image={item.image}
             />
           </>
         ))}
