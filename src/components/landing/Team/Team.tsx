@@ -196,7 +196,7 @@ function Team() {
         />
 
       </Container>
-      <Typography variant="h2" gutterBottom marginTop={"5vh"} fontWeight={"regular"}>
+      <Typography variant="h2" gutterBottom marginTop={"5vh"} fontWeight={"bold"}>
         Interested In Joining Our Team?
         </Typography>
       <Button onClick={()=>{
