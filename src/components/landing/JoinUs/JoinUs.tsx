@@ -1,4 +1,4 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Theme } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 // import EmailIcon from '@mui/icons-material/Email';
 import  YouTube  from '@mui/icons-material/YouTube';
@@ -7,15 +7,21 @@ import { useNavigate } from 'react-router-dom';
 
 function JoinUs(){
     const navigate = useNavigate();
+    const gradient = (theme: Theme) => {
+        return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+      };
+
     return(
         <Box sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            marginTop: "10vh",
+            paddingTop: "10vh",
             width: "100vw",
-            justifyContent: "center",
-            alignContent: "center",
+            height: "90vh",
+            // justifyContent: "center",            These were messing up the gradient background
+            // alignContent: "center",              I have no idea why
+            background: gradient,
         }}>
             <Button
         startIcon={

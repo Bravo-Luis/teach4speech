@@ -1,18 +1,23 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Box, Typography, Theme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 function Message() {
   const navigate = useNavigate();
+  const gradient = (theme: Theme) => {
+    return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+  };
 
   return (
-    <Container
-      maxWidth="sm"
+    <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginTop: "10vh",
+        paddingTop: "10vh",
+        width: "100vw",
+        height: "90vh",
+        background: gradient,
       }}
     >
       <Button
@@ -83,7 +88,7 @@ function Message() {
           - Riya Nilkant, Founder and Executive Director
         </Typography>
       </Typography>
-    </Container>
+    </Box>
   );
 }
 

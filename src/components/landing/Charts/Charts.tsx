@@ -1,4 +1,4 @@
-import { Box, Typography, Paper, Button } from "@mui/material";
+import { Box, Typography, Paper, Button, Theme } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import AdultMonroe from "../../../assets/charts/AdultMonroe.png";
 import ConfAge from "../../../assets/charts/ConfAge.png";
@@ -12,6 +12,9 @@ function Charts() {
   const [selectedChart, setSelectedChart] = useState(0);
   const commonStyles = useCommonStyles();
   const navigate = useNavigate()
+  const gradient = (theme: Theme) => {
+    return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
+  };
 
   const charts = [
     { src: AdultMonroe, alt: "Confidence Speaking to Adults", description: "After our 10 week program, students reported a higher average confidence in speaking to adults."},
@@ -20,7 +23,7 @@ function Charts() {
   ];
 
   return (
-    <Box className={commonStyles.ColumnCenteredContainer} sx={{ paddingBottom: "25vh" }}>
+    <Box className={commonStyles.ColumnCenteredContainer} sx={{ paddingBottom: "25vh", background: gradient,}}>
       <Button
         startIcon={
           <ArrowBackIosIcon
