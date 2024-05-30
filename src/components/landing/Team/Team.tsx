@@ -13,6 +13,7 @@ import riya from "../../../assets/Team_Headshots/riya.png";
 import julianna from "../../../assets/Team_Headshots/julianna.png";
 import luis from "../../../assets/Team_Headshots/luis.jpeg";
 import brandonw from "../../../assets/Team_Headshots/brandonw.png";
+import catrina from "../../../assets/Team_Headshots/catrina.jpg";
 import { useNavigate } from "react-router-dom";
 
 
@@ -92,6 +93,12 @@ function Team() {
           name="Benicio Rivera"
           description="I’m Benicio a third year applied mathematics student and am a part of the curriculum team for Teach4Speech. I am passionate about teaching and working on automotives."
           avatarUrl={benicio}
+        />
+
+        <ProfileCard
+          name="Catrina Coe"
+          description="Hi! I’m Catrina. I’m studying Biopsychology and Anthropology at UCSB. I’m head of the Neurodivergent Curriculum at T4S. I love to eat good food with good friends."
+          avatarUrl={catrina}
         />
       </Container>
 
