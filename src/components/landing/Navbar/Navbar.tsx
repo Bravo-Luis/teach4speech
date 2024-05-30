@@ -134,7 +134,7 @@ function Navbar(){
         <MobileButton href={"#Impact"} label={"Impact"}/>
         <MobileButton href={"#Curriculum" }label={"Curriculum"}/>
         <MobileButton href={"#Team"} label={"Team"}/>
-
+        <MobileButton href={'https://forms.gle/iGcuqsF9ce7HKCqQ7'} label={"Join Us"}/>
   
     </Box>
       </Drawer>)}
