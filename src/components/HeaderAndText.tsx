@@ -16,7 +16,7 @@ function HeaderAndText({
   quoted?: string;
   impact?: boolean;
   game?: string;
-  image?: string;
+  image?: any;
 }) {
   return (
     <Box
@@ -89,13 +89,32 @@ function HeaderAndText({
         </Box>
       ) : null}
 
-        {image ? (
-          <Box sx={{
-            
-          }}>
-            <img src={image} />
-          </Box>
-        ) : null} 
+      {image && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "2.5vw",
+            padding: "2.5vw",
+          }}
+        >
+          <img
+            src={image}
+            alt="Graph"
+            style={{
+              maxWidth: "1000px",
+              minWidth: "270px",
+              border: "1px solid black",
+              padding: "16px",
+              borderRadius: "16px",
+              width: "clamp(200px, 80%, 800px)",
+            }}
+          />
+        </Box>
+      )}
 
       
     </Box>

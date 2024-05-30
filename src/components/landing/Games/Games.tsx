@@ -25,7 +25,7 @@ function Games() {
 		header: "",
 		text: "In this game, players are shown a category word prompt on the screen and under a 60 second timer are tasked to name objects/items that fit the description. Players practice their abilities to communicate new ideas in a fun atmosphere with their peers. For each word that successfully matching the category, players are awarded points. Players also have the opportunity to practice forming a speech with these words at the end of the game.",
 		link: "",
-		game_link: "", // ADD LINK OT GAME 1 HERE
+		game_link: "", // ADD LINK TO GAME 1 HERE
 	  },
 	  {
 		id: "Game 2 Description Part 1",
