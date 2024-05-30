@@ -96,7 +96,7 @@ function Navbar(){
             marginRight: '150px'    
         }}>
         <NormalButton href={"#Goal"} label={"Goal"}/>
-        <NormalButton href={"#Impact"} label={"Impact"}/>
+        <NormalButton href={"#ImpactMessage"} label={"Impact"}/>
         <NormalButton href={"#Curriculum"} label={"Curriculum"}/>
         <NormalButton href={"#Games"} label={"Games"}/>
         <NormalButton href={"#Team"} label={"Team"}/>

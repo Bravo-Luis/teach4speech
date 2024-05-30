@@ -6,6 +6,7 @@ import GenderPublicSmall from "../../../assets/charts/GenderPublicSmall.png";
 import ConfHispanic from "../../../assets/charts/ConfHispanic.png";
 import ImpactText from "../../ImpactText";
 import ProblemGender from "../../../assets/charts/ProblemGender.png"
+import InitialProblem from "../../../assets/charts/initialproblem.png";
 
 function About() {
   const classes = useAboutStyles();
@@ -21,6 +22,8 @@ function About() {
     "Web App Developed",
   ];
 
+  const impactText = "After just {5} {sessions} students on average {tripled} their speaking times. The record speaker spoke {4x} the initial time. By the tenth session, {66%} of students who spoke at the front of the room had not done so during the first session, and {66%} were girls (compared to only {25%} of girls initially)"
+
   const content = [
     {
       id : "Goal",
@@ -29,9 +32,16 @@ function About() {
       link: "/ourmission",
     },
     {
-      id: "Learn More Graph",
+      id: "Initial Confidence Level Graph",
       header: "Learn More About The Problem",
-      text: "",
+      text: "Before the Teach4Speech program, students reported an average confidence score of 3 for public speaking on a 1-5 scale. This was notably lower than students’ confidence in small groups and speaking with adults. This disparity in low public speaking confidence in young students motivates our mission behind the Teach4Speech curriculum.",
+      link: "",
+      image: InitialProblem,
+    },
+    {
+      id: "Initial Confidence Level Graph By Gender",
+      header: " ",
+      text: "Girls showed significantly lower average confidence in public speaking and small group discussions compared to boys before Teach4Speech. We hope to bridge these gender disparities in Teach4Speech and promote all groups of students, including girls and students of underrepresented backgrounds, to develop their confidence, speech, and communication skills.",
       link: "",
       image: ProblemGender,
     },
@@ -41,10 +51,15 @@ function About() {
       text: "Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders.",
       link: "/message",
       quoted: "- Riya Nilkant, Founder and Executive Director"
-    }
+    },
+    {
+      id: "ImpactMessage",
+      header: "The Impact",
+      text: impactText,
+      link: "",
+      quoted: ""
+    },
   ];
-
-  const impactText = "After just {5} {sessions} students on average {tripled} their speaking times. The record speaker spoke {4x} the initial time. By the tenth session, {66%} of students who spoke at the front of the room had not done so during the first session, and {66%} were girls (compared to only {25%} of girls initially)"
 
   return (
     <Box className={commonClasses.ColumnCenteredContainer}>
@@ -72,8 +87,6 @@ function About() {
         ))}
         <br />
         <br />
-
-        <HeaderAndText header="The Impact" text={impactText} link="" impact/>
 
         <Box className={classes.ImpactBubbleCollection}>
           {items.map((item, index) => (
