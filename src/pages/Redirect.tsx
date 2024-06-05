@@ -359,16 +359,26 @@ export function Redirect() {
   const googleProvider = new GoogleAuthProvider();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-    useEffect(() => {
-        const handleResize = () => {
+  useEffect(() => {
+    const handleResize = () => {
         setScreenWidth(window.innerWidth);
-        };
-        if (screenWidth < 850){
-            setExpanded('left')
-        }
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    if (screenWidth < 850 && expanded === "") {
+        setExpanded('left');
+    }
+
+    return () => window.removeEventListener('resize', handleResize);
+}, [screenWidth]);
+
+useEffect(() => {
+    if (screenWidth < 850 && expanded === "") {
+        setExpanded('left');
+    }
+}, [screenWidth]);
+
 
   const handleToggle = (val : any) => {
     setInstructorForm(val);
