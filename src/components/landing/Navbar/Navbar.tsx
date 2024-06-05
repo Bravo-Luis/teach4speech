@@ -100,6 +100,7 @@ function Navbar(){
         <NormalButton href={"#Curriculum"} label={"Curriculum"}/>
         <NormalButton href={"#Games"} label={"Games"}/>
         <NormalButton href={"#Team"} label={"Team"}/>
+        <NormalButton href={'https://forms.gle/iGcuqsF9ce7HKCqQ7'} label={"Join Us"}/>
 
         </Box>
 
@@ -134,7 +135,7 @@ function Navbar(){
         <MobileButton href={"#Impact"} label={"Impact"}/>
         <MobileButton href={"#Curriculum" }label={"Curriculum"}/>
         <MobileButton href={"#Team"} label={"Team"}/>
-
+        <MobileButton href={'https://forms.gle/iGcuqsF9ce7HKCqQ7'} label={"Join Us"}/>
   
     </Box>
       </Drawer>)}
