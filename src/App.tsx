@@ -2,10 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Routes, Route } from 'react-router-dom';
 
 import LandingPage from "./pages/LandingPage";
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage' ;
-import JoinPage from './pages/JoinPage';
 import GameHostPage from './pages/GameHostPage'
 import RelatedWordsGame from './games/RelatedWordsGames'
 import WaitingRoomPage from './pages/WaitingRoomPage';
@@ -35,13 +32,10 @@ function App() {
           <Route path='/more-about-us' element={<MoreAboutUs/>} />
 
           {/* Player Routes */}
-          <Route path='/join' element={<JoinPage/>} />
           <Route path='/waiting-room/:gameName/:gameCode' element={<WaitingRoomPage/>} />
           <Route path='/game/related_words/:gameCode/:theme' element={<RelatedWordsGame/>} />
 
           {/* Instructor Routes */}
-          <Route path='/instructor-login' element={<LoginPage/>} />
-          <Route path='/instructor-signup' element={<SignupPage/>} />
           <Route path='/instructor-dashboard' element={<DashboardPage/>} />
           <Route path='/host/:gameName/:gameCode' element={<GameHostPage/>} />
 
