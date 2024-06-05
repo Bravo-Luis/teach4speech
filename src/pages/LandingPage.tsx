@@ -64,7 +64,11 @@ function LandingPage() {
 
       <br id="Curriculum" />
       <Curriculum/>
-
+        <br id="Games" />
+        <br />
+        <br />
+        <br />
+      <Typography variant="h2" sx={{fontWeight:"bold"}} >Games We Made!</Typography>
       <Games/>
 
       <Team />

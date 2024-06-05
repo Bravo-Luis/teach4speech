@@ -1,86 +1,105 @@
-import { Box, Theme } from "@mui/material";
-import HeaderAndText from "../../HeaderAndText";
+import { Box, Typography } from "@mui/material";
 // import useGamesStyles from "./GamesStyles";
-import useCommonStyles from "../../../styles/CommonStyles";
+import { useEffect, useState } from "react";
 
 
 function Games() {
 	// const classes = useGamesStyles();
-	const commonClasses = useCommonStyles();
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-	const gradient = (theme: Theme) => {
-		return `linear-gradient(180deg, white ,${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
-	  };
+	useEffect(() => {
+		const handleResize = () => {
+			setScreenWidth(window.innerWidth);
+		};
+		window.addEventListener("resize", handleResize);
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	})
 
-  
-	const content = [
-	  {
-		id : "Game 1 Description Part 1",
-		header: "About Game 1",
-		text: "This game allows students to think on their feet and voice their thoughts coherently to communicate ideas--a common struggle amongst adults.",
-		link: "",
-	  },
-	  {
-		id : "Game 1 Description Part 2",
-		header: "",
-		text: "In this game, players are shown a category word prompt on the screen and under a 60 second timer are tasked to name objects/items that fit the description. Players practice their abilities to communicate new ideas in a fun atmosphere with their peers. For each word that successfully matching the category, players are awarded points. Players also have the opportunity to practice forming a speech with these words at the end of the game.",
-		link: "",
-		game_link: "", // ADD LINK TO GAME 1 HERE
-	  },
-	  {
-		id: "Game 2 Description Part 1",
-		header: "About Game 2",
-		text: "This game provides students with the opportunities to practice giving a speech, as well as acgtive listening for their peer's speeches.",
-		link: "",
-		quoted: ""
-	  }, 
-	  {
-		id: "Game 2 Description Part 2",
-		header: "",
-		text: "Players are shown the name of a random object on the screen and under a 60 second timer are tasked with recording a voice memo describing said item without explicitly saying its name. After recording, players are to submit their voice memos where all the recordings will be randomly distributed amongst all players. Once every player receives a random player’s voice message, they are to listen to it and guess what object the previous player is describing.",
-		link: "",
-		game_link: "", // ADD LINK TO GAME 2 HERE
-		quoted: ""
-	  }
 
-	  
-	];
-  
+	// Web
+	if (screenWidth > 850) {
+		return (
+			<Box  sx={{
+				display: "flex",
+				flexDirection: "row",
+				alignItems: "center",
+				justifyContent: "space-evenly",
+				gap: "clamp(10px, 5vw, 30px)",
+				padding: "clamp(10px, 5vw, 30px)",
+				maxWidth: "clamp(300px, 80vw, 1000px)",
+			}}>
+			   <Box boxShadow={5} sx={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "space-evenly",
+				backgroundColor: "lightblue",
+				borderRadius: "16px",
+				padding: "clamp(10px, 5vw, 30px)",
+			   }}>
+				<Typography variant="h2" > Related Words </Typography>
+				<br />
+				<Typography variant="body1"> In this game students are given a topic and have a minute to think of as many words related to this topic, the students are ranked by how many words they can come up with in a fun quick thinking competition </Typography>
+			   </Box>
+			   <Box boxShadow={5} sx={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "space-evenly",
+				backgroundColor: "lightblue",
+				borderRadius: "16px",
+				padding: "clamp(10px, 5vw, 30px)",
+			   }}>
+				<Typography variant="h2" >Guess The Topic</Typography>
+				<br />
+				<Typography variant="body1"> In this game students are given a word and have to create a speech where they describe this word without actually saying it, this speech is then sent to another student tries to guess what word they're describing </Typography>
+			   </Box>
+			</Box>
+		   );
+
+  } else {
+	// Mobile
 	return (
-	  <Box sx={{
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "center",
-		justifyContent: "center",
-	  }}>
-	  <br id="Games" />
-      <br />	
-		<Box className={commonClasses.ColumnCenteredContainer}>
-			<Box
-			className={commonClasses.ColumnCenteredContainer}
-			sx={{
-				background: gradient,
-				paddingBottom: "20vh",
-			}}
-			>
-			{content.map((item, index) => (
-				<>
-				<br id={item.id} />
-				<HeaderAndText
-					key={index}
-					header={item.header}
-					text={item.text}
-					link={item.link}
-					quoted={item.quoted ? item.quoted : ""}
-					impact={true}
-					game={item.game_link}
-				/>
-				</>
-			))}
+		<Box sx={{
+			display: "flex",
+			flexDirection: "column",
+			alignItems: "center",
+				justifyContent: "space-evenly",
+				gap: "clamp(10px, 5vw, 30px)",
+				padding: "clamp(10px, 5vw, 30px)",
+				maxWidth: "clamp(300px, 80vw, 1000px)",
+		}}>
+		   <Box boxShadow={5} sx={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "space-evenly",
+				backgroundColor: "lightblue",
+				borderRadius: "16px",
+				padding: "clamp(10px, 5vw, 30px)",
+			   }}>
+				<Typography variant="h2" sx={{fontWeight:"bold"}} >Related Words</Typography>
+				<br />
+				<Typography variant="body1"> In this game students are given a topic and have a minute to think of as many words related to this topic, the students are ranked by how many words they can come up with in a fun quick thinking competition </Typography>
+			</Box>
+			<Box boxShadow={5} sx={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "space-evenly",
+				backgroundColor: "lightblue",
+				borderRadius: "16px",
+				padding: "clamp(10px, 5vw, 30px)",
+			   }}>
+				<Typography variant="h2" sx={{fontWeight:"bold"}} >Guess The Topic</Typography>
+				<br />
+				<Typography variant="body1"> In this game students are given a word and have to create a speech where they describe this word without actually saying it, this speech is then sent to another student tries to guess what word they're describing </Typography>
 			</Box>
 		</Box>
-	  </Box>
-	);
+	   );
+
   }
-  
+}
   export default Games;
