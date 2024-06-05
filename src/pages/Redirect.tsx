@@ -49,28 +49,57 @@ const UppercaseTextField = ({ field, form, ...props } : any) => {
 const LeftSide = ({ expanded, setExpanded, handleJoin, initialValues, validationSchema, submitted, setSubmitted, screenWidth} : any) => {
     return (
       <Box
-        onClick={() => setExpanded("left")}
+        onClick={() => {
+            if (screenWidth < 850){
+                return
+            }
+            setExpanded("left")}}
         sx={{
           width: screenWidth < 850 ? '100%' : expanded === "left" ? "100%" : "50%",
-          height: screenWidth < 850 ? expanded !== "" ? expanded === "left" ? "70vh" : "30vh" : "50vh" : '100vh',
+          height: '100vh',
           backgroundColor: `${theme.palette.primary.main}`,
           cursor: "pointer",
           transition: `${screenWidth < 850 ? 'height 0.8s' : 'width 0.5s'} ease-in-out`,
           display: "flex",
           alignItems: "center",
+          position: screenWidth < 850 ? "absolute" : "",
+          zIndex: screenWidth < 850 ? expanded == "left" ? 10 : 0 : 0,
           justifyContent: "center",
           flexDirection: "column",
         }}
       >
-        <Typography variant="h3" color={"white"}>
-          Student
-        </Typography>
 
-             <Box width={ screenWidth < 850 ? expanded!== 'left' ? '20vh' : '15vh' : expanded !== "left" ? "60%" : "30%"}
+        {
+            screenWidth < 850 ? (
+                <Button sx={{
+                    background:theme.palette.primary.dark,
+                    display: "flex",
+                    flexDirection:'column',
+                    padding: 1
+                }} onClick={()=>{
+                    setExpanded("right")
+                }}>
+                <Typography variant="h1" color={"white"} >
+                Student
+                </Typography>
+                <Typography variant="caption1" color={"white"} >
+                Tap to Switch
+                </Typography>
+              </Button>
+                
+            ): (
+                <Typography variant="h1" color={"white"}>
+                Student
+              </Typography>
+            )
+        }
+
+
+             <Box width={ screenWidth < 850 ? '50vw' : expanded !== "left" ? "60%" : "30%"}
             sx={{
               maxHeight: screenWidth > 850 || (screenWidth < 850 && expanded === 'left') ? "auto": "0",
               transform: `scale(${screenWidth > 850 || (screenWidth < 850 && expanded === 'left') ? "1": "0"})`,
-              transition: `width 0.5s ease-in-out, transform 0.5s ease-in-out, maxHeight 0.5s ease-in-out`,
+              transition: `width 0.8s ease-in-out, transform 0.5s ease-in-out, maxHeight 0.8s ease-in-out`,
             }}
           >
             <DotLottiePlayer
@@ -158,27 +187,56 @@ const RightSide = ({ expanded, setExpanded, handleGoogleAuth, handleEmailAuth, i
   
   return (
     <Box
-      onClick={() => setExpanded("right")}
+      onClick={() => {
+        if (screenWidth < 850){
+            return
+        }
+        setExpanded("right")}
+    }
       sx={{
         width: screenWidth < 850 ? '100%' : expanded === "right" ? "100%" : "50%",
-        height: screenWidth < 850 ? expanded !== "" ? expanded === "right" ? "70vh" : "30vh" : "50vh" : '100vh',
+        height: '100vh',
         backgroundColor: `${theme.palette.primary.medium}`,
         cursor: "pointer",
         transition: `${screenWidth < 850 ? 'height 0.8s' : 'width 0.5s'}  ease-in-out`,
         display: "flex",
+        position: screenWidth < 850 ? "absolute" : "",
+        zIndex: screenWidth < 850 ? expanded == "right" ? 10 : 0 : 0,
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
       }}
     >
-      <Typography variant="h3" color={"white"}>
-        Instructor
-      </Typography>
-      <Box width={ screenWidth < 850 ? expanded!== 'right' ? '20vh' : '15vh' : expanded !== "right" ? "60%" : "30%"}
+        {
+            screenWidth < 850 ? (
+                <Button sx={{
+                    background:theme.palette.primary.main,
+                    display: "flex",
+                    flexDirection:'column',
+                    padding: 1
+                }} onClick={()=>{
+                    setExpanded("left")
+                }}>
+                <Typography variant="h1" color={"white"} >
+                Instructor
+                </Typography>
+                <Typography variant="caption1" color={"white"} >
+                Tap to Switch
+                </Typography>
+              </Button>
+                
+            ): (
+                <Typography variant="h1" color={"white"}>
+                Instructor
+              </Typography>
+            )
+        }
+
+      <Box width={ screenWidth < 850 ? '50vw' : expanded !== "right" ? "60%" : "30%"}
         sx={{
             maxHeight: screenWidth > 850 || (screenWidth < 850 && expanded === 'right') ? "auto": "0",
               transform: `scale(${screenWidth > 850 || (screenWidth < 850 && expanded === 'right') ? "1": "0"})`,
-              transition: `width 0.5s ease-in-out, transform 0.5s ease-in-out, maxHeight 0.5s ease-in-out`,
+              transition: `width 0.8s ease-in-out, transform 0.5s ease-in-out, maxHeight 0.8s ease-in-out`,
         }}
       >
         <DotLottiePlayer
@@ -266,7 +324,7 @@ const RightSide = ({ expanded, setExpanded, handleGoogleAuth, handleEmailAuth, i
                 }}
               >
                 <Typography variant="caption1" color={"white"}>
-                  {instructorForm === 'signin' ? 'Login with Google' : 'Sign Up with Google'}
+                  {instructorForm === 'signin' ? 'Login' : 'Sign Up'}
                 </Typography>
               </Button>
             </Box>
@@ -305,6 +363,9 @@ export function Redirect() {
         const handleResize = () => {
         setScreenWidth(window.innerWidth);
         };
+        if (screenWidth < 850){
+            setExpanded('left')
+        }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -399,6 +460,7 @@ export function Redirect() {
         />}
         sx={{
           position: 'absolute',
+          zIndex: 100,
           top: '2vh',
           left: '2vw',
           color: 'white',
