@@ -125,7 +125,7 @@ const LeftSide = ({ expanded, setExpanded, handleJoin, initialValues, validation
                 padding: "20px",
                 borderRadius: "10px",
                 opacity: expanded === "left" ? 1 : 0,
-                width: '60%',
+                width:  "clamp(300px, 60%, 50vw)",
                 maxHeight: expanded === "left" ? "37.5vh" : 0,
                 transform: `scale(${expanded === 'left' ? 1 : 0}`,
                 transition: `opacity ${expanded === 'left' ? 0.4 : 0.15}s ${expanded === 'left' ? 0.1 : 0}s ease-in-out,  width 0.3s ease-in-out, max-height 0.3s ease-in-out, transform 0.5s ease-in-out`,
@@ -259,7 +259,7 @@ const RightSide = ({ expanded, setExpanded, handleGoogleAuth, handleEmailAuth, i
               padding: "20px",
               borderRadius: "10px",
               opacity: expanded === "right" ? 1 : 0,
-              width:  "60%",
+              width:  "clamp(300px, 60%, 50vw)",
               maxHeight: expanded === "right" ? "57.5vh" : 0,
               transform: `scale(${expanded === 'right' ? 1 : 0}`,
               transition: `opacity ${expanded === 'right' ? 0.4 : 0.15}s ${expanded === 'right' ? 0.1 : 0}s ease-in-out, width 0.3s ease-in-out, max-height 0.3s ease-in-out, transform 0.5s ease-in-out`,
@@ -324,7 +324,7 @@ const RightSide = ({ expanded, setExpanded, handleGoogleAuth, handleEmailAuth, i
                 }}
               >
                 <Typography variant="caption1" color={"white"}>
-                  {instructorForm === 'signin' ? 'Login' : 'Sign Up'}
+                  {instructorForm === 'signin' ? 'Login' : 'Signup'}
                 </Typography>
               </Button>
             </Box>
