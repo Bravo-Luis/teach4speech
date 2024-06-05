@@ -146,7 +146,7 @@ const typography: CustomTypographyOptions = {
         color: "black",
         '@media (max-width:1400px)': {
             fontSize: "1.2rem",
-            fontWeight: "bold"
+            fontWeight: "normal",
         },
         '@media (max-width:1000px)': {
             fontSize: "1rem",
@@ -160,27 +160,32 @@ const typography: CustomTypographyOptions = {
         color: "black",
         '@media (max-width:1400px)': {
             fontSize: "1rem",
-            fontWeight: "bold"
+            fontWeight: "normal",
         },
         '@media (max-width:1000px)': {
             fontSize: "1rem",
+            fontWeight: "normal",
         },
         '@media (max-width:350px)': {
             fontSize: "1rem",
+            fontWeight: "normal",
         }
     },
     caption1: {
         fontSize: "0.8rem",
         color: "black",
+        fontWeight: "normal",
         '@media (max-width:1400px)': {
             fontSize: "0.8rem",
-            fontWeight: "bold"
+            fontWeight: "normal",
         },
         '@media (max-width:1000px)': {
             fontSize: "0.7rem",
+            fontWeight: "normal",
         },
         '@media (max-width:350px)': {
             fontSize: "0.6rem",
+            fontWeight: "normal",
         }
     }
 };
