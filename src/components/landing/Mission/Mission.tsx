@@ -4,7 +4,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import HeaderAndText from "../../HeaderAndText";
 import useCommonStyles from "../../../styles/CommonStyles";
 import RacePie from "../../../assets/charts/RacePie.png";
-import GenderPie from "../../../assets/charts/genderpie.png"
+import GenderPie from "../../../assets/charts/GenderPie.png"
 
 const gradient = (theme: Theme) => {
   return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
