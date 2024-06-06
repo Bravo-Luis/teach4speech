@@ -1,6 +1,10 @@
 import { Box, Button, Theme, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import HeaderAndText from "../../HeaderAndText";
+import useCommonStyles from "../../../styles/CommonStyles";
+import RacePie from "../../../assets/charts/RacePie.png";
+import GenderPie from "../../../assets/charts/genderpie.png"
 
 const gradient = (theme: Theme) => {
   return `linear-gradient(180deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, ${theme.palette.secondary.light}, white)`;
@@ -8,6 +12,22 @@ const gradient = (theme: Theme) => {
 
 function Mission() {
   const navigate = useNavigate();
+  const commonClasses = useCommonStyles();
+
+  const content = [
+    {
+      id: "",
+      header: "",
+      text: "In our sample, we surveyed 19 students identifying as Black, 108 identify as Hispanic, and 29 identify as White.84% of Black students do not wish to pursue higher education in college. Among White students, nearly half of the sample chose careers with no educational requirements. ",
+      image: RacePie,
+    },
+    {
+      id: "",
+      header: "",
+      text: "Out of the 74 boys and 82 girls in our sample, the vast majority of boys, over 75%, chose careers that require a high school diploma or less education. Alternatively, over 30% of girls wish to pursue degrees higher than a Bachelor’s.",
+      image: GenderPie,
+    },
+  ]
 
   return (
     <Box
@@ -71,6 +91,30 @@ function Mission() {
         <br />
         <br />
       </Typography>
+        <br />
+        <br />
+      <Box
+          className={commonClasses.ColumnCenteredContainer}
+          sx={{
+            background: gradient,
+            paddingBottom: "20vh",
+          }}
+        >
+          {content.map((item, index) => (
+            <>
+              <br id={item.id} />
+              <br />
+              <HeaderAndText
+                key={index}
+                header={item.header}
+                text={item.text}
+                image={item.image}
+              />
+            </>
+          ))}
+          <br />
+          <br />
+        </Box>
     </Box>
   );
 }
