@@ -240,7 +240,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "clamp(250px, 25vw, 400px)",
+          width: "clamp(150px, 25vw, 300px)",
           height: "clamp(250px, 25vw, 400px)",
           boxShadow: 3,
           borderRadius: "10px",
