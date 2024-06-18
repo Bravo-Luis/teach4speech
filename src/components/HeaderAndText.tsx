@@ -57,8 +57,13 @@ function HeaderAndText({
           justifyContent:"space-between",
           rowGap: "2.5vh",
         }}>
-          <Button href={link} variant="outlined">
-            <Typography variant="caption" color={"primary"}>
+          <Button href={link} variant="outlined"
+          sx={{
+            padding: "10px 20px",
+            fontSize: "1rem",
+          }}>
+            <Typography variant="caption" color={"primary"}
+            sx={{fontSize: "1rem"}}>
               {header === 'The Impact' ? 'Learn More About The Problem' : 'Learn More'}
             </Typography>
           </Button>
