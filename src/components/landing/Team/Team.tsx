@@ -203,6 +203,9 @@ function Team() {
         navigate('/join-us');
       }} sx={{
         color: 'black',
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+        padding: "10px 20px"
       }} variant="outlined">
          Join Us
       </Button>
