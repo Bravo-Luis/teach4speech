@@ -60,10 +60,11 @@ function HeaderAndText({
           <Button href={link} variant="outlined"
           sx={{
             padding: "10px 20px",
-            fontSize: "1rem",
+            fontSize: "1.2rem",
+            fontWeight: "bold",
           }}>
             <Typography variant="caption" color={"primary"}
-            sx={{fontSize: "1rem"}}>
+            sx={{fontSize: "1.2rem", fontWeight: "bold"}}>
               {header === 'The Impact' ? 'Learn More About The Problem' : 'Learn More'}
             </Typography>
           </Button>
