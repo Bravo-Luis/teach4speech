@@ -196,7 +196,13 @@ function Team() {
         />
 
       </Container>
-      <Typography variant="h2" gutterBottom marginTop={"5vh"} fontWeight={"bold"}>
+      <Typography 
+        variant="h2" 
+        gutterBottom 
+        marginTop={"10vh"}
+        fontWeight={"bold"}
+
+        >
         Interested In Joining Our Team?
         </Typography>
       <Button onClick={()=>{
@@ -205,7 +211,8 @@ function Team() {
         color: 'black',
         fontSize: "1.2rem",
         fontWeight: "bold",
-        padding: "10px 20px"
+        padding: "10px 20px",
+        marginBottom: "-15vh"     // Reducing space between "Interested in joining our team" and "want to see more from us  "
       }} variant="outlined">
          Join Us
       </Button>
