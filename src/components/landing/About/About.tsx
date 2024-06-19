@@ -44,12 +44,12 @@ function About() {
       link: "",
       chart: true,
     },
-    {
-      id: "Why Button",
-      header: "",
-      text: "",
-      link: "/why-us"
-    },
+    // {
+    //   id: "Why Button",
+    //   header: "",
+    //   text: "",
+    //   link: "/why-us"
+    // },
     {
       id: "ImpactMessage",
       header: "The Impact",
