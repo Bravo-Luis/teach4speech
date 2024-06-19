@@ -91,11 +91,10 @@ function Socials () {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingBottom: "20vh",
+            paddingBottom: "10vh",
         }}> 
         
         </Box>
-        {/* add socials here */}
 	  </Box>
 
         
