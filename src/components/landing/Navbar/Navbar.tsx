@@ -93,7 +93,8 @@ function Navbar(){
         <Box sx={{
             gap: 'clamp(10px, 5vw, 200px)',
             display: 'flex',
-            marginRight: '150px'    
+            flex: 1,
+            justifyContent: 'center',
         }}>
         <NormalButton href={"#Goal"} label={"Goal"}/>
         <NormalButton href={"#ImpactMessage"} label={"Impact"}/>
