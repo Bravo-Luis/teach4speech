@@ -107,7 +107,9 @@ function Navbar(){
 
         <Button variant='contained' sx={{
           marginRight: 'clamp(10px, 1vw, 200px)',
+          marginLeft: 'clamp(10px, 1vw, 200px)',
           paddingRight: 'clamp(10px, 1vw, 200px)',
+          paddingLeft: 'clamp(10px, 1vw, 200px)',
         }}  onClick={()=>{
             navigate('/redirect')
         }} 
