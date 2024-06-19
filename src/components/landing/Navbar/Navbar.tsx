@@ -171,7 +171,7 @@ function NormalButton({href, label, bold=false} : NavButton){
         <a href={href} style={{
             textDecoration: 'none',
             userSelect: 'none',
-            whiteSpace: 'no'
+            whiteSpace: 'nowrap'
           }}>
             <Typography variant="caption" fontWeight={bold ? "bold" : ""}>
             {label}
