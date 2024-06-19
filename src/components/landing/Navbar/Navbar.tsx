@@ -93,7 +93,8 @@ function Navbar(){
         <Box sx={{
             gap: 'clamp(10px, 5vw, 200px)',
             display: 'flex',
-            marginRight: '150px'    
+            flex: 1,
+            justifyContent: 'center',
         }}>
         <NormalButton href={"#Goal"} label={"Goal"}/>
         <NormalButton href={"#ImpactMessage"} label={"Impact"}/>
@@ -170,7 +171,7 @@ function NormalButton({href, label, bold=false} : NavButton){
         <a href={href} style={{
             textDecoration: 'none',
             userSelect: 'none',
-            whiteSpace: 'nowrap',
+            whiteSpace: 'nowrap'
           }}>
             <Typography variant="caption" fontWeight={bold ? "bold" : ""}>
             {label}
