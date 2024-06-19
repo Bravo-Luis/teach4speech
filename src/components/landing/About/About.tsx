@@ -5,7 +5,6 @@ import useCommonStyles from "../../../styles/CommonStyles";
 import GenderPublicSmall from "../../../assets/charts/GenderPublicSmall.png";
 import ConfHispanic from "../../../assets/charts/ConfHispanic.png";
 import ImpactText from "../../ImpactText";
-import OurGoalPie from "../../../assets/charts/OurGoalPie.png";
 
 function About() {
   const classes = useAboutStyles();
@@ -28,20 +27,6 @@ function About() {
       id : "Goal",
       header: "Our Mission",
       text: "Teach4Speech provides a program geared at providing elementary and middle school students from low-income and underrepresented backgrounds with speech and communication skills. In equipping students with the tools to find their voice, build confidence, and advocate for themselves, we hope to inspire the next generation of leaders, and open opportunities in a community that does not have access to this.",
-      link: "",
-    },
-    {
-      id: "Pie Chart",                // Can you help with the spacing between the mission message and the new pie chart image please? - For anyone willing
-      header: "",
-      text: "",
-      image: OurGoalPie,
-      link: "",
-    },
-    {
-      id: "Pie Chart Description",
-      header: "",
-      text: "From a sample of 156 students in Santa Barbara,  over 70% of students envisioned themselves in careers that either required no education or just a high school diploma.  Fewer than 25% aimed to pursue college or higher education. Georgetown University recently released a report that by 2031, 72% of jobs will require more than a high school diploma.  At Teach4Speech, we aim to bridge these gaps by fostering a love for learning early in students' educational journeys, and inspiring them to pursue high aspirations.",
-      image: "",
       link: "/ourmission",
     },
     {
@@ -50,6 +35,20 @@ function About() {
       text: "Teach4Speech is an organization that aims to bolster speech and communication skills in underrepresented elementary school students. While tutoring at local schools in Goleta, I saw firsthand how few of the students envisioned themselves in higher education, and how even fewer possessed the ability to advocate for themselves in the current education system. Many of the students were failing middle school and unable to advance to high school because they could not self-advocate to their teachers to meet graduation requirements. Much of the richness in my education came from the skillsets I acquired through speech and debate. With this in mind, I developed a curriculum that would build confidence in and inspire the next generation of leaders.",
       link: "/message",
       quoted: "- Riya Nilkant, Founder and Executive Director"
+    },
+    {
+      id: "Why Teach4Speech",
+      header: "The ‘Why’ - Pathways to Higher Education",
+      text: "",
+      image: "",
+      link: "",
+      chart: true,
+    },
+    {
+      id: "Why Button",
+      header: "",
+      text: "",
+      link: "/why-us"
     },
     {
       id: "ImpactMessage",
@@ -81,6 +80,7 @@ function About() {
               quoted={item.quoted ? item.quoted : ""}
               impact={true}
               image={item.image}
+              chart={item.chart ? item.chart : false}
             />
           </>
         ))}
