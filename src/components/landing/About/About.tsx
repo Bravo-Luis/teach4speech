@@ -79,8 +79,8 @@ function About() {
               link={item.link}
               quoted={item.quoted ? item.quoted : ""}
               impact={true}
-              // image={item.image}
-              // chart={item.chart ? item.chart : false}
+              image={item.image}
+              chart={item.chart ? item.chart : false}
             />
           </>
         ))}
