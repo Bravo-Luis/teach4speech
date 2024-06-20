@@ -124,8 +124,10 @@ function HeaderAndText({
           <Box
             sx={{
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
+              flexWrap: "wrap",
               alignItems: "center",
+              justifyContent: "center",
               gap: "2.5vw",
               width: "100vw !important", 
             }}
@@ -134,7 +136,7 @@ function HeaderAndText({
               src={charts[selectedChart].src}
               alt={charts[selectedChart].alt}
               style={{
-                maxWidth: "600px",
+                maxWidth: "500px",
                 minWidth: "270px",
                 border: "1px solid black",
                 borderRadius: "16px",
