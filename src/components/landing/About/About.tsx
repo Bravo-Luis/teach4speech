@@ -36,14 +36,14 @@ function About() {
       link: "/message",
       quoted: "- Riya Nilkant, Founder and Executive Director"
     },
-    {
-      id: "Why Teach4Speech",
-      header: "The ‘Why’ - Pathways to Higher Education",
-      text: "",
-      image: "",
-      link: "",
-      chart: true,
-    },
+    // {
+    //   id: "Why Teach4Speech",
+    //   header: "The ‘Why’ - Pathways to Higher Education",
+    //   text: "",
+    //   image: "",
+    //   link: "",
+    //   chart: true,
+    // },
     // {
     //   id: "Why Button",
     //   header: "",
@@ -79,8 +79,8 @@ function About() {
               link={item.link}
               quoted={item.quoted ? item.quoted : ""}
               impact={true}
-              image={item.image}
-              chart={item.chart ? item.chart : false}
+              // image={item.image}
+              // chart={item.chart ? item.chart : false}
             />
           </>
         ))}
