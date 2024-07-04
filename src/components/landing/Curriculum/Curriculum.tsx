@@ -56,6 +56,7 @@ function Curriculum(){
           <a
             href="/pdfs/full_curriculum.pdf"
             download={"full_curriculum.pdf"}
+            style={{ textDecoration: "none" }}
           >
             <Box
               sx={{
@@ -80,6 +81,7 @@ function Curriculum(){
           <a
             href="/pdfs/student_surveys.pdf"
             download={"student_surveys.pdf"}
+            style={{ textDecoration: "none" }}
           >
             <Box
               sx={{
