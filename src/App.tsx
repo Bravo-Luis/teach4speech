@@ -14,6 +14,7 @@ import './styles/App.css'
 import Charts from './components/landing/Charts/Charts';
 import JoinUs from './components/landing/JoinUs/JoinUs';
 import MoreAboutUs from './components/landing/MoreAboutUs/MoreAboutUs';
+import WhyUs from './components/landing/WhyUs/WhyUs';
 import  { Redirect }  from './pages/Redirect.tsx';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path='/data' element={<Charts/>} />
           <Route path='/join-us' element={<JoinUs/>} />
           <Route path='/more-about-us' element={<MoreAboutUs/>} />
+          <Route path='why-us' element={<WhyUs/>}/>
 
           {/* Player Routes */}
           <Route path='/waiting-room/:gameName/:gameCode' element={<WaitingRoomPage/>} />

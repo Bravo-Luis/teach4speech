@@ -141,7 +141,6 @@ const LeftSide = ({ expanded, setExpanded, handleJoin, initialValues, validation
                 margin="normal"
                 error={touched.game_code && Boolean(errors.game_code)}
                 helperText={touched.game_code && errors.game_code}
-                style={{ opacity: expanded === "left" ? 1 : 0, transition: `opacity ${expanded === 'left' ? 0.5 : 0}s ease-in` }}
               />
               <Field
                 name="username"

@@ -97,6 +97,7 @@ function Navbar(){
             justifyContent: 'center',
         }}>
         <NormalButton href={"#Goal"} label={"Goal"}/>
+        <NormalButton href={'#Why Teach4Speech'} label={"Why Us"}/>
         <NormalButton href={"#ImpactMessage"} label={"Impact"}/>
         <NormalButton href={"#Curriculum"} label={"Curriculum"}/>
         <NormalButton href={"#Games"} label={"Games"}/>

@@ -9,6 +9,7 @@ import Games from "../components/landing/Games/Games.tsx";
 import Socials from "../components/landing/Socials/Socials.tsx";
 
 import { useEffect, useState } from "react";
+import Map from "../components/landing/Map/Map.tsx";
 
 
 function LandingPage() {
@@ -74,6 +75,8 @@ function LandingPage() {
       <Team />
 
       <Socials />
+
+      <Map/>
 
     </Box>
   );
