@@ -1,10 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 // import useGamesStyles from "./GamesStyles";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 
 function Games() {
 	// const classes = useGamesStyles();
+	const navigate = useNavigate()
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
 	useEffect(() => {
@@ -56,6 +58,21 @@ function Games() {
 				<br />
 				<Typography variant="body1"> In this game students are given a word and have to create a speech where they describe this word without actually saying it, this speech is then sent to another student tries to guess what word they're describing </Typography>
 			   </Box>
+			   <Box sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "clamp(10px, 5vw, 30px)"
+        }}>
+          <Button variant='contained' sx={{
+            paddingRight: 'clamp(10px, 1vw, 200px)',
+            paddingLeft: 'clamp(10px, 1vw, 200px)',
+          }} onClick={() => {
+            navigate('/redirect')
+          }}>
+            <Typography variant="caption" color={"white"}>Play</Typography>
+          </Button>
+        </Box>
 			</Box>
 		   );
 
@@ -97,6 +114,21 @@ function Games() {
 				<br />
 				<Typography variant="body1"> In this game students are given a word and have to create a speech where they describe this word without actually saying it, this speech is then sent to another student tries to guess what word they're describing </Typography>
 			</Box>
+			<Box sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "clamp(10px, 5vw, 30px)"
+        }}>
+          <Button variant='contained' sx={{
+            paddingRight: 'clamp(10px, 1vw, 200px)',
+            paddingLeft: 'clamp(10px, 1vw, 200px)',
+          }} onClick={() => {
+            navigate('/redirect')
+          }}>
+            <Typography variant="caption" color={"white"}>Play</Typography>
+          </Button>
+        </Box>
 		</Box>
 	   );
 
