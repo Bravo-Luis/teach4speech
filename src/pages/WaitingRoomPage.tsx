@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SocketConsumer } from "../utils/SocketProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Grid, Typography, Chip } from "@mui/material";
-import TranslationButton from "../components/TranslationButton";
+// import TranslationButton from "../components/TranslationButton";
 import theme from "../styles/Theme";
 function WaitingRoomPage(){
 
