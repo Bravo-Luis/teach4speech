@@ -138,8 +138,9 @@ function RelatedWordsBackground({ theme, children }: { theme: string; children: 
   return (
     <Container maxWidth={false} sx={{
       backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: 'fit', 
-      backgroundPosition: 'center', 
+      backgroundSize: 'cover', 
+      backgroundRepeat: 'no-repeat',
+      backgroundBlendMode: 'multiply',
       width: '100%',
       height: '100vh',
       padding: '0',

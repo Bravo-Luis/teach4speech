@@ -1,91 +1,86 @@
 import { useState, useEffect } from 'react';
 import './AudioSharingGame.css';
 import { AudioRecorder } from 'react-audio-voice-recorder';
+import { useParams, useNavigate } from 'react-router-dom';
+import { SocketConsumer } from '../utils/SocketProvider';
+import { Container, Typography, Box, TextField, CircularProgress, Button } from '@mui/material';
 
 function AudioSharingGame() {
-
+  const socket = SocketConsumer();
+  const gameCode = useParams().gameCode as string;
   const [isActive, setActive] = useState(false);
   const [controls, setControls] = useState(false);
-  const [timer, setTimer] = useState(15);
-  const [preGameTimer, setPreGameTimer] = useState(5);
-  const [gameWord, setGameWord] = useState("")
+  const [timer, setTimer] = useState(65);
+  const [preGameTimer, setPreGameTimer] = useState(3);
+  const [gameWord, setGameWord] = useState("");
   const [recordings, setRecordings] = useState<Blob[]>([]);
+  const [receivedRecording, setReceivedRecording] = useState<Blob | null>(null);
+  const [guess, setGuess] = useState("");
+  const [isGuessing, setIsGuessing] = useState(false);
+  const navigate = useNavigate();
+
   const objectsToDescribe = [
-      'Fire', 
-      'Fruits', 
-      'Vegetables', 
-      'Pancakes',
-      'Violin',
-      'Tennis'
+    'Fire', 
+    'Fruits', 
+    'Vegetables', 
+    'Pancakes',
+    'Violin',
+    'Tennis'
   ];
 
-  // Generates a random object to describe in game
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * objectsToDescribe.length);
     setGameWord("You must describe: " + objectsToDescribe[randomIndex]);
   }, []);
 
-  // Handles 5 second timer before the game
   useEffect(() => {
     const preGameInterval = setInterval(() => {
-        setPreGameTimer((prevTimer) => {
-            const newTimer = prevTimer - 1;
-            if (newTimer < 0) {
-                // auto call start recording
-                setActive(true);
-                clearInterval(preGameInterval);
-            }
-            return newTimer;
-        });
+      setPreGameTimer((prevTimer) => {
+        const newTimer = prevTimer - 1;
+        if (newTimer < 0) {
+          setActive(true);
+          clearInterval(preGameInterval);
+        }
+        return newTimer;
+      });
     }, 1000);
     return () => clearInterval(preGameInterval);
   }, []);
 
-
-
-  // Handles voice-recording button automation
   useEffect(() => {
-    const button = document.querySelector(".audio-recorder-mic ") as HTMLButtonElement;
-    button?.click();
+    const micButton = document.querySelector(".audio-recorder-mic ") as HTMLButtonElement;
+    if (micButton) {
+      micButton.click();
+    }
   }, [isActive]);
 
-
-  
-
-// Handles timer countdown from 20 seconds (Game timer)
-useEffect(() => {
-  const interval = setInterval(() => {
-    setTimer((prevTimer) => {
-
-      const newTimer = prevTimer - 1;
-      if (newTimer <= 1) {
-        const button = document.querySelector(".audio-recorder-mic ") as HTMLButtonElement;
-        if(button){
-          button?.click();
-          console.log("exists");
-        }
-        else{
-          console.log("Dne");
-        }  
-      }
-      if(newTimer <= 0){
-        clearInterval(interval);
-        return 0;
-      } else {
-        return newTimer;
-      }
-    });
-  }, 1000);
-  return () => clearInterval(interval);
-}, []);
-
-  // Set's the game word h2 element to "" once timer reaches 0
   useEffect(() => {
-    if (timer === 0){
-        setGameWord("");
-        setControls(true);
+    const interval = setInterval(() => {
+      setTimer((prevTimer) => {
+        const newTimer = prevTimer - 1;
+        if (newTimer <= 1) {
+          const micButton = document.querySelector(".audio-recorder-mic ") as HTMLButtonElement;
+          if (micButton) {
+            micButton.click();
+          }
+        }
+        if (newTimer <= 0) {
+          clearInterval(interval);
+          return 0;
+        } else {
+          return newTimer;
+        }
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (timer === 0) {
+      setGameWord("");
+      setControls(true);
     }
-} , [timer]);
+  }, [timer]);
 
   const addAudioElement = (blob: Blob) => {
     setRecordings((prevRecordings) => [...prevRecordings, blob]);
@@ -94,63 +89,91 @@ useEffect(() => {
     audio.src = url;
     audio.controls = controls;
     document.body.appendChild(audio);
-    console.log("Adding to array")
+    console.log("Adding to array");
+
+    socket.emit('submit_recording', {
+      game_code: gameCode,
+      blob: blob,
+    });
   };
 
-  const submitRecordings = () => {
-    if(recordings.length > 0){
-      const combinedBlob = new Blob(recordings, {type: 'audio/webm'});
-      
-      const formData = new FormData();
-      formData.append('audioBlob', combinedBlob);
+  useEffect(() => {
+    socket.on('receive_recording', (data: any) => {
+      const receivedBlob = data.blob;
+      setReceivedRecording(receivedBlob);
+      setIsGuessing(true);
+    });
 
-      // Replace with backend API endpoint URL
-      //axios.post('placeholder-backend-api-endpoint', formData)
-        // .then(response => {
-        //   // After player sends recording, redirect them to another screen
-        //   // to listen to other recording and play game?
-        //   // import { useHistory } from 'react-router-dom'
-        //   // history.push('/send-to-directory-here')
-        //   console.log('Audio submitted successfully', response);
-        // })
-        // .catch(error => {
-        //   console.error('Error submitting audio', error);
-        //   alert('An error occurred while submitting audio. Please try again.')
-        // });
-    }
+    socket.on('end_game', () => {
+      navigate(`/end-game/${gameCode}`);
+    });
+
+    return () => {
+      socket.off('receive_recording');
+      socket.off('end_game');
+    };
+  }, [socket, navigate, gameCode]);
+
+  const handleGuessSubmit = () => {
+    socket.emit('submit_guess', {
+      game_code: gameCode,
+      guess: guess,
+    });
+    setIsGuessing(false);
   };
 
   return (
-    <>
-      <div className='game-2'>
-        <h1 id ='gameTimer'>{preGameTimer > 0 ? `Countdown: ${preGameTimer}` : timer > 0 ? `Time Remaining: ${timer}` : "Time's up!"}</h1>
-        <h1 id='currentGameWord'>{gameWord}</h1>
-        
-      
-        {(preGameTimer <= 0 && timer > 0) && (
-        <div className="recordButton">
-          <AudioRecorder onRecordingComplete={addAudioElement} showVisualizer />
-        </div>
-        
-        )}
+    <Container maxWidth="sm" sx={{ textAlign: 'center', marginTop: 4, backgroundColor: '#f5f5f5', padding: 4, borderRadius: 2 }}>
+      <Typography variant="h4" gutterBottom color="textPrimary">
+        {preGameTimer > 0 ? `Countdown: ${preGameTimer}` : timer > 0 ? `Time Remaining: ${timer}` : "Time's up!"}
+      </Typography>
+      <Typography variant="h6" gutterBottom color="textSecondary">
+        {gameWord}
+      </Typography>
 
-        {(preGameTimer <= 0 && timer > 0) && (
-          <div>
-            <h3 id="recordingPrompt">Click here to start recording</h3>
-          </div>
-          
-        )}
-      
-        <div>
-          {(recordings.length > 0 && timer > 0) && (
-            <div>
-              {/* YOU WILL GET AN ERROR MESSAGE BECAUSE THERE IS NOWHERE TO SEND AUDIO YET */}
-              <button id="sendRecordingToBackend" onClick={submitRecordings}>Save and Submit</button>
-            </div>
-          )}
-        </div>
-      </div>
-    </>
+      {(preGameTimer <= 0 && timer > 0) && (
+        <Box>
+          <AudioRecorder onRecordingComplete={addAudioElement} showVisualizer />
+          <Typography variant="body1" sx={{ marginTop: 2 }} color="textPrimary">
+            Click the micButton to start recording
+          </Typography>
+        </Box>
+      )}
+
+      {isGuessing && receivedRecording && (
+        <Box sx={{ marginTop: 4 }}>
+          <Typography variant="h6" gutterBottom color="textPrimary">
+            Guess the word based on the recording:
+          </Typography>
+          <audio src={URL.createObjectURL(receivedRecording)} controls />
+          <TextField
+            fullWidth
+            variant="outlined"
+            label="Enter your guess"
+            value={guess}
+            onChange={(e) => setGuess(e.target.value)}
+            sx={{ marginTop: 2, backgroundColor: 'white' }}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleGuessSubmit}
+            sx={{ marginTop: 2 }}
+          >
+            Submit Guess
+          </Button>
+        </Box>
+      )}
+
+      {timer > 0 && preGameTimer <= 0 && (
+        <Box sx={{ marginTop: 4 }}>
+          <CircularProgress />
+          <Typography variant="body1" sx={{ marginTop: 2 }} color="textPrimary">
+            Recording in progress...
+          </Typography>
+        </Box>
+      )}
+    </Container>
   );
 }
 

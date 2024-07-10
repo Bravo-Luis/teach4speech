@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import LandingPage from "./pages/LandingPage";
 import DashboardPage from './pages/DashboardPage' ;
-import GameHostPage from './pages/GameHostPage'
+import GameHostPage from './pages/GameHostPage/GameHostPage'
 import RelatedWordsGame from './games/RelatedWordsGames'
 import WaitingRoomPage from './pages/WaitingRoomPage';
 import { SocketProvider } from './utils/SocketProvider'
@@ -16,6 +16,7 @@ import JoinUs from './components/landing/JoinUs/JoinUs';
 import MoreAboutUs from './components/landing/MoreAboutUs/MoreAboutUs';
 import WhyUs from './components/landing/WhyUs/WhyUs';
 import  { Redirect }  from './pages/Redirect.tsx';
+import AudioSharingGame from './games/AudioSharingGame.tsx';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           {/* Player Routes */}
           <Route path='/waiting-room/:gameName/:gameCode' element={<WaitingRoomPage/>} />
           <Route path='/game/related_words/:gameCode/:theme' element={<RelatedWordsGame/>} />
+          <Route path='/game/audio_sharing/:gameCode/:theme' element={<AudioSharingGame/>} />
 
           {/* Instructor Routes */}
           <Route path='/instructor-dashboard' element={<DashboardPage/>} />
