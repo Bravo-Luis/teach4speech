@@ -50,7 +50,13 @@ function JoinUs(){
                 Teach4Speech is always looking for new volunteers and interns to help us achieve our mission. 
                 If you are interested in joining our team, please reach out to us using this contact form!
             </Typography>
-            <Button sx={{color:"black", marginTop:"2.5vh"}} variant={'outlined'} onClick={()=>{
+            <Button sx={{
+                color:"black", 
+                marginTop:"2.5vh",
+                minWidth: "150px",
+                width: "auto",
+                whiteSpace: "nowrap"
+            }} variant={'outlined'} onClick={()=>{
                 window.open('https://forms.gle/iGcuqsF9ce7HKCqQ7')
             }} >Contact Form</Button>
             <Box sx={{
