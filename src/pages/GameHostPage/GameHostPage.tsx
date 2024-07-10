@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SocketConsumer } from "../utils/SocketProvider";
+import { SocketConsumer } from "../../utils/SocketProvider";
 import { Typography, Button, Container, Divider} from "@mui/material";
 import { useParams } from "react-router-dom";
 import { red, grey } from "@mui/material/colors";
@@ -174,7 +174,9 @@ function GameHostPage() {
           </div>
         ))}
         
-        <Button variant="contained" onClick={handleRestart} >
+        <Button sx={{
+          width:"auto"
+        }} variant="contained" onClick={handleRestart} >
           Restart Game
         </Button>
 
@@ -273,8 +275,9 @@ Kick
 
         {players.length > 0 && !isGameStarted && (
 
-          <Button variant="contained" sx={{
-            ml:'clamp(5px, 2.5vw, 25px)'
+          <Button fullWidth variant="contained" sx={{
+            ml:'clamp(5px, 2.5vw, 25px)',
+           
           }} onClick={()=>{startGame(gameCode)}} >
             Start Game
         </Button>
