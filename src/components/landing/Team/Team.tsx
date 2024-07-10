@@ -212,7 +212,10 @@ function Team() {
         fontSize: "1.2rem",
         fontWeight: "bold",
         padding: "10px 20px",
-        marginBottom: "-15vh"     // Reducing space between "Interested in joining our team" and "want to see more from us  "
+        marginBottom: "-15vh",     // Reducing space between "Interested in joining our team" and "want to see more from us  "
+        minWidth: "150px",
+        width: "auto",
+        whiteSpace: "nowrap"
       }} variant="outlined">
          Join Us
       </Button>
