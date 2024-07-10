@@ -13,7 +13,7 @@ function AudioSharingGame() {
   const [timer, setTimer] = useState(65);
   const [preGameTimer, setPreGameTimer] = useState(3);
   const [gameWord, setGameWord] = useState("");
-  const [recordings, setRecordings] = useState<Blob[]>([]);
+  const [_, setRecordings] = useState<Blob[]>([]);
   const [receivedRecording, setReceivedRecording] = useState<Blob | null>(null);
   const [guess, setGuess] = useState("");
   const [isGuessing, setIsGuessing] = useState(false);
