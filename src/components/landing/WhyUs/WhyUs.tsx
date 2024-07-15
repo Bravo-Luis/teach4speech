@@ -59,11 +59,11 @@ function WhyUs() {
                     width: "clamp(200px, 80%, 800px)",
                 }}
                 />
-                <ImpactText text="In our sample, we surveyed 19 students identifying as Black, 108 identify as Hispanic, and 29 identify as White.84% of Black students do not wish to pursue higher education in college. Among White students, nearly half of the sample chose careers with no educational requirements."/>
+                <ImpactText text="In our sample, we surveyed 19 students identifying as Black, 108 identify as Hispanic, and 29 identify as White. 84% of Black students do not wish to pursue higher education in college. Among White students, nearly half of the sample chose careers with no educational requirements."/>
             </Box>
 
             <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap-reverse", alignItems:"center", justifyContent:"center", gap:"2.5vw", padding:"2.5vw" }}>
-                <ImpactText text=" After just one week of the program, students of Hispanic backgrounds reported a 16% increase in confidence for speaking in small groups. In public speaking, confidence increased by 8% and speaking to adults increased by 7%."/>
+                <ImpactText text="Out of the 74 boys and 82 girls in our sample, the vast majority of boys, over 75%, chose careers that require a high school diploma or less education. Alternatively, over 30% of girls wish to pursue degrees higher than a Bachelor’s."/>
                 <img
                     src={GenderPie}
                     alt="Confidence Levels of Hispanic Students"
