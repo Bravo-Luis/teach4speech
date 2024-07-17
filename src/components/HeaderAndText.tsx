@@ -110,16 +110,16 @@ function HeaderAndText({
       {chart ? (
         <Box
           className={commonStyles.ColumnCenteredContainer}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            paddingBottom: "0vh",
-            width: "100%",
-            justifyContent: "center",
+          // sx={{
+          //   display: "flex",
+          //   flexDirection: "column",
+          //   alignItems: "center",
+          //   paddingBottom: "0vh",
+          //   width: "100%",
+          //   justifyContent: "center",
 
-            margin: "0 auto",
-          }}
+          //   margin: "0 auto",
+          // }}
         >
           <Box
             sx={{
@@ -127,7 +127,7 @@ function HeaderAndText({
               flexDirection: "row",
               flexWrap: "wrap",
               alignItems: "center",
-              justifyContent: "center",
+              // justifyContent: "center",
               gap: "2.5vw",
               width: "100vw !important", 
             }}
