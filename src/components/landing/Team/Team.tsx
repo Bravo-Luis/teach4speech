@@ -210,7 +210,7 @@ function Team() {
       }} sx={{
         color: 'black',
         fontSize: "1.2rem",
-        fontWeight: "bold",
+        fontWeight: "bold !important",
         padding: "10px 20px",
         marginBottom: "-15vh",     // Reducing space between "Interested in joining our team" and "want to see more from us  "
         minWidth: "150px",

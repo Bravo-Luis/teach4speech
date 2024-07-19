@@ -180,7 +180,7 @@ function HeaderAndText({
             <Typography
               variant="caption"
               color={"primary"}
-              sx={{ fontSize: "1.2rem", fontWeight: "bold" }}
+              sx={{ fontSize: "1.2rem", fontWeight: "bold !important" }}
             >
               {header === "The Impact"
                 ? "Learn More About The Problem"
