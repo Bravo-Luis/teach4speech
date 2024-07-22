@@ -3,7 +3,7 @@ import './AudioSharingGame.css';
 import { AudioRecorder } from 'react-audio-voice-recorder';
 import { useParams, useNavigate } from 'react-router-dom';
 import { SocketConsumer } from '../utils/SocketProvider';
-import { Container, Typography, Box, TextField, CircularProgress, Button } from '@mui/material';
+import { Container, Typography, Box, CircularProgress, Button } from '@mui/material';
 
 function AudioSharingGame() {
   const socket = SocketConsumer();
@@ -17,6 +17,7 @@ function AudioSharingGame() {
   const [receivedRecording, setReceivedRecording] = useState<Blob | null>(null);
   const [guess, setGuess] = useState("");
   const [isGuessing, setIsGuessing] = useState(false);
+  const [gameAnswer, setGameAnswer] = useState("");
   const navigate = useNavigate();
 
   const objectsToDescribe = [
@@ -30,7 +31,7 @@ function AudioSharingGame() {
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * objectsToDescribe.length);
-    setGameWord("You must describe: " + objectsToDescribe[randomIndex]);
+    setGameWord(objectsToDescribe[randomIndex]);
   }, []);
 
   useEffect(() => {
@@ -89,38 +90,31 @@ function AudioSharingGame() {
     audio.src = url;
     audio.controls = controls;
     document.body.appendChild(audio);
-    console.log("Adding to array");
 
     socket.emit('submit_recording', {
       game_code: gameCode,
       blob: blob,
+      answer: gameWord
     });
+    setTimer(0);
   };
 
   useEffect(() => {
     socket.on('receive_recording', (data: any) => {
-      const receivedBlob = data.blob;
+
+      const receivedBlob = new Blob([data.blob], { type: 'audio/webm' });
+      const answer = data.answer;
+      
+      setGameAnswer(answer);
       setReceivedRecording(receivedBlob);
       setIsGuessing(true);
     });
 
-    socket.on('end_game', () => {
-      navigate(`/end-game/${gameCode}`);
-    });
-
     return () => {
       socket.off('receive_recording');
-      socket.off('end_game');
     };
   }, [socket, navigate, gameCode]);
 
-  const handleGuessSubmit = () => {
-    socket.emit('submit_guess', {
-      game_code: gameCode,
-      guess: guess,
-    });
-    setIsGuessing(false);
-  };
 
   return (
     <Container maxWidth="sm" sx={{ textAlign: 'center', marginTop: 4, backgroundColor: '#f5f5f5', padding: 4, borderRadius: 2 }}>
@@ -131,7 +125,7 @@ function AudioSharingGame() {
         {gameWord}
       </Typography>
 
-      {(preGameTimer <= 0 && timer > 0) && (
+      {(preGameTimer <= 0 && timer > 0 && !isGuessing) && (
         <Box>
           <AudioRecorder onRecordingComplete={addAudioElement} showVisualizer />
           <Typography variant="body1" sx={{ marginTop: 2 }} color="textPrimary">
@@ -142,26 +136,19 @@ function AudioSharingGame() {
 
       {isGuessing && receivedRecording && (
         <Box sx={{ marginTop: 4 }}>
+          <audio src={URL.createObjectURL(receivedRecording)} controls />
           <Typography variant="h6" gutterBottom color="textPrimary">
             Guess the word based on the recording:
           </Typography>
-          <audio src={URL.createObjectURL(receivedRecording)} controls />
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Enter your guess"
-            value={guess}
-            onChange={(e) => setGuess(e.target.value)}
-            sx={{ marginTop: 2, backgroundColor: 'white' }}
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleGuessSubmit}
-            sx={{ marginTop: 2 }}
-          >
-            Submit Guess
-          </Button>
+          {objectsToDescribe.map((element) => (
+            <Button key={element} onClick={()=>{
+              setGuess(element);
+            }} sx={{
+              backgroundColor: guess === element ? element.toUpperCase() == gameAnswer.toUpperCase() ? "green" : "red" : 'gray' ,
+            }} >{element}</Button>
+          ))}
+
+          
         </Box>
       )}
 

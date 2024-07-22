@@ -6,6 +6,7 @@ import { LoadingButton } from "@mui/lab";
 import TranslationButton from "../components/TranslationButton";
 import CircularCountdown from "../components/CircularCountdown";
 import RelatedWordsBackground from "./RelatedWordsBackground";
+import { ArrowRight } from "@mui/icons-material";
 
 function RelatedWordsGame() {
   const socket = SocketConsumer();
@@ -130,8 +131,9 @@ function RelatedWordsGame() {
     <RelatedWordsBackground theme={theme}>
       <Container maxWidth={false} sx={{
         height: 'clamp(600px, 50vh, 80vh)',
+        marginTop: '20vh',
         display: 'flex',
-        backgroundImage: '', // put image here?
+        backgroundImage: '', 
         flexDirection: 'column',
         justifyContent: 'space-between',
         paddingTop: '2.5vh',
@@ -145,8 +147,62 @@ function RelatedWordsGame() {
           <CircularCountdown duration={60} />
           <TranslationButton isEnglish={isEnglish} setIsEnglish={setIsEnglish} />
         </Container>
+        <Box sx={{
+          background: 'none',
+          padding: '2em',
+          borderRadius: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <form onSubmit={handleSubmit} style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '2vh',
+            justifyContent: 'center',
+            alignItems: 'center',
+  
+          }}  >
+<TextField
+  label={isEnglish ? "Enter a related word" : "Escribe una palabra relacionada"}
+  variant="filled"
+  value={answer}
+  onChange={(e) => setAnswer(e.target.value)}
+  fullWidth
+  InputProps={{
+    style: {
+      color: 'white',
+      fontWeight: 'bold',
+      textShadow: '0px 0px 1px #000000',
+      fontSize: 'clamp(20px, 5vw ,40px)', 
+    },
+  }}
+  InputLabelProps={{
+    style: {
+      color: 'white', 
+      textShadow: '0px 0px 2px #000000',
+      fontWeight: 'bold',
+      fontSize: 'clamp(10px, 4vw ,20px)'
+    },
+  }}
+/>
+            <LoadingButton
+              loading={isSubmitting}
+              type="submit"
+              variant="contained"
+            >
+          <ArrowRight sx={{
+
+            fontSize: '2em',
+          }}/>
+            </LoadingButton>
+          </form>
+        </Box>
         {yourAnswers.length > 0 && (
-          <div>
+          <div style={{
+            background: `${theme}`,
+          }}>
             <Typography variant="h4" fontWeight={"bold"} sx={{ marginBottom: "10px", borderBottom: "1px solid #ccc", paddingBottom: "10px", width: "100%", textAlign: "center" }}>
               {isEnglish ? "Your answers" : "Tus respuestas"}
             </Typography>
@@ -155,35 +211,12 @@ function RelatedWordsGame() {
                 background: "white",
                 fontWeight: "bold",
                 color: "black",
-                fontSize: "1.5em",
+                fontSize: "1.2em",
                 padding: "5px",
               }} style={{ margin: "5px" }} />
             ))}
           </div>
         )}
-        <Box sx={{
-          background: 'white',
-          padding: '2em',
-          borderRadius: '16px',
-        }}>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              label={isEnglish ? "Enter a related word" : "Escribe una palabra relacionada"}
-              variant="outlined"
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              fullWidth
-            />
-            <LoadingButton
-              loading={isSubmitting}
-              type="submit"
-              variant="contained"
-              sx={{ mt: 2 }}
-            >
-              Submit
-            </LoadingButton>
-          </form>
-        </Box>
       </Container>
     </RelatedWordsBackground>
   );
