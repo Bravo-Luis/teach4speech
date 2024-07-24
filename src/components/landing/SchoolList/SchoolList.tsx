@@ -30,7 +30,7 @@ const SchoolsList: React.FC = () => {
         justifyContent="center"
         sx={{
           marginTop: 2,
-          marginBottom: 2,
+          marginBottom: 0.25,
         }}
       >
         {schools.map((school, index) => (
