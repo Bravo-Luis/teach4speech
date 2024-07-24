@@ -7,6 +7,7 @@ import Navbar from "../components/landing/Navbar/Navbar.tsx";
 import Curriculum from "../components/landing/Curriculum/Curriculum.tsx";
 import Games from "../components/landing/Games/Games.tsx";
 import Socials from "../components/landing/Socials/Socials.tsx";
+import SchoolsList from "../components/landing/SchoolList/SchoolList.tsx";
 
 import { useEffect, useState } from "react";
 import Map from "../components/landing/Map/Map.tsx";
@@ -76,6 +77,7 @@ function LandingPage() {
 
       <Socials />
       <Typography variant="h2" sx={{fontWeight:"bold"}} >Our Schools</Typography>
+      <SchoolsList/>
       <Map/>
 
     </Box>
