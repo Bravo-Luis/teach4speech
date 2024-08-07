@@ -108,7 +108,7 @@ function Navbar(){
           </Box>
         ) : (
           <Drawer onClose={() => setOpenDrawer(false)} open={openDrawer} anchor="top">
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <MobileButton href={"#Goal"} label={"Goal"}/>
               <MobileButton href={"#Impact"} label={"Impact"}/>
               <MobileButton href={"#Curriculum" } label={"Curriculum"}/>
