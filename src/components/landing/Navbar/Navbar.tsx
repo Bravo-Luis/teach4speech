@@ -32,7 +32,7 @@ function Navbar(){
 
     return (
         <>
-        {screenwidth <= 720 ? (
+        {screenwidth <= 1090 ? (
           <MenuIcon
             onClick={() => setOpenDrawer(!openDrawer)}
             sx={{
@@ -45,7 +45,7 @@ function Navbar(){
           />
         ) : null}
   
-        {screenwidth > 720 ? (
+        {screenwidth > 1090 ? (
           <Box sx={{
             display: 'flex',
             flexDirection: 'row',
@@ -114,6 +114,14 @@ function Navbar(){
               <MobileButton href={"#Curriculum" } label={"Curriculum"}/>
               <MobileButton href={"#Team"} label={"Team"}/>
               <MobileButton href={'https://forms.gle/iGcuqsF9ce7HKCqQ7'} label={"Join Us"}/>
+              <Button variant='contained' sx={{
+                margin: '1vh',
+              }} onClick={() => {
+                setOpenDrawer(false);
+                navigate('/redirect');
+              }}>
+                <Typography variant="caption" color={"white"}> Play </Typography>
+              </Button>
             </Box>
           </Drawer>
         )}
