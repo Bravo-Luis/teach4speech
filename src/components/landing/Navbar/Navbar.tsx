@@ -114,7 +114,7 @@ function Navbar() {
                         <MobileButton href={"#Curriculum"} label={"Curriculum"} />
                         <MobileButton href={"#Team"} label={"Team"} />
                         <MobileButton href={'https://forms.gle/iGcuqsF9ce7HKCqQ7'} label={"Join Us"} />
-                        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '1vh' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                             <Button variant='contained' onClick={() => {
                                 setOpenDrawer(false);
                                 navigate('/redirect');
