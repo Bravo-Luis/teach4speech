@@ -69,6 +69,7 @@ function Navbar(){
     }}>
 
         <Box sx={{
+            flexShrink: 0,
             paddingLeft: 'clamp(10px, 1vw, 200px)',
             marginLeft: 'clamp(10px, 1vw, 200px)',
             fontWeight: 'bold',
@@ -91,10 +92,11 @@ function Navbar(){
         </Box>
   
         <Box sx={{
-            gap: 'clamp(10px, 5vw, 200px)',
+            gap: 'clamp(10px, 2vw, 15px)',
             display: 'flex',
             flex: 1,
             justifyContent: 'center',
+            minWidth: 0,
         }}>
         <NormalButton href={"#Goal"} label={"Goal"}/>
         <NormalButton href={'#Why Teach4Speech'} label={'The "Why"'}/>
@@ -107,6 +109,7 @@ function Navbar(){
         </Box>
 
         <Button variant='contained' sx={{
+          flexShrink: 0,
           marginRight: 'clamp(10px, 1vw, 200px)',
           marginLeft: 'clamp(10px, 1vw, 200px)',
           paddingRight: 'clamp(10px, 1vw, 200px)',
