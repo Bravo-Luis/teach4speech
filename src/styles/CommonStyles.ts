@@ -9,6 +9,15 @@ const useCommonStyles = makeStyles(() => ({
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
+    },
+
+    RowCenteredContainer: {
+        width: "100vw",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
     }
 }));
 

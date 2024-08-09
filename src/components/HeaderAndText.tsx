@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import { useState } from "react";
 import ImpactText from "./ImpactText";
 import OurGoalPie from "../assets/charts/OurGoalPie.png";
@@ -108,28 +108,17 @@ function HeaderAndText({
       )}
 
       {chart ? (
-        <Box
-          className={commonStyles.ColumnCenteredContainer}
-          // sx={{
-          //   display: "flex",
-          //   flexDirection: "column",
-          //   alignItems: "center",
-          //   paddingBottom: "0vh",
-          //   width: "100%",
-          //   justifyContent: "center",
-
-          //   margin: "0 auto",
-          // }}
-        >
-          <Box
+          <Container
+            className={commonStyles.RowCenteredContainer}
             sx={{
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
               alignItems: "center",
-              // justifyContent: "center",
-              gap: "2.5vw",
-              width: "100vw !important", 
+              justifyContent: "center",
+              gap: "1.5vw",
+              width: "80vw !important",
+              marginLeft: "-35px",          // Adjusted left side positioning to line up with other sections (-35 is a random eye-balled value)
             }}
           >
             <img
@@ -144,7 +133,7 @@ function HeaderAndText({
               }}
             />
             <Typography
-              component="span"
+              component="span" 
               sx={{
                 maxWidth: "600px",
                 textAlign: "left",
@@ -153,8 +142,8 @@ function HeaderAndText({
             >
               {charts[selectedChart].description}
             </Typography>
-          </Box>
-        </Box>
+          </Container>
+        
       ) : null}
 
       {link ? (
