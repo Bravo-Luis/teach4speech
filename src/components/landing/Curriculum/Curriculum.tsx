@@ -1,17 +1,17 @@
 import { Typography, Container, Box, Link, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import overviewImage from "../../../assets/curriculum_images/overviewImg.png";
-import session1Image from "../../../assets/curriculum_images/session1Img.png";
-import session2Image from "../../../assets/curriculum_images/session2Img.png";
-import session3Image from "../../../assets/curriculum_images/session3Img.png";
-import session4Image from "../../../assets/curriculum_images/session4Img.png";
-import session5Image from "../../../assets/curriculum_images/session5Img.png";
-import session6Image from "../../../assets/curriculum_images/session6Img.png";
-import session7Image from "../../../assets/curriculum_images/session7Img.png";
-import session8Image from "../../../assets/curriculum_images/session8Img.png";
-import session9Image from "../../../assets/curriculum_images/session9Img.png";
-import session10Image from "../../../assets/curriculum_images/session10Img.png";
+import overviewImage from "../../../assets/curriculum_images/old_pngs/overviewImg.png";
+import session1Image from "../../../assets/curriculum_images/old_pngs/session1Img.png";
+import session2Image from "../../../assets/curriculum_images/old_pngs/session2Img.png";
+import session3Image from "../../../assets/curriculum_images/old_pngs/session3Img.png";
+import session4Image from "../../../assets/curriculum_images/old_pngs/session4Img.png";
+import session5Image from "../../../assets/curriculum_images/old_pngs/session5Img.png";
+import session6Image from "../../../assets/curriculum_images/old_pngs/session6Img.png";
+import session7Image from "../../../assets/curriculum_images/old_pngs/session7Img.png";
+import session8Image from "../../../assets/curriculum_images/old_pngs/session8Img.png";
+import session9Image from "../../../assets/curriculum_images/old_pngs/session9Img.png";
+import session10Image from "../../../assets/curriculum_images/old_pngs/session10Img.png";
 
 function Curriculum(){
 
