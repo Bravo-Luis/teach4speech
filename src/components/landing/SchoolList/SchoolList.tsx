@@ -15,6 +15,10 @@ const SchoolsList: React.FC = () => {
     "The Adelante Charter School",
     "Franklin Elementary School",
     "Cleveland Elementary School",
+    "Deeksha STEM Bannerghatta Rd.",
+    "Deeksha STEM Judicial Layout",
+    "Deeksha STEM Kengeri",
+    "Deeksha STEM Vidyanagar"
   ];
 
   return (

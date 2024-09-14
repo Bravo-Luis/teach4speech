@@ -76,7 +76,7 @@ function LandingPage() {
       <Team />
 
       <Socials />
-      <Typography variant="h2" sx={{fontWeight:"bold"}} >Our Schools</Typography>
+      <Typography variant="h2" sx={{fontWeight:"bold"}} >Our Locations Internationally</Typography>
       <SchoolsList/>
       <Map/>
 
