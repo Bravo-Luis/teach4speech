@@ -79,8 +79,8 @@ function Curriculum(){
           </a>
 
           <a
-            href="/pdfs/student_surveys.pdf"
-            download={"student_surveys.pdf"}
+            href="/pdfs/new_student_surveys.pdf"
+            download={"new_student_surveys.pdf"}
             style={{ textDecoration: "none" }}
           >
             <Box
