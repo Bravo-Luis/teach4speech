@@ -12,6 +12,7 @@ import session7Image from "../../../assets/curriculum_images/old_pngs/session7Im
 import session8Image from "../../../assets/curriculum_images/old_pngs/session8Img.png";
 import session9Image from "../../../assets/curriculum_images/old_pngs/session9Img.png";
 import session10Image from "../../../assets/curriculum_images/old_pngs/session10Img.png";
+import new_session1pic from "../../../assets/curriculum_images/new_pngs/session_1.png";
 
 function Curriculum(){
 
